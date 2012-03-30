@@ -92,7 +92,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 
 <div class="contactInfo">
-<p> Línea Nacional Gratuita: <span>01-8000-123-009</span>  <a href="javascript:;" onclick="plupper.start('jk4zt@plupper.com')">CHAT WITH US!!</a></p>
+<p> Línea Nacional Gratuita: <span>01-8000-123-009</span> </p>
 
 </div>
 <!-- ENDS AREA RIGHT SMI --></div>
@@ -246,6 +246,9 @@ echo "</select> "; ?> <!-- CHOOSE A COUNTRY -->
 <!--ENDS LOGOS--> 
 
 <!--START THE MAGIC QUOTE CONTENT-->
+
+
+
 <div id="magicArea"><!--MAGIC NAV-->
 <div id="magicNav">
 <div id="magicStep" class="on">

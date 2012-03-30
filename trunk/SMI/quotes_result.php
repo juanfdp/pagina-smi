@@ -75,7 +75,18 @@ $ws=new WebServices();
 <script type="text/javascript"
 	src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 </head>
+<!--Start of Zopim Live Chat Script-->
 
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?YSdpKx0VatFD2OAvEhAOthvLxiFafiVl';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+
+
+<!--End of Zopim Live Chat Script-->
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -171,6 +182,7 @@ function agregarParaComparar(cb){
 </script>
 
 
+
 <body onload="loadImages()" >
 <div class="wrapper"><!--- START HEADER ---> <header>
 <div id="headerTop"><!--- START THE TOP HEADER --->
@@ -189,7 +201,7 @@ function agregarParaComparar(cb){
 <div id="barNav">
 <div id="navContain"><nav>
 <ul id="trans-nav">
-	<li><a href="index.php" class="active">Inicio</a></li>
+	<li><a href="index.php" >Inicio</a></li>
 	<li><a href="about_us.php">Conocenos</a></li>
 	<li><a href="clauses.php">Clausulados</a></li>
 	<li><a href="services.php">Servicios</a>
@@ -480,59 +492,10 @@ $contador++;
 
 
 <!---INIT THE FOOTER CONTENT HERE-->
-        <footer>
-            
-            <div id="footerWrap">
-            	<div id="footCont">
-                	<ul>
-                    	<li><a href="#">Conocenos</a></li>
-                        <li><a href="#">Condiciones generales</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Compañias</a></li>
-                        <li><a href="#">Planes</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Preguntas frecuentes</a></li>
-                    </ul>
-                	<ul>
-                    	<li><a href="#">Venta de Seguros</a></li>
-                        <li><a href="#">Corporativo</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Compañias</a></li>
-                        <li><a href="#">Planes</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Preguntas frecuentes</a></li>
-                    </ul>
-                    <ul>
-                    	<li><img src="tpl/img/creditCards.png" width="123" height="99" /></li>
-                    </ul> 
-                    <ul>
-                    	<p><strong>Líneas de atención.</strong><br /> 
-                                Bogotá: (1) 744 14 40<br />
-                                Barranquilla: (5) 360 55 75<br />
-                                Bucaramanga: (7) 697 81 00<br />
-                                Cali: (2) 487 00 80<br />
-                                Medellín: (4) 311 95 51<br />
-                                Pasto: (2) 737 06 80<br />
-                                Línea Nacional Gratuita: 01-8000-123-009<br />
-                                Atención de Domingo a Domingo: 315-6920830<br />
-						</p>
-                    </ul>  
-                    		<div class="secureEle">
-                            	<img src="tpl/img/secureLogo.png" />
-                            </div>
-                            
-                            <div class="theDot">
-                                <div class="theDotDesign"><a href="http://www.thedot-studio.com/" target="_blank"><img src="tpl/img/logoDot-DesignBy.png" /></a></div>
-                                <div class="theDotByThe"><a href="http://www.thedot-studio.com/" target="_blank"><img src="tpl/img/logoDot-TheDotStudio.png" /></a></div>
-                            </div><!--LOGO DOT-->
-                    		<span class="devp">development by: Crecer Soluciones</span>                      
-                </div>
-            </div>
-            <div id="footerCopy">
-            	<p>Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved..</p>
-            </div>
-            
-        </footer>
+       <?php
+//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+echo $func->getFooter(); 
+?>
         <!--ENDS ALL FOOTER CONTAINS-->
 
 <!--ENDS WRAPPER-->

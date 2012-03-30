@@ -229,7 +229,19 @@ próximamente nos contactaremos con usted.</p>
 <div id="banBotArea">
 <div id="bannerLeft">
 
-<img src="tpl/img/Banners/Sales20off.png" />
+
+	
+	<?php 
+$nombreImagen="";
+//IMAGEN 11 DE LA SECCION 2 -- BANNER IZQUIERDO
+$r= $aw->cargarComponenteBySeccion(2, 11);
+while (!$r->EOF) {		
+	$nombreImagen=$pathFtp."".$r->fields[0];
+	$r->MoveNext();
+}
+?>
+	<img	src="<?php echo $nombreImagen; ?>" /> 
+
 
 </div>
 <div id="bannerRight"><!-- BANNER RIGHT CONTENTS--->
@@ -238,9 +250,17 @@ próximamente nos contactaremos con usted.</p>
 	<!--1ST BANNER SLIDE OFFER-->
 	<li class="s3sliderImage">
 	
-	<img	src="tpl/img/Banners/s3OffersRight/demA.png" /> 
 	
-	
+	<?php 
+$nombreImagen="";
+//IMAGEN 13 DE LA SECCION 2 --BANNER DERECHO
+$r= $aw->cargarComponenteBySeccion(2, 13);
+while (!$r->EOF) {		
+	$nombreImagen=$pathFtp."".$r->fields[0];
+	$r->MoveNext();
+}
+?>
+	<img	src="<?php echo $nombreImagen; ?>" /> 
 	<span class="left">	
 	<?php 
 //TEXTO 12 DE LA SECCION 2 ---------COMENTARIO EN EL BANNER

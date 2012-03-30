@@ -1,7 +1,11 @@
 ﻿<?php
 include 'logic/compra.php';
+include   'logic/functions.php';
 $compra=new compra();
 $guarda;//GUARDA PARA VERIFICAR SI SE PUEDO O NO CONTINUAR CON EL PAGO
+$fun=new functions();
+//
+$pathFtp="tpl/img/Administrador/";
 ?>
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
@@ -58,6 +62,18 @@ $guarda;//GUARDA PARA VERIFICAR SI SE PUEDO O NO CONTINUAR CON EL PAGO
 //-->
 </script>
 </head>
+<!--Start of Zopim Live Chat Script-->
+
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?YSdpKx0VatFD2OAvEhAOthvLxiFafiVl';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+
+
+<!--End of Zopim Live Chat Script-->
 <body>
 <div class="wrapper"><!--- START HEADER ---> <header>
 <div id="headerTop"><!--- START THE TOP HEADER --->
@@ -75,7 +91,7 @@ $guarda;//GUARDA PARA VERIFICAR SI SE PUEDO O NO CONTINUAR CON EL PAGO
 <div id="barNav">
 <div id="navContain"><nav>
 <ul id="trans-nav">
-	<li><a href="index.php" class="active">Inicio</a></li>
+	<li><a href="index.php" >Inicio</a></li>
 	<li><a href="about_us.php">Conocenos</a></li>
 	<li><a href="clauses.php">Clausulados</a></li>
 	<li><a href="services.php">Servicios</a>
@@ -345,91 +361,67 @@ echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" c
 
 <!--TRAVEL DETAILS ENDS---></div>
 <!--ENDS HERE ALL SUBMIT FORMS---> <!--START BANNER BOTTOM AREA--->
+
 <div id="banBotArea">
-<div id="bannerLeft"><img src="tpl/img/Banners/Sales20off.png" /></div>
+<div id="bannerLeft">
+
+
+	
+	<?php 
+$nombreImagen="";
+//IMAGEN 11 DE LA SECCION 2 -- BANNER IZQUIERDO
+$r= $aw->cargarComponenteBySeccion(2, 11);
+while (!$r->EOF) {		
+	$nombreImagen=$pathFtp."".$r->fields[0];
+	$r->MoveNext();
+}
+?>
+	<img	src="<?php echo $nombreImagen; ?>" /> 
+
+
+</div>
 <div id="bannerRight"><!-- BANNER RIGHT CONTENTS--->
 <div id="s3slider"><!--HERE START THE SLIDE-->
 <ul id="s3sliderContent">
 	<!--1ST BANNER SLIDE OFFER-->
-	<li class="s3sliderImage"><img
-		src="tpl/img/Banners/s3OffersRight/demA.png" /> <span class="left">
-	<h5>Londres</h5>
-	<p>The Dot Studio está enfocado en el desarrollo de estrategias
-	comerciales innovadoras para publicitar, posicionar e incrementar el
-	reconocimiento de marcas, productos, servicios. <br />
-	</p>
-	<a href="#">Ver mas...</a> </span></li>
-	<!--1ST BANNER SLIDE OFFER-->
-	<li class="s3sliderImage"><img
-		src="tpl/img/Banners/s3OffersRight/demA.png" /> <span class="left">
-	<h5>Londres</h5>
-	<p>The Dot Studio está enfocado en el desarrollo de estrategias
-	comerciales innovadoras para publicitar, posicionar e incrementar el
-	reconocimiento de marcas, productos, servicios. <br />
-	</p>
-	<a href="#">Ver mas...</a> </span></li>
+	<li class="s3sliderImage">
+	
+	
+	<?php 
+$nombreImagen="";
+//IMAGEN 13 DE LA SECCION 2 --BANNER DERECHO
+$r= $aw->cargarComponenteBySeccion(2, 13);
+while (!$r->EOF) {		
+	$nombreImagen=$pathFtp."".$r->fields[0];
+	$r->MoveNext();
+}
+?>
+	<img	src="<?php echo $nombreImagen; ?>" /> 
+	<span class="left">	
+	<?php 
+//TEXTO 12 DE LA SECCION 2 ---------COMENTARIO EN EL BANNER
+$r= $aw->cargarComponenteBySeccion(2, 12);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>	</span>	
+	</li>	
 	<div class="clear s3sliderImage"><!--CLEAR THE BANNERS--></div>
 </ul>
 </div>
 <!--HERE ENDS THE SLIDE--></div>
 </div>
+
 <!--ENDS BANNER BOTTOM AREA---></div>
 <!--ENDS THE FULL BODY CONTAINER-->
 <!---INIT THE FOOTER CONTENT HERE-->
-<footer>
 
-<div id="footerWrap">
-<div id="footCont">
-<ul>
-	<li><a href="#">Conocenos</a></li>
-	<li><a href="#">Condiciones generales</a></li>
-	<li><a href="#">Servicios</a></li>
-	<li><a href="#">Compañias</a></li>
-	<li><a href="#">Planes</a></li>
-	<li><a href="#">Contacto</a></li>
-	<li><a href="#">Preguntas frecuentes</a></li>
-</ul>
-<ul>
-	<li><a href="#">Venta de Seguros</a></li>
-	<li><a href="#">Corporativo</a></li>
-	<li><a href="#">Servicios</a></li>
-	<li><a href="#">Compañias</a></li>
-	<li><a href="#">Planes</a></li>
-	<li><a href="#">Contacto</a></li>
-	<li><a href="#">Preguntas frecuentes</a></li>
-</ul>
-<ul>
-	<li><img src="tpl/img/creditCards.png" width="123" height="99" /></li>
-</ul>
-<ul>
-	<p><strong>Líneas de atención.</strong><br />
-	Bogotá: (1) 744 14 40<br />
-	Barranquilla: (5) 360 55 75<br />
-	Bucaramanga: (7) 697 81 00<br />
-	Cali: (2) 487 00 80<br />
-	Medellín: (4) 311 95 51<br />
-	Pasto: (2) 737 06 80<br />
-	Línea Nacional Gratuita: 01-8000-123-009<br />
-	Atención de Domingo a Domingo: 315-6920830<br />
-	</p>
-</ul>
-<div class="secureEle"><img src="tpl/img/secureLogo.png" /></div>
-
-<div class="theDot">
-<div class="theDotDesign"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-DesignBy.png" /></a></div>
-<div class="theDotByThe"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-TheDotStudio.png" /></a></div>
-</div>
-<!--LOGO DOT--> <span class="devp">development by: Crecer Soluciones</span>
-</div>
-</div>
-<div id="footerCopy">
-<p>Copyright © 2011 Seguros Medicos Internacionales All Rights
-Reserved..</p>
-</div>
-
-</footer>
+<?php
+//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+echo $fun->getFooter(); 
+?>
+       
 <!--ENDS ALL FOOTER CONTAINS-->
 </div>
 <!--ENDS WRAPPER-->
