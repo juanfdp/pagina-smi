@@ -4,6 +4,7 @@
  * CLASE ADMIN WEB
  *
  * Clase encargada de cargar todos los componentes dinamicos administrados desde crecer.
+ * Permite cargar las imagenes y textos , que se vayan parametrizando desde el administrador dispuesto en crecer
  * @author CRECER SOLUCIONES
  * @version 1.0
  * @pack
