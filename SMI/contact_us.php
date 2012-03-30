@@ -1,4 +1,14 @@
-﻿
+﻿<?php
+include 'logic/parametros.php';
+include 'logic/adminWeb.php';
+include 'logic/functions.php';
+//INSTANCIA DE LA CLASE ENCARGADA DE LOS PARAMETROS
+$param=new parametros();
+$aw=new adminWeb();
+$fun=new functions();
+//
+$pathFtp="tpl/img/Administrador/";
+?>
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
@@ -41,6 +51,15 @@
 	rel="stylesheet" />
 
 </head>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?YSdpKx0VatFD2OAvEhAOthvLxiFafiVl';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
 <body>
 
 <div class="wrapper"><!--- START HEADER ---> <header>
@@ -86,52 +105,80 @@
 <div id="contCols"><!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Bogotá:</h3>
-<p>Cra. 15 81-30 of. 307<br />
-PBX. (1) 744 1440<br />
-<a href="mailto:ventas@segurosmedicosinternacionales.net">ventas@segurosmedicosinternacionales.net</a><br />
-Horario de atención; <br />
-7:00 am – 6pm jornada continua de lunes a viernes<br />
-10:00 am – 12:30 pm Sábados</p>
+<?php 
+//TEXTO 14 DE LA SECCION 3 ---------BOGOTA
+$r= $aw->cargarComponenteBySeccion(3, 14);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 <!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Barranquilla:</h3>
-<p>Carrera 53 No. 75-138 Piso. 2. <br />
-PBX: (5) 360 5575<br />
-<a href="mailto:barranquilla@segurosmedicosinternacionales.net">barranquilla@segurosmedicosinternacionales.net</a><br />
-Horario de atención; <br />
-8:00 am a 1:00 pm – 2:00 pm a 6:00 pm de lunes a viernes<br />
-</p>
+<?php 
+//TEXTO 15 DE LA SECCION 3 ---------BARRANQUILLA
+$r= $aw->cargarComponenteBySeccion(3, 15);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 <br class="clear" />
 <!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Medellín:</h3>
-<p>Calle 10 No. 38-49 OF.401 Edificio Bulevar de la 10 –<br />
-PBX :(4) 311 9551<br />
-<a href="mailto:medellin@segurosmedicosinternacionales.net">medellin@segurosmedicosinternacionales.net</a><br />
-Horario de atención; <br />
-8:00 am a 1:00 pm – 2:00 pm a 6:00 pm de lunes a viernes<br />
-</p>
+
+<?php 
+//TEXTO 16 DE LA SECCION 3 ---------MEDELLIN
+$r= $aw->cargarComponenteBySeccion(3, 16);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 <!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Pasto:</h3>
-<p>PBX: (2) 737 06 80<br />
-</p>
+
+
+<?php 
+//TEXTO 17 DE LA SECCION 3 ---------PASTO
+$r= $aw->cargarComponenteBySeccion(3, 17);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 <br class="clear" />
 <!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Bucaramanga:</h3>
-<p>PBX: (7) 697 81 00<br />
-</p>
+
+<?php 
+//TEXTO 18 DE LA SECCION 3 ---------BUCARAMANGA
+$r= $aw->cargarComponenteBySeccion(3, 18);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 <!--CONTACT COL--->
 <div class="contOneCol">
 <h3>Cali:</h3>
-<p>PBX: (2) 487 00 80<br />
-</p>
+<?php 
+//TEXTO 19 DE LA SECCION 3 ---------CALI
+$r= $aw->cargarComponenteBySeccion(3, 19);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>
 </div>
 </div>
 <!--- CONTENT COLUMS -->
@@ -175,93 +222,59 @@ próximamente nos contactaremos con usted.</p>
 
 </div>
 
-
-
 <!--START BANNER BOTTOM AREA--->
+
+
+
 <div id="banBotArea">
-<div id="bannerLeft"><img src="tpl/img/Banners/Sales20off.png" /></div>
+<div id="bannerLeft">
+
+<img src="tpl/img/Banners/Sales20off.png" />
+
+</div>
 <div id="bannerRight"><!-- BANNER RIGHT CONTENTS--->
 <div id="s3slider"><!--HERE START THE SLIDE-->
 <ul id="s3sliderContent">
 	<!--1ST BANNER SLIDE OFFER-->
-	<li class="s3sliderImage"><img
-		src="tpl/img/Banners/s3OffersRight/demA.png" /> <span class="left">
-	<h5>Londres</h5>
-	<p>The Dot Studio está enfocado en el desarrollo de estrategias
-	comerciales innovadoras para publicitar, posicionar e incrementar el
-	reconocimiento de marcas, productos, servicios. <br />
-	</p>
-	<a href="#">Ver mas...</a> </span></li>
-	<!--1ST BANNER SLIDE OFFER-->
-	<li class="s3sliderImage"><img
-		src="tpl/img/Banners/s3OffersRight/demA.png" /> <span class="left">
-	<h5>Londres</h5>
-	<p>The Dot Studio está enfocado en el desarrollo de estrategias
-	comerciales innovadoras para publicitar, posicionar e incrementar el
-	reconocimiento de marcas, productos, servicios. <br />
-	</p>
-	<a href="#">Ver mas...</a> </span></li>
+	<li class="s3sliderImage">
+	
+	<img	src="tpl/img/Banners/s3OffersRight/demA.png" /> 
+	
+	
+	<span class="left">	
+	<?php 
+//TEXTO 12 DE LA SECCION 2 ---------COMENTARIO EN EL BANNER
+$r= $aw->cargarComponenteBySeccion(2, 12);
+while (!$r->EOF) {	
+	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
+	$r->MoveNext();
+}
+?>	</span>	
+	</li>	
 	<div class="clear s3sliderImage"><!--CLEAR THE BANNERS--></div>
 </ul>
 </div>
 <!--HERE ENDS THE SLIDE--></div>
 </div>
-<!--ENDS BANNER BOTTOM AREA---></div>
-<!--ENDS THE FULL BODY CONTAINER--> <!---INIT THE FOOTER CONTENT HERE-->
-<footer>
 
-<div id="footerWrap">
-<div id="footCont">
-<ul>
-	<li><a href="#">Conocenos</a></li>
-	<li><a href="#">Condiciones generales</a></li>
-	<li><a href="#">Servicios</a></li>
-	<li><a href="#">Compañias</a></li>
-	<li><a href="#">Planes</a></li>
-	<li><a href="#">Contacto</a></li>
-	<li><a href="#">Preguntas frecuentes</a></li>
-</ul>
-<ul>
-	<li><a href="#">Venta de Seguros</a></li>
-	<li><a href="#">Corporativo</a></li>
-	<li><a href="#">Servicios</a></li>
-	<li><a href="#">Compañias</a></li>
-	<li><a href="#">Planes</a></li>
-	<li><a href="#">Contacto</a></li>
-	<li><a href="#">Preguntas frecuentes</a></li>
-</ul>
-<ul>
-	<li><img src="tpl/img/creditCards.png" width="123" height="99" /></li>
-</ul>
-<ul>
-	<p><strong>Líneas de atención.</strong><br />
-	Bogotá: (1) 744 14 40<br />
-	Barranquilla: (5) 360 55 75<br />
-	Bucaramanga: (7) 697 81 00<br />
-	Cali: (2) 487 00 80<br />
-	Medellín: (4) 311 95 51<br />
-	Pasto: (2) 737 06 80<br />
-	Línea Nacional Gratuita: 01-8000-123-009<br />
-	Atención de Domingo a Domingo: 315-6920830<br />
-	</p>
-</ul>
-<div class="secureEle"><img src="tpl/img/secureLogo.png" /></div>
 
-<div class="theDot">
-<div class="theDotDesign"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-DesignBy.png" /></a></div>
-<div class="theDotByThe"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-TheDotStudio.png" /></a></div>
-</div>
-<!--LOGO DOT--> <span class="devp">development by: Crecer Soluciones</span>
-</div>
-</div>
-<div id="footerCopy">
-<p>Copyright © 2011 Seguros Medicos Internacionales All Rights
-Reserved..</p>
-</div>
 
-</footer>
+
+<!--ENDS BANNER BOTTOM AREA--->
+
+
+</div>
+<!--ENDS THE FULL BODY CONTAINER--> 
+<!---INIT THE FOOTER CONTENT HERE-->
+
+<?php
+//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+echo $fun->getFooter(); 
+
+?>
+
+
+
 
 
  <!--ENDS ALL FOOTER CONTAINS--></div>

@@ -191,6 +191,8 @@ while (!$r->EOF) {
 <!--/headerSlider--></div>
 <!--ENDS THE SLIDER HOME-->
 
+
+
 <div id="checkCountry"><span class="checkTittle">¿Que documentos
 necesitas para viajar?</span>
 <p>Elija un país y conozca la documentación requerida para viajar.</p>
@@ -241,7 +243,9 @@ echo "</select> "; ?> <!-- CHOOSE A COUNTRY -->
 	src="tpl/img/Partners/UniversalAssistance.png" width="60" height="70"
 	alt="UniversalAssistance"> <img src="tpl/img/Partners/Safest.png"
 	width="66" height="70" alt="Safest" href="www.google.com"></div>
-<!--ENDS LOGOS--> <!--START THE MAGIC QUOTE CONTENT-->
+<!--ENDS LOGOS--> 
+
+<!--START THE MAGIC QUOTE CONTENT-->
 <div id="magicArea"><!--MAGIC NAV-->
 <div id="magicNav">
 <div id="magicStep" class="on">
@@ -356,7 +360,12 @@ echo "</select> "; ?> <label>Edades:</label><br />
 
 </div>
 <!--ENDS MAGIC BOX FORM --></div>
-<!--END THE MAGIC QUOTE CONTENT--> <!--FAST NAVIGATION SPAN BUTTONS-->
+<!--END THE MAGIC QUOTE CONTENT--> 
+
+
+
+
+<!--FAST NAVIGATION SPAN BUTTONS-->
 <div id="fastNav"><!---BUTTONS HERE-->
 <div class="buttonFast"><span><a href="#">Desea vender seguros de
 viajes?</a></span></div>
