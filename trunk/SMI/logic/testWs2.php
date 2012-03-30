@@ -1,4 +1,6 @@
 <?php
+
+//ACA HEMOS REGISTRADO LAS PRUEBAS DE LAS ASEGURADORAS.
 //require_once('nusoap/lib/nusoap.php');
 
 $var1="R3";
