@@ -57,17 +57,19 @@ $pathFtp="tpl/img/Administrador/";
 <script type="text/javascript"
 	src="https://static.plupper.com/js/plupper.js"></script>
 </head>
-<!-- Plupper Button -->
-<div id="plupperButton"></div>
-<!-- End of Plupper Button Code -->
 
-<!-- Plupper Code -->
-<script src="https://www.google.com/jsapi"></script>
-<script type="text/javascript"
-	src="https://static.plupper.com/js/plupper.js"></script>
+<!--Start of Zopim Live Chat Script-->
+
 <script type="text/javascript">
-        plupper.init("jk4zt@plupper.com");
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?g9y23H0LeKputTMayHiR1XCwQTEtPNI3';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
+
+
+<!--End of Zopim Live Chat Script-->
 
 
 <script language="JavaScript">
@@ -124,9 +126,7 @@ function cargarDocumentos(){
 
 
 <div class="contactInfo">
-<p>Línea Nacional Gratuita: <span>01-8000-123-009</span> <a
-	href="javascript:;" onclick="plupper.start('jk4zt@plupper.com')">CHAT
-WITH US!!</a></p>
+<p>Línea Nacional Gratuita: <span>01-8000-123-009</span> </p>
 
 </div>
 <!-- ENDS AREA RIGHT SMI --></div>
@@ -242,25 +242,26 @@ echo "</select> "; ?> <!-- CHOOSE A COUNTRY --> <input type="button"
 </div>
 <!--ENDS FEATURED AREA--> <!--PARTNERS LOGOS PLACE HERE--->
 
-<div id="partners"><a href="http://www.travelguard.com/"><img
+<div id="partners"><a href="companies.php"><img
 	src="tpl/img/Partners/TravelGuard.png" width="125" height="70"
-	alt="TravelGuard"></a> <a href="https://www.qualitasassistance.com/"><img
+	alt="TravelGuard"></a> <a href="companies.php"><img
 	src="tpl/img/Partners/Qualitas.png" width="135" height="70"
-	alt="Qualitas"></a> <a href="http://www.assist-card.com/"><img
+	alt="Qualitas"></a> <a href="companies.php"><img
 	src="tpl/img/Partners/AssistCard.png" width="155" height="70"
-	alt="Assist Card"></a> <a href="http://www.coris.com/select_country/"><img
+	alt="Assist Card"></a> <a href="companies.php"><img
 	src="tpl/img/Partners/Coris.png" width="83" height="70" alt="Coris"></a>
-<a href="http://www.segurviaje.com/"><img
+<a href="companies.php"><img
 	src="tpl/img/Partners/SegurViaje.png" width="89" height="70"
 	alt="SegurViaje"></a> <a
-	href="http://www.mapfre.com.co/es/web/mapfre-personas;jsessionid=49EB67C8B77C5600824F03637ED8CE97"><img
+	href="companies.php"><img
 	src="tpl/img/Partners/Mafre.png" width="176" height="70" alt="Mafre"></a>
-<a href="http://www.travel-ace.com/"><img
+<a href="companies.php"><img
 	src="tpl/img/Partners/TravelAce.png" width="60" height="70"
 	alt="Travel Ace"></a> <img
 	src="tpl/img/Partners/UniversalAssistance.png" width="60" height="70"
 	alt="UniversalAssistance"> <img src="tpl/img/Partners/Safest.png"
-	width="66" height="70" alt="Safest" href="www.google.com"></div>
+	width="66" height="70" alt="Safest" href="companies.php"></div>
+	
 <!--ENDS LOGOS--> <!--START THE MAGIC QUOTE CONTENT--> <!--START THE DOC INFO PARTNER-->
 <div id="infoPartn">
 
@@ -363,55 +364,14 @@ while (!$r->EOF) {
 </div>
 <!-- ENDS NEWS AREA--></div>
 <!--ENDS THE FULL BODY CONTAINER--> <!---INIT THE FOOTER CONTENT HERE-->
-<footer>
 
-<div id="footerWrap">
-<div id="footCont">
-<ul>
-	<li><a href="about_us.php">Conocenos</a></li>
-	<li><a href="clauses.php">Clausulados</a></li>
-	<li><a href="services.php">Servicios</a></li>
-	<li><a href="companies.php">Compañias</a></li>
-	<li><a href="plans.php">Planes</a></li>
-	<li><a href="contact_us.php">Contacto</a></li>
-	<li><a href="faq.php">Preguntas frecuentes</a></li>
+<?php
+//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+echo $fun->getFooter(); 
+?>
 
 
-
-</ul>
-
-<ul>
-	<li><img src="tpl/img/creditCards.png" width="123" height="99" /></li>
-</ul>
-<ul>
-	<p><strong>Líneas de atención.</strong><br />
-	Bogotá: (1) 744 14 40<br />
-	Barranquilla: (5) 360 55 75<br />
-	Bucaramanga: (7) 697 81 00<br />
-	Cali: (2) 487 00 80<br />
-	Medellín: (4) 311 95 51<br />
-	Pasto: (2) 737 06 80<br />
-	Línea Nacional Gratuita: 01-8000-123-009<br />
-	Atención de Domingo a Domingo: 316-4533840 <br />
-	</p>
-</ul>
-<div class="secureEle"><img src="tpl/img/secureLogo.png" /></div>
-
-<div class="theDot">
-<div class="theDotDesign"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-DesignBy.png" /></a></div>
-<div class="theDotByThe"><a href="http://www.thedot-studio.com/"
-	target="_blank"><img src="tpl/img/logoDot-TheDotStudio.png" /></a></div>
-</div>
-<!--LOGO DOT--> <span class="devp">Development by: Crecer Soluciones</span>
-</div>
-</div>
-<div id="footerCopy">
-<p>Copyright © 2012 Seguros Medicos Internacionales All Rights
-Reserved..</p>
-</div>
-
-</footer> <!--ENDS ALL FOOTER CONTAINS--></div>
+<!--ENDS ALL FOOTER CONTAINS--></div>
 <!--ENDS WRAPPER-->
 <script>window.jQuery || document.write("<script src='tpl/js/jquery-1.6.2.min.js'>\x3C/script>")</script>
 <script type="text/javascript" src="tpl/js/jquery.selectbox-0.1.3.js"></script>
