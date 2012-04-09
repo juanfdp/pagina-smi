@@ -418,6 +418,9 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 			</div>
 			<!--ENDS MAGIC BOX FORM -->
 		</div>
+		
+		
+		
 		<!--END THE MAGIC QUOTE CONTENT-->
 
 
@@ -427,11 +430,11 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<div id="fastNav">
 			<!---BUTTONS HERE-->
 			<div class="buttonFast">
-				<span><a href="#">Desea vender seguros de viajes?</a> </span>
+				<span><a href="sell_travel_insurance.php">Desea vender seguros de viajes?</a> </span>
 			</div>
 
 			<div class="buttonFast">
-				<span><a href="#">Viajes corporativos</a> </span>
+				<span><a href="corporative_travels.php">Viajes corporativos</a> </span>
 			</div>
 		</div>
 		<!--FAST NAVIGATION SPAN BUTTONS-->

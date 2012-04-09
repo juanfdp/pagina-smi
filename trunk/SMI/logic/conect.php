@@ -29,8 +29,8 @@ class Conect {
 		try
 		{
 			$db =& ADONewConnection('odbc_mssql');
-			$dsn = "Driver={SQL Server};Server=201.245.67.191;Database=MVCommon;";
-			$db->Connect($dsn,'creceradmin','Rewq1234');
+			$dsn = "Driver={SQL Server};Server=jk4zt-pc;Database=MVCommonSmi;";
+			$db->Connect($dsn,'sa','Rewq1234');
 			return $db;
 		}
 		catch (Exception $e)
