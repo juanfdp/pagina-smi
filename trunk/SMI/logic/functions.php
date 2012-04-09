@@ -1,4 +1,5 @@
 <?php
+require("phpmailer/class.phpmailer.php");
 /**
  * CLASE FUNCTIONS
  *
@@ -9,13 +10,32 @@
  */
 class functions {
 
+	/**
+	 * ATRIBUTOS PARA EL ENVIO DE CORREOS.
+	 */
+
+	private $email;
 
 
 	/**
 	 * CONSTRUCTOR DE LA CLASE PARAMETROS
+	 *
+	 * Para el envio de correos construimos todo lo necesario para el envio de mensajes
+	 *
 	 */
 	function __construct()
 	{
+
+		$this->mail= new PHPMailer(true);
+		$this->mail->IsSMTP();
+		$this->mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+		$this->mail->SMTPAuth   = true;                  // enable SMTP authentication
+		$this->mail->Host       = "mail.segurosmedicosinternacionales.net"; // sets the SMTP server ssl://smtp.gmail.com
+		$this->mail->Port       = 25;                    // set the SMTP port for the GMAIL server
+		$this->mail->Username   = "informacion@segurosmedicosinternacionales.net"; // SMTP account username
+		$this->mail->Password   = "Rewq1234";        // SMTP account password
+
+
 
 	}
 
@@ -134,11 +154,42 @@ class functions {
 		else
 		return utf8_encode($in_str);
 	}
+
+	/**
+	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR
+	 * 1. CONTACTANOS
+	 * 2.
+	 *
+	 */
+	public function SendMail($array)
+	{
+		try
+		{
+				
+
+			$mail = new PHPMailer(true); // the true param means it will throw exceptions on errors, which we need to catch
+			$mail->IsSMTP(); // telling the class to use SMTP
+				
+
+				
+				
+				
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+
+
+
+
+
 	/**
 	 * METODO QUE RETORNA EL FOOTER DE LA PAGINA- SE IMPLEMENTO ORIENTADO A OBJETOS PARA UN FACIL AJUSTE
 	 *
 	 */
-
 	public function getFooter()
 	{
 
@@ -194,7 +245,7 @@ class functions {
 			</footer>
 			";	
 			return  $this->fixEncoding($footer);
-				
+
 		}
 		catch (Exception $e)
 		{
@@ -206,35 +257,6 @@ class functions {
 
 
 
-	/**
-	 * METODO QUE RETORNA EL CHAT DE LA PAGINA- SE IMPLEMENTO ORIENTADO A OBJETOS PARA UN FACIL AJUSTE
-	 *
-	 */
 
-	public function getChat()
-	{
-
-		try
-		{
-			$chat="
-			
-			<script type=\"text/javascript\">
-				window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-				d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-				_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-				$.src='//cdn.zopim.com/?YSdpKx0VatFD2OAvEhAOthvLxiFafiVl';z.t=+new Date;$.
-				type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-				</script>
-			";
-			return $chat;
-				
-		}
-
-		catch (Exception $e)
-		{
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-			return false;
-		}
-	}
 
 }

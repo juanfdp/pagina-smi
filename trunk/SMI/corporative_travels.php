@@ -255,8 +255,8 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
    				<div id="leftContainer" style="margin-left:5px">
                     <h4>Viajes Corporativos</h4>
                     <img src="tpl/img/Corporatives/corporativeTravelsImg.jpg" />
-                        <p>Una nueva gama de servicios corporativos que le permitirá acceder a productos y servicios dise�ados para solucionar los problemas que enfrentan los viajeros de negocios, aún durante el viaje mejor planeado.</p>
-						<p>Si su empresa requiere que uno de nuestros asesores los visite darle a conocer la mejor opci�n para sus viajeros de negocio como:.</p>
+                        <p>Una nueva gama de servicios corporativos que le permitirá acceder a productos y servicios diseñados para solucionar los problemas que enfrentan los viajeros de negocios, aún durante el viaje mejor planeado.</p>
+						<p>Si su empresa requiere que uno de nuestros asesores los visite darle a conocer la mejor opción para sus viajeros de negocio como:.</p>
                         <p class="green">PRECOMPRA DE DÍAS: venta mínima 200 días <br />
 ANUALES VIAJERO FRECUENTE: Si sus colaboradores viajan con frecuencia por periodos no superiores a 90 días.</p>
                 </div>
