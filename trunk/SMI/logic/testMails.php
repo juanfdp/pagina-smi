@@ -28,9 +28,6 @@ try {
   Has recibido una solicitud de contacto, registrada desde el portal web:</p>
 
 
-
-
-
 <p>&nbsp;</p>
 <p><strong>EMPRESA</strong>:</p>
 <p><strong>NOMBRE Y APELLIDO:</strong></p>
