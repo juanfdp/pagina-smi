@@ -28,13 +28,13 @@ class functions {
 
 		$this->mail= new PHPMailer(true);
 		$this->mail->IsSMTP();
-		$this->mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+		$this->mail->IsHTML(true);
 		$this->mail->SMTPAuth   = true;                  // enable SMTP authentication
 		$this->mail->Host       = "mail.segurosmedicosinternacionales.net"; // sets the SMTP server ssl://smtp.gmail.com
 		$this->mail->Port       = 25;                    // set the SMTP port for the GMAIL server
 		$this->mail->Username   = "informacion@segurosmedicosinternacionales.net"; // SMTP account username
 		$this->mail->Password   = "Rewq1234";        // SMTP account password
-
+		$this->mail->AddAddress('jacastillob@gmail.com', 'Jonathan castillo');//DESTINATARIO
 
 
 	}
@@ -161,19 +161,37 @@ class functions {
 	 * 2.
 	 *
 	 */
-	public function SendMail($array)
+	public function SendMailContact_Us($emailInteresado,$nombre,$apellido,$empresa,$telefonoFijo,$telefonoMovil,$mensaje,$contacto)
 	{
 		try
 		{
-				
+			$interesadoEnContacto="NO QUIERE SER CONTACTADO";
+			if($contacto)$interesadoEnContacto="QUIERE SER CONTACTADO";
+			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
+			$this->mail->Subject = 'SOLICITUD DE CONTACTO - CREADA DESDE EL PORTAL';
+			$this->mail->Body = '
+			<body style="margin: 10px;">
+			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">			
+			<p><br>
+			  Has recibido una solicitud de contacto, registrada desde el portal web:</p>
+			<p>&nbsp;</p>
+			<p><strong>EMPRESA</strong>:'.$empresa.'</p>
+			<p><strong>NOMBRE Y APELLIDO</strong>:'.$nombre.' '.$apellido.'</p>
+			<p><strong>TÉLEFONO FIJO</strong>:'.$telefonoFijo.'</p>
+			<p><strong>TÉLEFONO MOVIL</strong>:'.$telefonoMovil.'</p>
+			<p><strong>EMAIL</strong>:'.$emailInteresado.'</p>
+			<p><strong>MENSAJE (Solicitud)</strong>:'.$mensaje.'</p>
+			<p>'.$interesadoEnContacto.'</p>
+			<p><br/>
+			</p></div></body>';  
+			if($this->mail->Send()) {
+				return true;
+			}
 
-			$mail = new PHPMailer(true); // the true param means it will throw exceptions on errors, which we need to catch
-			$mail->IsSMTP(); // telling the class to use SMTP
-				
 
-				
-				
-				
+			return false;
+
+
 		}
 		catch (Exception $e)
 		{

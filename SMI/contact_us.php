@@ -44,9 +44,10 @@ $pathFtp="tpl/img/Administrador/";
 <link rel="stylesheet" href="tpl/css/style.css">
 <link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
 	rel="stylesheet" />
+	
 <!-- all our JS is at the bottom of the page, except for Modernizr. -->
 <script src="tpl/js/modernizr-1.7.min.js"></script>
-
+<script src="tpl/js/gen_validatorv4.js"></script>
 <link href="tpl/css/jquery.selectbox.css" type="text/css"
 	rel="stylesheet" />
 
@@ -66,6 +67,18 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 
 <!--End of Zopim Live Chat Script-->
+
+<script language="JavaScript">
+<!--
+	var nav4 = window.Event ? true : false;	
+	function acceptNum(evt){	
+	// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
+	var key = nav4 ? evt.which : evt.keyCode;
+	return (key <= 13 || (key >= 48 && key <= 57));
+
+}
+//-->
+</script>
 
 <body>
 
@@ -192,38 +205,74 @@ while (!$r->EOF) {
 
 <div id="contactBox">
 <div class="contactForm">
-<form name="" method="">
-<div class="list"><label class="detail">Nombre:</label> *<br />
-<input type="text" name="" id="" size="19" /></div>
+
+
+<form name="contactenos" method="post" action="contact_us.php">
+<div class="list">
+
+<input type="hidden" name="GuardaEnvio" id="GuardaEnvio" value="1"/>
+<label class="detail">Nombre:</label> *<br />
+<input type="text" name="Nombre" id="Nombre" size="19" /></div>
 <div class="list"><label class="detail">Apellido:</label> *<br />
-<input type="text" name="" id="" size="19" /></div>
+<input type="text" name="Apellido" id="Apellido" size="19" /></div>
 <div class="list"><label class="detail">Empresa:</label> *<br />
-<input type="text" name="" id="" size="19" /></div>
+<input type="text" name="Empresa" id="Empresa" size="19" /></div>
 <div class="list"><label class="detail">Email:</label> *<br />
-<input type="text" name="" id="" size="19" /></div>
-<div class="list"><label class="detail">Teléono fijo:</label> *<br />
-<input type="text" name="" id="" size="19" /></div>
+<input type="text" name="Email" id="Email" size="19" /></div>
+<div class="list"><label class="detail">Teléfono fijo:</label> *<br />
+<input type="text" name="TelefonoFijo" id="TelefonoFijo" size="19" onkeypress="return acceptNum(event)"/></div>
 <div class="list"><label class="detail">Teléfono Movil: </label> *<br />
-<input type="text" name="" id="" size="19" /></div>
+<input type="text" name="TelefonoMovil" id="TelefonoMovil" size="19" onkeypress="return acceptNum(event)" /></div>
 <div class="list"><label class="detail">Déjanos tu mensaje: </label> *<br />
-<textarea name="" cols="50" rows="5" style="width: 270px"></textarea> <span
+<textarea name="Mensaje" cols="50" rows="5" style="width: 270px"></textarea> <span
 	class="infoReq">(*) Campos requeridos</span></div>
 <div class="list">
 <fieldset>
 <div style="margin-left: -10px">
-<div class="checkbox"><input type="checkbox" id="" name="[]" value=""></div>
+<div class="checkbox"><input type="checkbox" id="Contacto" name="Contacto" ></div>
 <label for="" class="leftInf">Deseo que me contacten.</label></div>
 </fieldset>
 </div>
 <div class="list"><input type="submit" src="tpl/img/clear.png"
 	class="submitConForm" value="Enviar" /></div>
 <div class="list" align="center">
-<p class="sucessfull" align="center">Tu mensaje se ha enviado con éxito,
-<br />
-próximamente nos contactaremos con usted.</p>
-</div>
 
+</div>
 </form>
+<script language="JavaScript" type="text/javascript"
+						xml:space="preserve">//<![CDATA[
+//You should create the validator only after the definition of the HTML form
+  var frmvalidator  = new Validator("contactenos");  
+  frmvalidator.addValidation("Nombre","req","Debe Ingresar El Nombre.");
+  frmvalidator.addValidation("Apellido","req","Debe Ingresar El Apellido.");  
+  frmvalidator.addValidation("Empresa","req","Debe Ingresar La Empresa.");  
+  frmvalidator.addValidation("TelefonoFijo","req","Debe Ingresar El Télefono Fijo.");  
+  frmvalidator.addValidation("TelefonoMovil","req","Debe Ingresar El Télefono Movil.");  
+  frmvalidator.addValidation("Mensaje","req","Debe Ingresar El Mensaje.");    
+  frmvalidator.addValidation("Email","maxlen=50");
+  frmvalidator.addValidation("Email","req","Debe Ingresar Un E-mail.");
+  frmvalidator.addValidation("Email","email","Debe Ingresar Un E-mail Válido .");   
+//]]></script>
+
+
+
+
+<?php 
+//REALIZAMOS EL ENVIO DEL CORREO DESDE ACA PARA REFRESCAR
+$guarda=$_POST["GuardaEnvio"];
+if($guarda==1){
+	
+	$guarda=$_POST["GuardaEnvio"];	
+	$resultado=$fun->SendMailContact_Us($_POST["Email"], $_POST["Nombre"], $_POST["Apellido"], $_POST["Empresa"], $_POST["TelefonoFijo"],  $_POST["TelefonoMovil"], $_POST["Mensaje"], $_POST["Contacto"]);
+	$guarda=0;
+}
+
+
+
+
+
+?>
+
 </div>
 </div>
 
