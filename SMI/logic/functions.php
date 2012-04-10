@@ -34,7 +34,7 @@ class functions {
 		$this->mail->Port       = 25;                    // set the SMTP port for the GMAIL server
 		$this->mail->Username   = "informacion@segurosmedicosinternacionales.net"; // SMTP account username
 		$this->mail->Password   = "Rewq1234";        // SMTP account password
-		$this->mail->AddAddress('jacastillob@gmail.com', 'Jonathan castillo');//DESTINATARIO
+		$this->mail->AddAddress('areyes@segurosmedicosinternacionales.net', 'ALEXANDRA REYES');//DESTINATARIO
 
 
 	}
@@ -156,9 +156,8 @@ class functions {
 	}
 
 	/**
-	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR
-	 * 1. CONTACTANOS
-	 * 2.
+	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE CONTACTENOS
+	 * 
 	 *
 	 */
 	public function SendMailContact_Us($emailInteresado,$nombre,$apellido,$empresa,$telefonoFijo,$telefonoMovil,$mensaje,$contacto)
@@ -201,6 +200,91 @@ class functions {
 	}
 
 
+	/**
+	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
+	 * 
+	 *
+	 */
+	public function SendMail_sellTravelInsurance($emailInteresado,$nombre,$apellido,$telefono,$mensaje)
+	{
+		try
+		{
+			
+			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
+			$this->mail->Subject = 'SOLICITUD DE CONTACTO PARA VENTA DE SEGUROS  - CREADA DESDE EL PORTAL';
+			$this->mail->Body = '
+			<body style="margin: 10px;">
+			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">			
+			<p><br>
+			  Has recibido una solicitud de contacto para venta de seguros de viajes, registrada desde el portal web:</p>
+			<p>&nbsp;</p>			
+			<p><strong>NOMBRE Y APELLIDO</strong>:'.$nombre.' '.$apellido.'</p>
+			<p><strong>TÉLEFONO </strong>:'.$telefono.'</p>			
+			<p><strong>EMAIL</strong>:'.$emailInteresado.'</p>
+			<p><strong>MENSAJE (Cómo se entero de nosotros)</strong>:'.$mensaje.'</p>
+		
+			<p><br/>
+			</p></div></body>';  
+			if($this->mail->Send()) {
+				return true;
+			}
+
+
+			return false;
+
+
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+
+
+		/**
+	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
+	 * 
+	 *
+	 */
+	public function SendMail_corporativeTravels($emailInteresado,$compania,$nombre,$apellido,$telefono,$mensaje)
+	{
+		try
+		{
+			
+			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
+			$this->mail->Subject = 'SOLICITUD DE CONTACTO PARA VIAJE CORPORATIVO  - CREADA DESDE EL PORTAL';
+			$this->mail->Body = '
+			<body style="margin: 10px;">
+			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">			
+			<p><br>
+			  Has recibido una solicitud de contacto para viaje corporativo, registrada desde el portal web:</p>
+			<p>&nbsp;</p>	
+			<p><strong>COMPAÑIA</strong>: '.$compania.'</p>		
+			<p><strong>NOMBRE Y APELLIDO</strong>: '.$nombre.' '.$apellido.'</p>
+			<p><strong>TÉLEFONO </strong>: '.$telefono.'</p>			
+			<p><strong>EMAIL</strong>: '.$emailInteresado.'</p>
+			<p><strong>MENSAJE (Cómo se entero de nosotros)</strong>:'.$mensaje.'</p>
+			
+			<p><br/>
+			</p></div></body>';  
+			if($this->mail->Send()) {
+				return true;
+			}
+
+
+			return false;
+
+
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+	
+	
 
 
 

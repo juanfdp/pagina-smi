@@ -14,33 +14,45 @@ $pathFtp="tpl/img/Administrador/";
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com" data-template-set="html5-reset">
-	<meta name="viewport" content="width=1200">
-    <meta charset="utf-8">
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Sell Travel Insurance | Seguros Medicos Internacionales </title>
-	<meta name="title" content="">
-	<meta name="description" content="">
-	<meta name="author" content="Seguros Medicos Internacionales">
-	<meta name="Copyright" content="Copyright � 2011 Seguros Medicos Internacionales All Rights Reserved">
-   	<![if !IE]><!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!--> 
-     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
-    <![endif]>
-	<!-- Uncomment to use; use thoughtfully!
+<!--[if gt IE 9]><!-->
+<html
+	class="no-js" lang="en">
+<!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. -->
+<head id="www-segurosmedicosinternacionales-com"
+	data-template-set="html5-reset">
+<meta name="viewport" content="width=1200">
+<meta charset="utf-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Sell Travel Insurance | Seguros Medicos Internacionales</title>
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="author" content="Seguros Medicos Internacionales">
+<meta name="Copyright"
+	content="Copyright � 2011 Seguros Medicos Internacionales All Rights Reserved">
+<![if !IE]>
+
+<!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!-->
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400'
+	rel='stylesheet' type='text/css'>
+<![endif]>
+<!-- Uncomment to use; use thoughtfully!
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	-->
-	<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
-	<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
-	<!-- CSS: screen, mobile & print are all in the same file -->
-	<link rel="stylesheet" href="tpl/css/style.css" >
-    <link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
-	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-	<script src="tpl/js/modernizr-1.7.min.js"></script>
-    
-    <link href="tpl/css/jquery.selectbox.css" type="text/css" rel="stylesheet" />   
-    
+<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
+<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
+<!-- CSS: screen, mobile & print are all in the same file -->
+<link rel="stylesheet" href="tpl/css/style.css">
+<link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
+	rel="stylesheet" />
+<!-- all our JS is at the bottom of the page, except for Modernizr. -->
+<script src="tpl/js/modernizr-1.7.min.js"></script>
+<script src="tpl/js/gen_validatorv4.js"></script>
+<link href="tpl/css/jquery.selectbox.css" type="text/css"
+	rel="stylesheet" />
+
 </head>
 
 <!--Start of Zopim Live Chat Script-->
@@ -55,52 +67,70 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 
 <!--End of Zopim Live Chat Script-->
+<script language="JavaScript">
+<!--
+	var nav4 = window.Event ? true : false;	
+	function acceptNum(evt){	
+	// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
+	var key = nav4 ? evt.which : evt.keyCode;
+	return (key <= 13 || (key >= 48 && key <= 57));
+
+}
+//-->
+</script>
 
 <body>
 
-<div class="wrapper">
-	<!--- START HEADER --->
-    <header>
-		<div id="headerTop"><!--- START THE TOP HEADER --->
-        	<div id="headerCont">
-            		<a href=""><img class="logoSMI" src="tpl/img/SegurosMedicosInternacionales.png"/></a><!-- LOGO SMI POSITION -->
-                <!-- HELP AREA RIGHT SMI -->
-                <div class="contactHelp">
-                	<img src="tpl/img/skypeIcon.png" />
-                </div>
-                
-                <div class="contactInfo">
-                	<p>Línea Nacional Gratuita: <span>01-8000-123-009</span></p>
-                </div>
-                <!-- ENDS AREA RIGHT SMI -->
-            </div>
-        </div>
-        <!---ENDS THE TOP HEADER--->
-      	<!--NAVIGATION BAR-->
-      <div id="barNav">  
-      	<div id="navContain">
-            <nav>
-                <ul id="trans-nav">
-                  <li><a href="index.php" >Inicio</a></li>
-                    <li><a href="about_us.php">Conocenos</a></li>
-                    <li><a href="clauses.php">Clausulados</a></li>
-                    <li><a href="services.php">Servicios</a>
-                    <li><a href="companies.php">Compañias</a></li>
-                    <li><a href="plans.php">Planes</a></li>
-                    <li><a href="contact_us.php">Contacto</a></li>
-                    <li><a href="faq.php">Preguntas Frecuentes </a></li>
-                </ul>
-            </nav>
-         </div>   
-      </div>  <!---ENDS NAVIGATION BAR--->
-	</header>
-    <!--- ENDS HEADER --->
-     <!--START THE FULL BODY CONTAINER-->  
-       <div id="mainBody" class="highLights">
-        <br />   
-           <!--START THE MAGIC QUOTE CONTENT-->
-          
-	<div id="magicArea">
+	<div class="wrapper">
+		<!--- START HEADER --->
+		<header>
+			<div id="headerTop">
+				<!--- START THE TOP HEADER --->
+				<div id="headerCont">
+					<a href=""><img class="logoSMI"
+						src="tpl/img/SegurosMedicosInternacionales.png" /> </a>
+					<!-- LOGO SMI POSITION -->
+					<!-- HELP AREA RIGHT SMI -->
+					<div class="contactHelp">
+						<img src="tpl/img/skypeIcon.png" />
+					</div>
+
+					<div class="contactInfo">
+						<p>
+							Línea Nacional Gratuita: <span>01-8000-123-009</span>
+						</p>
+					</div>
+					<!-- ENDS AREA RIGHT SMI -->
+				</div>
+			</div>
+			<!---ENDS THE TOP HEADER--->
+			<!--NAVIGATION BAR-->
+			<div id="barNav">
+				<div id="navContain">
+					<nav>
+						<ul id="trans-nav">
+							<li><a href="index.php">Inicio</a></li>
+							<li><a href="about_us.php">Conocenos</a></li>
+							<li><a href="clauses.php">Clausulados</a></li>
+							<li><a href="services.php">Servicios</a>
+							
+							<li><a href="companies.php">Compañias</a></li>
+							<li><a href="plans.php">Planes</a></li>
+							<li><a href="contact_us.php">Contacto</a></li>
+							<li><a href="faq.php">Preguntas Frecuentes </a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!---ENDS NAVIGATION BAR--->
+		</header>
+		<!--- ENDS HEADER --->
+		<!--START THE FULL BODY CONTAINER-->
+		<div id="mainBody" class="highLights">
+			<br />
+			<!--START THE MAGIC QUOTE CONTENT-->
+
+			<div id="magicArea">
 				<!--MAGIC NAV-->
 				<div id="magicNav">
 					<div id="magicStep" class="on">
@@ -247,139 +277,180 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 			</div>
 			<!--ENDS MAGIC BOX FORM -->
 		</div>
-		
 
 
 
 
-           <!--END THE MAGIC QUOTE CONTENT-->
+
+		<!--END THE MAGIC QUOTE CONTENT-->
 
 		<!--START ALL CORPORATIVE TEXTS--->
-			
-			<div id="Corporative">
-   				<div id="leftContainer" style="margin-left:5px">
-                    <h4>Desea vender seguros de viajes?</h4>
-                    <img src="tpl/img/Corporatives/venderViajes1.jpg" />
-                        <p>Desea vender nuestros servicios? Si es un agente de viajes, free lance, corredor de seguros, por favor, póngase en contacto con nosotros, para que podamos evaluar la posibilidad de un acuerdo comercial. .</p>
-                </div>
-               
-               <!--START THE CONTACT TRAV BOX FORM-->
-                   <div id="travBox" class="travMid">
-                   <!--FORM-->
-                        <div class="contactForm" style="top:35px;">
-                        	<form name="" method="">
-                            	<div class="list">
-                                    <label class="detail">Nombre:</label> *<br />
-                                    <input type="text" name="" id="" size="19" />
-                                </div> 
-                                <div class="list">
-                                    <label class="detail">Apellido:</label> *<br />
-                                    <input type="text" name="" id="" size="19" />
-                                </div>
-                                <br class="clear" />
-                                <div class="list">
-                                    <label class="detail">Email:</label> *<br />
-                                    <input type="text" name="" id="" size="19" />
-                                </div> 
-                                <div class="list">
-                                    <label class="detail">Teléfono:</label> *<br />
-                                    <input type="text" name="" id="" size="19" />
-                                </div> 
-                                 <br class="clear" />
-                                <div class="list">
-                                    <label class="detail">Cómo se entero de nosotros?</label> *<br />
-                                  	 <textarea name="" cols="50" rows="5" style="width:270px"></textarea>
-                                     
-                                </div> 
-                                <br class="clear" />
-                                <div class="list" style="position:absolute; left:310px; bottom:10px;">
-                                    <input type="submit" src="tpl/img/clear.png" class="submitConForm" value="Enviar" />  
-                                    <span class="infoReq" style="margin-top:-10px; margin-left:-10px">(*) Campos requeridos</span>                          
-                                </div> 
-                                 <div class="list" align="center" style="margin-top:10px">
-                                	<p class="sucessfull" align="center">Tu mensaje se ha enviado con éxito, <br /> próximamente nos contactaremos con usted.</p>
-                                </div> 
 
-                                                                                                   
-                            </form>    
-                        </div>
-                   </div>
-              <!--ENDS THE CONTACT TRAV BOX-->
-            </div>
+		<div id="Corporative">
+			<div id="leftContainer" style="margin-left: 5px">
+				<h4>Desea vender seguros de viajes?</h4>
+				<img src="tpl/img/Corporatives/venderViajes1.jpg" />
+				<p>Desea vender nuestros servicios? Si es un agente de viajes, free
+					lance, corredor de seguros, por favor, póngase en contacto con
+					nosotros, para que podamos evaluar la posibilidad de un acuerdo
+					comercial. .</p>
+			</div>
 
-            
-            
-			<!--START BANNER BOTTOM AREA--->
-			
-<div id="banBotArea">
-<div id="bannerLeft">
+			<!--START THE CONTACT TRAV BOX FORM-->
+			<div id="travBox" class="travMid">
+				<!--FORM-->
+				<div class="contactForm" style="top: 35px;">
+					<form name="ContactoVenta" method="post"
+						action="sell_travel_insurance.php">
+						<div class="list">
+							<input type="hidden" name="GuardaEnvio" id="GuardaEnvio"
+								value="1" /> <label class="detail">Nombre:</label> *<br /> <input
+								type="text" name="Nombre" id="Nombre" size="19" />
+						</div>
+						<div class="list">
+							<label class="detail">Apellido:</label> *<br /> <input
+								type="text" name="Apellido" id="Apellido" size="19" />
+						</div>
+						<br class="clear" />
+						<div class="list">
+							<label class="detail">Email:</label> *<br /> <input type="text"
+								name="Email" id="Email" size="19" />
+						</div>
+						<div class="list">
+							<label class="detail">Teléfono:</label> *<br /> <input
+								type="text" name="Telefono" id="Telefono" size="19"
+								onkeypress="return acceptNum(event)" />
+						</div>
+						<br class="clear" />
+						<div class="list">
+							<label class="detail">Cómo se entero de nosotros?</label> *<br />
+							<textarea name="Mensaje" cols="50" rows="5" style="width: 270px"></textarea>
+
+						</div>
+						<br class="clear" />
+						<div class="list"
+							style="position: absolute; left: 310px; bottom: 10px;">
+							<input type="submit" src="tpl/img/clear.png"
+								class="submitConForm" value="Enviar" /> <span class="infoReq"
+								style="margin-top: -10px; margin-left: -10px">(*) Campos
+								requeridos</span>
+						</div>
+						<div class="list" align="center" style="margin-top: 10px"></div>
 
 
-	
-	<?php 
-$nombreImagen="";
-//IMAGEN 11 DE LA SECCION 2 -- BANNER IZQUIERDO
-$r= $aw->cargarComponenteBySeccion(2, 11);
-while (!$r->EOF) {		
-	$nombreImagen=$pathFtp."".$r->fields[0];
-	$r->MoveNext();
-}
-?>
-	<img	src="<?php echo $nombreImagen; ?>" /> 
+					</form>
+					<script language="JavaScript" type="text/javascript"
+						xml:space="preserve">//<![CDATA[
+//You should create the validator only after the definition of the HTML form
+  var frmvalidator  = new Validator("ContactoVenta");  
+  frmvalidator.addValidation("Nombre","req","Debe Ingresar El Nombre.");
+  frmvalidator.addValidation("Apellido","req","Debe Ingresar El Apellido.");  
+  frmvalidator.addValidation("Telefono","req","Debe Ingresar El Télefono.");     
+  frmvalidator.addValidation("Mensaje","req","Debe Ingresar El Mensaje.");    
+  frmvalidator.addValidation("Email","maxlen=50");
+  frmvalidator.addValidation("Email","req","Debe Ingresar Un E-mail.");
+  frmvalidator.addValidation("Email","email","Debe Ingresar Un E-mail Válido .");   
+//]]></script>
+
+						<?php
+						//REALIZAMOS EL ENVIO DEL CORREO DESDE ACA PARA REFRESCAR
+						$guarda=$_POST["GuardaEnvio"];
+						if($guarda==1){
+
+							$guarda=$_POST["GuardaEnvio"];
+							$resultado=$fun->SendMail_sellTravelInsurance($_POST["Email"], $_POST["Nombre"], $_POST["Apellido"], $_POST["Telefono"],  $_POST["Mensaje"]);
+							$guarda=0;
+						}
 
 
-</div>
-<div id="bannerRight"><!-- BANNER RIGHT CONTENTS--->
-<div id="s3slider"><!--HERE START THE SLIDE-->
-<ul id="s3sliderContent">
-	<!--1ST BANNER SLIDE OFFER-->
-	<li class="s3sliderImage">
-	
-	
-	<?php 
-$nombreImagen="";
-//IMAGEN 13 DE LA SECCION 2 --BANNER DERECHO
-$r= $aw->cargarComponenteBySeccion(2, 13);
-while (!$r->EOF) {		
-	$nombreImagen=$pathFtp."".$r->fields[0];
-	$r->MoveNext();
-}
-?>
-	<img	src="<?php echo $nombreImagen; ?>" /> 
-	<span class="left">	
-	<?php 
-//TEXTO 12 DE LA SECCION 2 ---------COMENTARIO EN EL BANNER
-$r= $aw->cargarComponenteBySeccion(2, 12);
-while (!$r->EOF) {	
-	echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";	
-	$r->MoveNext();
-}
-?>	</span>	
-	</li>	
-	<div class="clear s3sliderImage"><!--CLEAR THE BANNERS--></div>
-</ul>
-</div>
-<!--HERE ENDS THE SLIDE--></div>
-</div>
-            
-            
-            <!--ENDS BANNER BOTTOM AREA--->
-            
-    
-       </div>
-     <!--ENDS THE FULL BODY CONTAINER-->   
-        <!---INIT THE FOOTER CONTENT HERE-->
-       <?php
-//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
-echo $fun->getFooter(); 
-?>
-        <!--ENDS ALL FOOTER CONTAINS-->
-</div><!--ENDS WRAPPER-->
-<script>window.jQuery || document.write("<script src='tpl/js/jquery-1.6.2.min.js'>\x3C/script>")</script>
-<script type="text/javascript" src="tpl/js/jquery.selectbox-0.1.3.js"></script>
-<script src="tpl/js/jquery.custom_radio_checkbox.js" type="text/javascript"></script>
-<script type="text/javascript" src="tpl/js/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="tpl/js/functions.js"></script>  
+
+
+
+						?>
+
+
+
+
+				</div>
+			</div>
+			<!--ENDS THE CONTACT TRAV BOX-->
+		</div>
+
+
+
+		<!--START BANNER BOTTOM AREA--->
+
+		<div id="banBotArea">
+			<div id="bannerLeft">
+
+
+
+			<?php
+			$nombreImagen="";
+			//IMAGEN 11 DE LA SECCION 2 -- BANNER IZQUIERDO
+			$r= $aw->cargarComponenteBySeccion(2, 11);
+			while (!$r->EOF) {
+				$nombreImagen=$pathFtp."".$r->fields[0];
+				$r->MoveNext();
+			}
+			?>
+				<img src="<?php echo $nombreImagen; ?>" />
+
+
+			</div>
+			<div id="bannerRight">
+				<!-- BANNER RIGHT CONTENTS--->
+				<div id="s3slider">
+					<!--HERE START THE SLIDE-->
+					<ul id="s3sliderContent">
+						<!--1ST BANNER SLIDE OFFER-->
+						<li class="s3sliderImage"><?php 
+						$nombreImagen="";
+						//IMAGEN 13 DE LA SECCION 2 --BANNER DERECHO
+						$r= $aw->cargarComponenteBySeccion(2, 13);
+						while (!$r->EOF) {
+							$nombreImagen=$pathFtp."".$r->fields[0];
+							$r->MoveNext();
+						}
+						?> <img src="<?php echo $nombreImagen; ?>" /> <span class="left">
+						<?php
+						//TEXTO 12 DE LA SECCION 2 ---------COMENTARIO EN EL BANNER
+						$r= $aw->cargarComponenteBySeccion(2, 12);
+						while (!$r->EOF) {
+							echo"<p>".$fun->fixEncoding( $r->fields[1])."</p>";
+							$r->MoveNext();
+						}
+						?> </span>
+						</li>
+						<div class="clear s3sliderImage">
+							<!--CLEAR THE BANNERS-->
+						</div>
+					</ul>
+				</div>
+				<!--HERE ENDS THE SLIDE-->
+			</div>
+		</div>
+
+
+		<!--ENDS BANNER BOTTOM AREA--->
+
+
+	</div>
+	<!--ENDS THE FULL BODY CONTAINER-->
+	<!---INIT THE FOOTER CONTENT HERE-->
+	<?php
+	//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+	echo $fun->getFooter();
+	?>
+	<!--ENDS ALL FOOTER CONTAINS-->
+	</div>
+	<!--ENDS WRAPPER-->
+	<script>window.jQuery || document.write("<script src='tpl/js/jquery-1.6.2.min.js'>\x3C/script>")</script>
+	<script type="text/javascript" src="tpl/js/jquery.selectbox-0.1.3.js"></script>
+	<script src="tpl/js/jquery.custom_radio_checkbox.js"
+		type="text/javascript"></script>
+	<script type="text/javascript"
+		src="tpl/js/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="tpl/js/functions.js"></script>
 </body>
 </html>
-   	
