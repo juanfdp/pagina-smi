@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 include 'logic/parametros.php';
 include 'logic/adminWeb.php';
 include 'logic/functions.php';
@@ -17,8 +17,7 @@ $pathFtp="tpl/img/Administrador/";
 <!--[if gt IE 9]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
-<head id="www-segurosmedicosinternacionales-com"
+<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com"
 	data-template-set="html5-reset">
 <meta name="viewport" content="width=1200">
 <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
@@ -29,7 +28,7 @@ $pathFtp="tpl/img/Administrador/";
 <meta name="description" content="">
 <meta name="author" content="Seguros Medicos Internacionales">
 <meta name="Copyright"
-	content="Copyright Â© 2011 Seguros Medicos Internacionales All Rights Reserved">
+	content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
 <![if !IE]>
 <!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!-->
 <link
@@ -104,7 +103,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 					<div class="contactInfo">
 						<p>
-							LÃ­nea Nacional Gratuita: <span>01-8000-123-009</span>
+							Línea Nacional Gratuita: <span>01-8000-123-009</span>
 						</p>
 
 					</div>
@@ -122,7 +121,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 							<li><a href="clauses.php">Clausulados</a></li>
 							<li><a href="services.php">Servicios</a>
 							
-							<li><a href="companies.php">CompaÃ±ias</a></li>
+							<li><a href="companies.php">Compañias</a></li>
 							<li><a href="plans.php">Planes</a></li>
 							<li><a href="contact_us.php">Contacto</a></li>
 							<li><a href="faq.php">Preguntas Frecuentes </a></li>
@@ -207,8 +206,8 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 
 				<div id="checkCountry">
-					<span class="checkTittle">Â¿Que documentos necesitas para viajar?</span>
-					<p>Elija un paÃ­s y conozca la documentaciÃ³n requerida para viajar.</p>
+					<span class="checkTittle">¿Que documentos necesitas para viajar?</span>
+					<p>Elija un país y conozca la documentación requerida para viajar.</p>
 					<br />
 					<form name="quicklySearch" id="quicklySearch" method="post"
 						action="Documents.php">
@@ -234,7 +233,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 						xml:space="preserve">//<![CDATA[
 //You should create the validator only after the definition of the HTML form
   var frmvalidator  = new Validator("quicklySearch");  
-  frmvalidator.addValidation("quicklyCountry_id","dontselect=0","Debe Ingresar El PaÃ­s.");
+  frmvalidator.addValidation("quicklyCountry_id","dontselect=0","Debe Ingresar El País.");
   
 //]]></script>
 
@@ -246,7 +245,8 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 			<!--PARTNERS LOGOS PLACE HERE--->
 
-			<div id="partners">
+			
+<div id="partners">
 				<a href="companies.php"><img src="tpl/img/Partners/TravelGuard.png"
 					width="125" height="70" alt="TravelGuard"> </a> <a
 					href="companies.php"><img src="tpl/img/Partners/Qualitas.png"
@@ -297,7 +297,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 				</div>
 				<div id="magicStepEnd">
 					<!--ENDS HERE THE STEPS-->
-					Cotiza tu asistencia de viaje aquÃ­.
+					Cotiza tu asistencia de viaje aquí.
 				</div>
 				<!--ENDS MAGIC NAV-->
 
@@ -388,7 +388,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 								<!--EMAIL FORM HERE INFO-->
 								<label>Email:</label><br /> <input type="text" name="email"
 									id="f_email" size="18" /> <br /> <br /> <span class="intsr"
-									href><a href="contact_us.php">â€¢ MÃ¡s de de 4 pasajeros
+									href><a href="contact_us.php">• Más de de 4 pasajeros
 										Contactanos</a> </span>
 							</div>
 
@@ -410,7 +410,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
   frmvalidator.addValidation("f_dateExit","req","Debe Ingresar La Fecha De Regreso.");  
   frmvalidator.addValidation("email","maxlen=50");
   frmvalidator.addValidation("email","req","Debe Ingresar Un E-mail.");
-  frmvalidator.addValidation("email","email","Debe Ingresar Un E-mail VÃ¡lido ."); 
+  frmvalidator.addValidation("email","email","Debe Ingresar Un E-mail Válido ."); 
 //]]></script>
 				</div>
 				<div class="endMagicBox"></div>
@@ -442,7 +442,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 		<div id="boxNews">
 			<!---NEWS #1--->
 			<div id="newsCont">
-				<h3>Viaje DiversiÃ³n</h3>
+				<h3>Viaje Diversión</h3>
 				<?php
 				$nombreImagen="";
 				//IMAGEN 8 DE LA SECCION 1
@@ -567,4 +567,5 @@ echo $fun->getFooter();
                                    </script>
 </body>
 </html>
+>
 >
