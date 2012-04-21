@@ -34,7 +34,9 @@ $param="
 //PAIS DOMICILIO SIEMPRE FIJO
 //CUENTA SIEMPRE CERO
 
-$emision="<emision>
+$emision="
+
+<emision>
 <pais>570</pais>
 <codigoAgencia>4310</codigoAgencia>
 <numeroSucursal>0</numeroSucursal>
@@ -46,7 +48,6 @@ $emision="<emision>
 <fechaFinVigencia>12/12/2013</fechaFinVigencia>
 <planFamiliar>false</planFamiliar>
 <areaDestino>10</areaDestino>
-
 <idTarjetaCredito>0</idTarjetaCredito>
 <cantidadCuotas>ACNET</cantidadCuotas>
 
@@ -79,12 +80,10 @@ $emision="<emision>
 $client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
 					$resultado = $client->__call('emitir',array($emision,"aevion","dani"));
 					echo $resultado;
-					$arregloResultados=split(540, $resultado);
+					//$arregloResultados=split(540, $resultado);
 					//echo "Resultados " . count($arregloResultados);
 					//print_r( $arregloResultados[1]);
 					//for ($i=0;$i<count($arregloResultados);$i++){
-						
-						
 					//}
 					
 //print $vem;

@@ -273,10 +273,9 @@ echo "</select> "; ?> <!-- CHOOSE A COUNTRY --> <input type="button"
 </div>
 <!--ENDS THE BOX INFO PARTNER --> <!--END THE MAGIC QUOTE CONTENT--> <!--FAST NAVIGATION SPAN BUTTONS-->
 <div id="fastNav"><!---BUTTONS HERE-->
-<div class="buttonFast"><span><a href="#">Desea vender seguros de
-viajes?</a></span></div>
+<div class="buttonFast"><span><a href="sell_travel_insurance.php">Desea vender seguros de viajes?</a></span></div>
 
-<div class="buttonFast"><span><a href="#">Viajes corporativos</a></span>
+<div class="buttonFast"><span><<a href="corporative_travels.php">Viajes corporativos</a></span>
 </div>
 </div>
 <!--FAST NAVIGATION SPAN BUTTONS--> <!-- NEWS AREA-->
