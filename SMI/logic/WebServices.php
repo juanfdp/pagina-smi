@@ -1,5 +1,7 @@
 <?php
 require_once('nusoap/lib/nusoap.php');
+require_once('functions.php');
+
 /**
  * CLASE WebServices
  *
@@ -11,7 +13,7 @@ require_once('nusoap/lib/nusoap.php');
 class WebServices
 {
 	private $client;
-	
+	private $func;
 	public 	$polizasAssistCard;//POLIZAS DE ASSISTCARD
 
 
@@ -20,7 +22,7 @@ class WebServices
 	 */
 	function __construct()
 	{
-	
+	$this->func=new functions();
 	}
 
 
@@ -31,6 +33,7 @@ class WebServices
 	 * @param Fecha Inicio Viaje
 	 * @param Fecha Fin Viaje
 	 * @param Arreglo Pasajero
+	 * @param Precio que viene por defecto del sistema y que a veces dependiendo de la aseguradora aplica o no aplica.
 	 *
 	 */
 	public function ObtenerPrecio($IdProducto,$IdAseguradora,$FechaInicioViaje,$FechaFinViaje,$cantidadDias,$ArregloPasajeros,$PrecioSistema)
@@ -39,9 +42,10 @@ class WebServices
 		try
 		{
 			
-			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO
 			
-			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES
+			var_dump($ArregloPasajeros);
+			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO.			
+			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES.
 			//echo $IdAseguradora;
 			switch ($IdAseguradora) {
 					

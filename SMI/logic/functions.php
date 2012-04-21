@@ -1,5 +1,6 @@
 <?php
 require("phpmailer/class.phpmailer.php");
+
 /**
  * CLASE FUNCTIONS
  *
@@ -15,7 +16,7 @@ class functions {
 	 */
 
 	private $email;
-
+	public $conexion;
 
 	/**
 	 * CONSTRUCTOR DE LA CLASE PARAMETROS
@@ -35,7 +36,8 @@ class functions {
 		$this->mail->Username   = "informacion@segurosmedicosinternacionales.net"; // SMTP account username
 		$this->mail->Password   = "Rewq1234";        // SMTP account password
 		$this->mail->AddAddress('areyes@segurosmedicosinternacionales.net', 'ALEXANDRA REYES');//DESTINATARIO
-
+		//CONEXION A LA BASE DE DATOS
+		$this->conexion=new Conect();
 
 	}
 
@@ -154,10 +156,64 @@ class functions {
 		else
 		return utf8_encode($in_str);
 	}
+	/**
+	 * METODO QUE RETORNA LA TRM O IATA , DEPENDIENDO DE LA POLIZA Y SU ASEGURADORA.
+	 *
+	 */
+	public function getTrmIata($codigoPoliza)
+	{
+		//$this->conexion
+
+		try
+		{
+			$valorTrmIata="";
+			//OBTENEMOS EL TIPO DE MANEJO QUE SE LLEVA Y DESPUES OBTENEMOS EL VALOR
+			$tipoManejoMoneda = &$this->conexion->conectarse()->Execute('
+			SELECT    DISTINCT TipoManejoMoneda.Id
+			FROM         Proveedores INNER JOIN
+                      TipoManejoMoneda ON Proveedores.IdManejoMoneda = TipoManejoMoneda.Id INNER JOIN
+                      Productos ON Proveedores.Idempresa = Productos.IdProveedor
+			WHERE     (Productos.Id = \''.$codigoPoliza.'\')') ;
+
+			if (!$tipoManejoMoneda->EOF) {
+				//REALIZAMOS LA CONSULTA DE LAS TASAS
+				$r = &$this->conexion->conectarse()->Execute('
+							SELECT     Valor, ValorIATA
+							FROM         Monedas
+							WHERE Id=4');
+				//OBTENEMOS EL VALOR DE LA TASA DEPENDIENDO DE LA CONFIGURACION DE LA ASEGURADORA DE LA POLIZA
+
+				if($tipoManejoMoneda->fields[0]=="1")//TRM
+				{
+					if (!$r -> EOF) { $valorTrmIata= $r->fields[0] ;}
+				}
+				else if($tipoManejoMoneda->fields[0]==" 2")//IATA
+				{
+					if (!$r -> EOF) { $valorTrmIata= $r->fields[1] ; }
+				}
+			}
+			return $valorTrmIata;
+		}
+
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+	/**
+	 *
+	 * METODO QUE RETORNA EL DESCUENTO Y AUMENTO DE UNA POLIZA, DEPENDIENDO DE LA CONFIGURACION  DE LA ASEGURADOR Y SU CATEGORIA.
+	 * @param GUID $codigoPoliza
+	 */
+	public function getAumentoDescuento($codigoPoliza)
+	{
+		//$this->conexion
+	}
 
 	/**
 	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE CONTACTENOS
-	 * 
+	 *
 	 *
 	 */
 	public function SendMailContact_Us($emailInteresado,$nombre,$apellido,$empresa,$telefonoFijo,$telefonoMovil,$mensaje,$contacto)
@@ -202,14 +258,14 @@ class functions {
 
 	/**
 	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
-	 * 
+	 *
 	 *
 	 */
 	public function SendMail_sellTravelInsurance($emailInteresado,$nombre,$apellido,$telefono,$mensaje)
 	{
 		try
 		{
-			
+
 			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
 			$this->mail->Subject = 'SOLICITUD DE CONTACTO PARA VENTA DE SEGUROS  - CREADA DESDE EL PORTAL';
 			$this->mail->Body = '
@@ -242,16 +298,16 @@ class functions {
 	}
 
 
-		/**
+	/**
 	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
-	 * 
+	 *
 	 *
 	 */
 	public function SendMail_corporativeTravels($emailInteresado,$compania,$nombre,$apellido,$telefono,$mensaje)
 	{
 		try
 		{
-			
+
 			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
 			$this->mail->Subject = 'SOLICITUD DE CONTACTO PARA VIAJE CORPORATIVO  - CREADA DESDE EL PORTAL';
 			$this->mail->Body = '
@@ -283,8 +339,8 @@ class functions {
 			return false;
 		}
 	}
-	
-	
+
+
 
 
 
