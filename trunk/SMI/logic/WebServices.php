@@ -33,15 +33,19 @@ class WebServices
 	 * @param Arreglo Pasajero
 	 *
 	 */
-	public function ObtenerPrecio($IdProducto,$IdAseguradora,$FechaInicioViaje,$FechaFinViaje,$cantidadDias,$ArregloPasajeros)
+	public function ObtenerPrecio($IdProducto,$IdAseguradora,$FechaInicioViaje,$FechaFinViaje,$cantidadDias,$ArregloPasajeros,$PrecioSistema)
 	{
 
 		try
 		{
+			
+			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO
+			
+			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES
 			//echo $IdAseguradora;
-			switch (strtolower($IdAseguradora) ) {
+			switch ($IdAseguradora) {
 					
-				case "4e04d2c4-5c91-46e4-99dd-e992638da6f8": // ASSIST CARD
+				case "4E04D2C4-5C91-46E4-99DD-E992638DA6F8": // ASSIST CARD
 				
 					//PARAMETROS + USUARIO Y CONTRASEÑA
 					$user="aevion";//USUARIO
@@ -64,11 +68,10 @@ class WebServices
 					<fechaNacimiento>14/11/1981</fechaNacimiento>
 					</clienteCotizacion></clientes>
 					</cotizacion>				
-					";//XML NECESARIO PARA COTIZAR
-					
+					";//XML NECESARIO PARA COTIZAR					
 					//ENVIAMOS EL LLAMADO AL WEBSERVICES DE ASSIST CARD
 					//OBTENEMOS EL RESULTADO DE LA COTIZACION COMO UN STRING Y AHORA PASAMOS A ANALIZAR PARA PODER CRUZAR LOS PRODUCTOS.
-					if(count($this->polizasAssistCard)==0){//VALIDAMOS QUE EL SERVICIO WEB Y HAY SIDO CONSUMID, PARA NO CONSUMIRLO MAS DE UNA VEZ POR COTIZACION.						
+					if(count($this->polizasAssistCard)==0){//VALIDAMOS QUE EL SERVICIO WEB Y HAYA SIDO CONSUMIDO, PARA NO CONSUMIRLO MAS DE UNA VEZ POR COTIZACION, OPTIMIZACION EN LAS BUSQUEDAS.						
 					
 					$client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
 					$resultado = $client->__call('cotizar',array($parametros,$user,$pass));					
@@ -85,18 +88,57 @@ class WebServices
 							if(count($RegistroWebService)>=2){//VALIDAMOS QUE LA REFERENCIA DE NUESTRA BUSQUEDA SE ENCUENTRE								
 								//echo "1".$RegistroWebService[0]."<br>";
 								$Precio=explode(" ", trim($RegistroWebService[1]));
-								$mejor=sprintf(trim($Precio[124]));								
-								return $mejor;	
+								$PrecioFormatoFinal=sprintf(trim($Precio[124]));								
+								return $PrecioFormatoFinal;	
 								break;							
 							}
 						}
 					}
+				break;
+				
+					
+					case "715697A2-F643-4D5B-AC49-83B11E8546B0": // TRAVEL ACE
+				
+					return 	$PrecioSistema;
+					
+			     break;	
+			     
+			     	case "AE7C4AA0-BCBA-4804-B2AA-3496C4EDC5F7": // CORIS
+				
+					return 	$PrecioSistema;
+					
+			     break;
+			     
+			      case "DB7A54C0-BF90-4508-9528-F7C6AF83357B": //QUALITAS
+				
+					return 	$PrecioSistema;
+					
+			     break;	
+			     
+				//////  FIN EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES
+				
+			     ////// EMISIONES Y COTIZACOINES MANUALES
+			     
+				case "169159AD-D55A-467B-9EFD-2B7139ECC730": // ANDI ASISTENCIA (SEGUR VIAJES) - EMISION Y COTIZACION MANUAL 
+				
+				return 	$PrecioSistema;
+					
+			     break;
+			     			     
+			     case "B2FF47CF-50D3-4803-992D-9EE57D9FE736": // EDUCAMOS VIAJANDO (SAFEST) - EMISION Y COTIZACION MANUAL
+				
+					return 	$PrecioSistema;
+					
+			     break;		
+			     
+			        case "8528CC83-53F7-4330-AAED-EF0A5AD2B08F": //CHARTIS - EMISION Y COTIZACION MANUAL
+				
+					return 	$PrecioSistema;
+					
+			     break;
 
-					return -1;
-										break;
-
-
-
+			     	
+ 				 ////// EMISIONES Y COTIZACOINES MANUALES
 			}
 
 

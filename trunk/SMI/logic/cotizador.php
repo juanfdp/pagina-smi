@@ -87,6 +87,7 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
                                                   ORDER BY PrecioUnitario');
 
 			
+			
 			return $recordSett;
 		}
 		catch (Exception $e)
@@ -311,37 +312,37 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 
 			switch (strtolower($idAseguradora) ) {
 				case "169159ad-d55a-467b-9efd-2b7139ecc730": //ANDI ASISTENCIA SA
-					return "<a href=\"clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf\" class=\"chooseClausu\"  target=\"_blank\" >Ver Clausulado</a>";
 
 					break;
 				case "ae7c4aa0-bcba-4804-b2aa-3496c4edc5f7": // CORIS SA
-					return "<a href=\"clausulados/CORIS.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/CORIS.pdf\" class=\"chooseClausu\" target=\"_blank\">Ver Clausulado</a>";
 
 					break;
 				case "715697a2-f643-4d5b-ac49-83b11e8546b0": // UNIVERSAL
 
-					return "<a href=\"clausulados/UNIVERSAL_ASSISTANCE.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/UNIVERSAL_ASSISTANCE.pdf\" class=\"chooseClausu\" target=\"_blank\">Ver Clausulado</a>";
 
 					break;
 				case "b2ff47cf-50d3-4803-992d-9ee57d9fe736": // EDUCAMOS VIAJANDO LTDA
 
-					return "<a href=\"#\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/SAFEST.pdf\" class=\"chooseClausu\" target=\"_blank\">Ver Clausulado</a>";
 
 					break;
 				case "4e04d2c4-5c91-46e4-99dd-e992638da6f8": // ASSIST CARD
 
-					return "<a href=\"clausulados/ASSIST_CARD.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/ASSIST_CARD.pdf\" class=\"chooseClausu\" target=\"_blank\" >Ver Clausulado</a>";
 
 					break;
 				case "8528cc83-53f7-4330-aaed-ef0a5ad2b08f": // CHARTIS COLOMBIA SEGUROS GENERALES SA
 
 
-					return "<a href=\"clausulados/CHARTIS.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/CHARTIS.pdf\" class=\"chooseClausu\" target=\"_blank\" >Ver Clausulado</a>";
 
 					break;
 				case "db7a54c0-bf90-4508-9528-f7c6af83357b": // QUALITAS ASSISTANCE SAS
 
-					return "<a href=\"clausulados/QUALITAS_ASSISTANCE.pdf\" class=\"chooseClausu\">Ver Clausulado</a>";
+					return "<a href=\"clausulados/QUALITAS_ASSISTANCE.pdf\" class=\"chooseClausu\" target=\"_blank\" >Ver Clausulado</a>";
 
 					break;
 			}

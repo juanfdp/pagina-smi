@@ -59,18 +59,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 <!--End of Zopim Live Chat Script-->
 
-<!--Start of Zopim Live Chat Script-->
 
-<script type="text/javascript">
-window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-$.src='//cdn.zopim.com/?YSdpKx0VatFD2OAvEhAOthvLxiFafiVl';z.t=+new Date;$.
-type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-</script>
-
-
-<!--End of Zopim Live Chat Script-->
 <body>
 
 
@@ -266,7 +255,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
 				<!--START 1ST COMPANY-->
                   <hr class="spacerBord" />
                   <div class="companiBox">
-                    <a href="clausulados/CHARTIS.pdf" id="pdfExt">
+                    <a href="clausulados/CHARTIS.pdf" id="pdfExt" target="_blank">
                    		<img src="tpl/img/Partners/TravelGuard.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -275,7 +264,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 2ND COMPANY--> 
                   <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/QUALITAS_ASSISTANCE.pdf" id="pdfExt">
+                     <a href="clausulados/QUALITAS_ASSISTANCE.pdf" id="pdfExt" target="_blank"> 
                         <img src="tpl/img/Partners/Qualitas.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -284,7 +273,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 3RD COMPANY--> 
                  <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/ASSIST_CARD.pdf" id="pdfExt">
+                     <a href="clausulados/ASSIST_CARD.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/AssistCard.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -293,7 +282,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 4TH COMPANY--> 
                  <hr class="spacerBord" />
                    <div class="companiBox">
-                     <a href="clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf" id="pdfExt">
+                     <a href="clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/SegurViaje.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -302,7 +291,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
  				  <!--START 5TH COMPANY-->
                   <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf" id="pdfExt">
+                     <a href="clausulados/SEGURVIAJE_MAPFRE ASISTENCIA.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/Mafre.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -315,7 +304,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 6TH COMPANY-->                          
                  <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/CORIS.pdf" id="pdfExt">
+                     <a href="clausulados/CORIS.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/Coris.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -326,7 +315,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                <!--START 7TH COMPANY--> 
                  <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/TRAVEL_ACE_ASSISTANCE.pdf" id="pdfExt">
+                     <a href="clausulados/TRAVEL_ACE_ASSISTANCE.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/TravelAce.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -335,7 +324,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 8TH COMPANY--> 
                  <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/SAFEST.pdf" id="pdfExt">
+                     <a href="clausulados/SAFEST.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/Safest.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>
@@ -344,7 +333,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
                  <!--START 9TH COMPANY--> 
                  <hr class="spacerBord" />
                   <div class="companiBox">
-                     <a href="clausulados/UNIVERSAL_ASSISTANCE.pdf" id="pdfExt">
+                     <a href="clausulados/UNIVERSAL_ASSISTANCE.pdf" id="pdfExt" target="_blank">
                         <img src="tpl/img/Partners/UniversalAssistance.png"/>
                    		 	<br class="clear" />
                     	<img src="tpl/img/minPdfIcon.png" class="pdfIconMin"/>

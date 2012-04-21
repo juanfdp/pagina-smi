@@ -11,10 +11,10 @@ $productosEnLista = array ();
 $productosTemp= array ();
 $param=new parametros();
 $ws=new WebServices();
-
-//////////
-//Limito la busqueda 
- $TAMANO_PAGINA = 4; 
+////////// FIN ATRIBUTOS
+////////// PAGINADOR
+//LIMITAMOS EL TAMAÑO DE LA PAGINA
+ $TAMANO_PAGINA = 10; 
  //examino la p�gina a mostrar y el inicio del registro a mostrar 
  $pagina = $_GET["st"]; 
  $estado = $_GET["estado"];
@@ -25,8 +25,9 @@ $ws=new WebServices();
  else { 
      $inicio = ($pagina - 1) * $TAMANO_PAGINA; 
  }
-
+//////////  FIN PAGINADOR
 ?>
+
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
@@ -272,7 +273,8 @@ $arreglo=$func->limpiarColeccion($arreglo);
 $_SESSION['categoriasSeleccionandas']=$arreglo; 
 ///////////////////////////////////////////////
 }
-else if ($estado==1 ){	
+else if ($estado==1 )// SE UTILIZA CUANDO SE ESTA NAVEGANDO EN LOS RESULTADOS.
+{	
 $origen=(int)$_GET['origen'];
 $destino=(int)$_GET['destino'];
 $salida=$_GET['salida'];
@@ -399,6 +401,8 @@ echo "</select> "; ?> <label>Edades:</label><br />
 	src="image_small_1.jpg" alt="" /></a> <a class="grouped_elements"
 	rel="group1" href="image_big_2.jpg"><img src="image_small_2.jpg" alt="" /></a>
 <?php 	
+
+
 //EJECUTAMOS LA CONSULTA DEPENDIENDO DE LOS PARAMETEROS RECIBIDOS POR METODO GET o POST
 $totalResultados=$cotizador->CountListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4);
 $total_paginas = ceil($totalResultados / $TAMANO_PAGINA); //CALCULAMOS EL TOTAL DE LAS PAGINAS
@@ -410,18 +414,21 @@ else $inicioPagina= ($TAMANO_PAGINA)*($pagina-1);
 $finPagina=$inicioPagina+$TAMANO_PAGINA;
 //RECORREMOS LOS RESULTADOS VALIDANDO QUE YA NO SE HAYA IMPRESO EL ITEM
 $contador=0;
+
 foreach($rs as $k => $row) {
 	if($contador>=$inicioPagina &&  $contador< $finPagina){	
 		//SI SE ENCUENTRA PARAMETRIZADAS LA COBERTURAS  LAS IMPRIMIMOS.
 		$rscoberturas=$cotizador->FillCoberturasByIdPoliza($row[5]);		
 		//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE		 
-		 $guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), "");		 
+		 $guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), "",$row[8]);
+
+		
 		if($guardaCotizacion!=-1){
 		echo"
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
-<span>1</span>
-<h1>USD ".$guardaCotizacion."</h1>
+<span>".$contador ."</span>
+<h1>".$guardaCotizacion."</h1>
 <h2>".$row[1]." off</h2>
 </div>
 <div id=\"magicDesc\">
