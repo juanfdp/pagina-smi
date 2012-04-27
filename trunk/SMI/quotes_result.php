@@ -179,17 +179,20 @@ function agregarParaComparar(cb){
 	}	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function processFormData()
+function goToTravelDetails(numeroPoliza)
  {
- var name_element = document.getElementById('txt_name'); 
- var name = name_element.value;
- alert(name);
+
+	// alert(numeroPoliza);
+	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";
+	 document.formulario.submit(numeroPoliza);
+
+	 
+ 
  }
 
 
 
 </script>
-
 
 
 <body onload="loadImages()">
@@ -495,6 +498,7 @@ function processFormData()
 								//echo "PRECIO". $guardaCotizacion;
 								echo"
 	
+<form name=\"formulario\" id=\"formulario\" action=\"travel_details.php\" method=\"post\" >
 
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
@@ -518,9 +522,10 @@ function processFormData()
 <div class=\"chooseComp\">
 <fieldset>
 <div><legend></legend>	
-<label for=\"\">Comparar Productos</label>
+<label for=\"\">Comparar Productos </label>
 <input type=\"checkbox\"  id=\"categorias\" name=\"categorias\" value=". $row[5] ." onclick=\"agregarParaComparar(this)\">
-
+<input type=\"hidden\" name=\"PrecioCotizado-".$contador."\"  value=". $guardaCotizacion." />
+<input type=\"hidden\" name=\"IdPoliza-".$contador."\"  value=". $row[0] ." />
 </div>
 <label for=\"\">";
 									echo $cotizador->Getclausulado($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE EL CLAUSULADO  CORRESPONDIENTE
@@ -535,17 +540,8 @@ function processFormData()
 </div>
 
 <div class=\"chooseBtn\">
-<form name=\"formulario\" action=\"travel_details.php\" method=\"post\" >
-
-
-<input type=\"checkbox\"  id=\"IdPoliza\"  name=\"IdPoliza\" value=". $row[0] ."  >
-
-<input type=\"checkbox\"  id=\"PrecioCotizado\"  name=\"PrecioCotizado\" value=". $guardaCotizacion ." CHECKED >
-
 <input type=\"hidden\" name=\"PasajerosCotizados\"  value=".  $cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4) ." /> 
-
-<input type=\"hidden\" name=\"Descuento\"  value=".number_format( $row[8])." /> 
-<input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPurchase\" value=\"Comprar\" />
+<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPurchase\"  value=\"Comprar\"   onclick=\"goToTravelDetails(".$contador.")\" />
 <form>
 </div>
 </div>

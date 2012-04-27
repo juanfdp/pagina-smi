@@ -285,9 +285,18 @@ echo"
 
 <div id="dataPerAddr">
 <?php
-echo "PRECIO DE LA POLIZA     ".$_POST['PrecioCotizado'];
+
+
+$precio="PrecioCotizado-".$_POST['codigo'];
+$id="IdPoliza-".$_POST['codigo'];
+
+
+echo "PRECIO    ".$_POST[$precio];
 echo "<br>";
-echo "ID DE LA POLIZA     ".$_POST['IdPoliza'];
+
+echo "ID    ".$_POST[$id];
+echo "<br>";
+
 
 
 ?>
