@@ -227,30 +227,40 @@ FROM         Categorias INNER JOIN
 				WHERE     (Productos.Id = \''.$codigoPoliza.'\') AND (DescuentoCategoria.Estado  = \'TRUE\')') ;
 
 
+			
+			
+			
+			
+			
 			foreach($descuentospoliza as $k => $row) {
 
+				$cantidadPasajeros=0;
+					for($i=0;$i< count($arregloPasajeros);$i++) if ($arregloPasajeros[$i]!="")$cantidadPasajeros++;
 				//EMPEZAMOS A EVALUAR SEGUN EL TIPO DE DESCUENTO
 				switch ($row[2]) {
 					case "1":
+						//echo "CASO 1";
 						// CUANDO VIAJAN CUATRO PASAJEROS SE APLICA UN DESCUENTO SOBRE LOS TRES
 						//echo $row[14];// PASAJEROS DESCUENTO
 						//echo "<br>";
-						if( count($arregloPasajeros)==$row[14] &&  count($arregloPasajeros)<5 &&  count($arregloPasajeros) >1){
+						if($cantidadPasajeros==$row[14] &&  $cantidadPasajeros<5 &&  $cantidadPasajeros >1){
 							$porcentajeDescuento += $row[7] *($row[14]-1)/$row[14];
 						}
 						break;
 					case "2":
+						//echo "CASO 2";
 						// CANTIDAD DE PASAJEROS - GENERA UN PORCENTAJE DE DESCUENTO.
-						if( count($arregloPasajeros)==$row[14]){
+						if( $cantidadPasajeros==$row[14]){
 							$porcentajeDescuento += $row[7];
 						}
 						break;
 
 					case "3":
+						//echo "caso 3";
 						// MANEJO PROMOCIONES
+						//echo "PROMOCION";
 						$porcentajeDescuento += $row[7];
-						break;
-							
+						break;							
 				}//FIN SWITCH
 				//echo $row[10];// DESCUENTO  MAYOR DE EDAD.
 				if($row[10]==1 && ( count($arregloPasajeros)>1 &&  count($arregloPasajeros)<5 && count($arregloPasajeros)!=3)){
@@ -284,17 +294,8 @@ FROM         Categorias INNER JOIN
 						else if ($cantidadMenores == 2) $porcentajeDescuento +=  100 / 2;
 
 					}
-				}
-
-
-					
+				}					
 			}//FIN FOREACH DE DESCUENTOS POR POLIZA
-
-
-
-
-
-
 			//AUMENTOS----------------------------------------------------------------------------------------------
 			$aumentosPoliza = &$this->conexion->conectarse()->Execute('
 			    SELECT     Productos.Id AS IdProducto, Categorias.Id AS IdCategoria, TipoCondicion.Id AS tipocondicion, TipoCondicion.Nombre, AumentoCategoria.CantidadEdad, 
@@ -350,7 +351,7 @@ FROM         Categorias INNER JOIN
 
 
 			}
-			return $porcentajeDescuento." AUMENTO ". $porcentajeAumento ;
+			return $porcentajeDescuento."-". $porcentajeAumento ;
 
 		}
 		catch (Exception $e)
