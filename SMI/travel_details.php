@@ -16,8 +16,7 @@ $pathFtp="tpl/img/Administrador/";
 <html
 	class="no-js" lang="en">
 <!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
-<head id="www-segurosmedicosinternacionales-com"
+<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com"
 	data-template-set="html5-reset">
 <meta charset="utf-8">
 <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
@@ -26,8 +25,7 @@ $pathFtp="tpl/img/Administrador/";
 <meta name="title" content="">
 <meta name="description" content="">
 <meta name="author" content="Seguros Medicos Internacionales">
-<meta name="Copyright"
-	content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
+<meta name="Copyright"	content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
 <![if !IE]>
 <!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!-->
 <link
@@ -44,10 +42,32 @@ $pathFtp="tpl/img/Administrador/";
 <link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
 	rel="stylesheet" />
 <!-- all our JS is at the bottom of the page, except for Modernizr. -->
+
+<script src="tpl/js/modernizr-1.7.min.js"></script>
+<link href="tpl/css/jquery.selectbox.css" type="text/css"
+	rel="stylesheet" />
+<script src="tpl/js/gen_validatorv4.js"></script>
+<link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css"
+	type="text/css" media="screen" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+<script type="text/javascript"
+	src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    
+<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
+<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
+<!-- CSS: screen, mobile & print are all in the same file -->
+<link rel="stylesheet" href="tpl/css/style.css">
+<link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
+	rel="stylesheet" />
+<!-- all our JS is at the bottom of the page, except for Modernizr. -->
 <script src="tpl/js/modernizr-1.7.min.js"></script>
 <script src="tpl/js/gen_validatorv4.js"></script>
 <link href="tpl/css/jquery.selectbox.css" type="text/css"
 	rel="stylesheet" />
+
+</head>
 
 <script language="JavaScript">
 
@@ -76,7 +96,40 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 
 <!--End of Zopim Live Chat Script-->
+<script type="text/javascript">
 
+$(document).ready(function() {
+    /* This is basic - uses default settings */
+	$("#lightbox").fancybox({
+		'width'				: '80%',
+		'height'			: '95%',
+		'autoScale'			: false,
+		'transitionIn'		: 'elastic',
+		'transitionOut'		: 'elastic',
+		'type'				: 'iframe'
+		
+	});
+	
+	$("#lightbox3").fancybox({
+		'width'				: '75%',
+		'height'			: '33%',
+		'autoScale'			: false,
+		'transitionIn'		: 'elastic',
+		'transitionOut'		: 'elastic',
+		'type'				: 'iframe'
+		
+	});
+	$("#lightbox2").fancybox({
+		'width'				: '75%',
+		'height'			: '60%',
+		'autoScale'			: false,
+		'transitionIn'		: 'elastic',
+		'transitionOut'		: 'elastic',
+		'type'				: 'iframe'
+		
+	});
+});		
+</script>
 
 <body>
 <div class="wrapper"><!--- START HEADER ---> <header>
@@ -136,9 +189,12 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 
 </div>
 <!--END THE MAGIC QUOTE CONTENT--> <!--START HERE ALL SUBMIT FORMS---> <!--TRAVEL DETAILS--->
+
 <div id="travelDtBox">
 <h4>Datos del viajero:</h4>
-<form name="compra" id="compra" method="post" action="logic/forwardForPayment.php"><!--START DETAILS BOX--->
+
+
+<form name="compra" id="compra" method="post" action="https://gateway2.pagosonline.net/apps/gateway/index.html"><!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
 //HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS.
@@ -159,7 +215,37 @@ else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 	echo "<input type=\"hidden\" name=\"cantidadPasajeros\" id=\"cantidadPasajeros\"  value=".$_POST['PasajerosCotizados']." />";
 }
 
+///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
+
+$llave_encripcion = "131bef7b598";
+$usuarioId = "73585";
+$refVenta = time();
+//echo $refVenta;
+$iva=0;
+$baseDevolucionIva=0;
+//	$valor=$_POST['PrecioCotizado']!=null?$_POST['PrecioCotizado']:0;
+$valor=100 * $fun->getTrmIata($_POST['IdPoliza']);
+$moneda ="COP";
+$prueba = "1";
+$descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
+$emailComprador="info@mail.com";
+$firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
+$firma = md5($firma_cadena);
+$paginaConfirmacion="http://www.crecersoluciones.com/";
+//AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
+echo"			
+			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
+			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 
+			<input	name=\"descripcion\" type=\"hidden\" value=". $descripcion ."> 
+			<input	name=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
+			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
+			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
+			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
+			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
+			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 
+			<input  name=\"emailComprador\"	type=\"hidden\" value=". $emailComprador.">
+			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">";
 
 
 
@@ -198,7 +284,13 @@ else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 
 
 <div id="dataPerAddr">
+<?php
+echo "PRECIO DE LA POLIZA     ".$_POST['PrecioCotizado'];
+echo "<br>";
+echo "ID DE LA POLIZA     ".$_POST['IdPoliza'];
 
+
+?>
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
 <input type="text" name="NombreFactu" id="" size="14" /></div>
@@ -210,12 +302,48 @@ else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 <div class="list"><label class="detail">Teléfono fijo:</label><br />
 <input type="text" name="TelefonoFactu" id="" size="14"
 	onkeypress="return acceptNum(event)" /></div>
-<?php
+    
+
+<table width="421" border="0">
+  <tr>
+    <th scope="col"><?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
-echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Pagar\" /></div>";
-?>
+echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" /></div>";
+?></th>
+    <th scope="col">&nbsp;</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>He leido y acepto los
+      <input type="checkbox" name="Condiciones" id="" /></td>
+    <td>
+      <a class="contactenos" id="lightbox" href="logic/condiciones.php"> TERMINOS Y CONDICIONES.</a>
+      </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+
+
 
 </form>
+
+
 <script language="JavaScript" type="text/javascript"
 	xml:space="preserve">//<![CDATA[
 //You should create the validator only after the definition of the HTML form
@@ -236,6 +364,10 @@ echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" c
   frmvalidator.addValidation("DocumentoFactu","req","Debe Ingresar El Documento/Nit-Facturación."); 
   frmvalidator.addValidation("DireccionFactu","req","Debe Ingresar La Dirección-Facturación.");
   frmvalidator.addValidation("TelefonoFactu","req","Debe Ingresar El Teléfono-Facturación.");
+  //TERMINOS Y CONDICIONES
+  //frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");
+  
+  frmvalidator.addValidation("Condiciones","shouldselchk=y","Debe Aceptar los terminos y condiciones.");
   var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadPasajeros").value)//OBTENEMOS LA CANTIDAD DE PASAJEROS PARA ASI APLICAR LAS VALIDACAIONES
 
 
@@ -353,10 +485,6 @@ echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" c
 	  frmvalidator.addValidation("fnmes4","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 4.");
 	  frmvalidator.addValidation("fnanio4","dontselect=0","Debe Ingresar El Año De Nacimiento-Pasajero 4.");
   }
-
- 
-  	
-  
  
 //]]></script></div>
 

@@ -179,7 +179,12 @@ function agregarParaComparar(cb){
 	}	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+function processFormData()
+ {
+ var name_element = document.getElementById('txt_name'); 
+ var name = name_element.value;
+ alert(name);
+ }
 
 
 
@@ -466,13 +471,8 @@ function agregarParaComparar(cb){
 				<!--START HERE A FOR-WHILE --->
 
 
-				<a class="grouped_elements" rel="group1" href="image_big_1.jpg"><img
-					src="image_small_1.jpg" alt="" /> </a> <a class="grouped_elements"
-					rel="group1" href="image_big_2.jpg"><img src="image_small_2.jpg"
-					alt="" /> </a>
+				
 					<?php
-
-
 					//EJECUTAMOS LA CONSULTA DEPENDIENDO DE LOS PARAMETEROS RECIBIDOS POR METODO GET o POST
 					$totalResultados=$cotizador->CountListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4);
 					$total_paginas = ceil($totalResultados / $TAMANO_PAGINA); //CALCULAMOS EL TOTAL DE LAS PAGINAS
@@ -492,12 +492,15 @@ function agregarParaComparar(cb){
 							//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
 							$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
 							if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
+								//echo "PRECIO". $guardaCotizacion;
 								echo"
+	
+
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
 <span>".$contador ."</span>
 <h1>".$guardaCotizacion."</h1>
-<h2>".$row[1]." off</h2>
+<h2>\" 0 \" off</h2>
 </div>
 <div id=\"magicDesc\">
 <ul>";		
@@ -530,11 +533,17 @@ function agregarParaComparar(cb){
 									echo $cotizador->Getimg($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE LA IMAGEN CORRESPONDIENTE
 									echo "
 </div>
+
 <div class=\"chooseBtn\">
 <form name=\"formulario\" action=\"travel_details.php\" method=\"post\" >
-<input type=\"hidden\" name=\"IdPoliza\"  value=".  $row[0] ." /> 
+
+
+<input type=\"checkbox\"  id=\"IdPoliza\"  name=\"IdPoliza\" value=". $row[0] ."  >
+
+<input type=\"checkbox\"  id=\"PrecioCotizado\"  name=\"PrecioCotizado\" value=". $guardaCotizacion ." CHECKED >
+
 <input type=\"hidden\" name=\"PasajerosCotizados\"  value=".  $cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4) ." /> 
-<input type=\"hidden\" name=\"PrecioCotizado\"  value=". $contador ." /> 
+
 <input type=\"hidden\" name=\"Descuento\"  value=".number_format( $row[8])." /> 
 <input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPurchase\" value=\"Comprar\" />
 <form>
@@ -567,10 +576,6 @@ function agregarParaComparar(cb){
 			<!--- ENDS THE QUOTE RESULT --->
 		</div>
 		<!--ENDS THE FULL BODY CONTAINER-->
-		<!---INIT THE FOOTER CONTENT HERE-->
-
-
-
 		<!---INIT THE FOOTER CONTENT HERE-->
 		<?php
 //EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
