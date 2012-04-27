@@ -198,7 +198,7 @@ $(document).ready(function() {
 <?php
 //CAMPOS DE LOS PASAJEROS
 //HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS.
-if($_POST['PasajerosCotizados']!=0&& $_POST['PrecioCotizado']!=0)
+if($_POST['PasajerosCotizados']!=0)
 {
 	$compra->HabilitarPasajeros($_POST['PasajerosCotizados']);
 	$guarda=true;
@@ -217,22 +217,28 @@ else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
+$precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
+$id="IdPoliza-".$_POST['codigo'];
 
+
+$idPoliza=$_POST[$id];
 $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
 //echo $refVenta;
 $iva=0;
 $baseDevolucionIva=0;
-//	$valor=$_POST['PrecioCotizado']!=null?$_POST['PrecioCotizado']:0;
-$valor=100 * $fun->getTrmIata($_POST['IdPoliza']);
+$valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);
+echo $valor;
 $moneda ="COP";
 $prueba = "1";
 $descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
 $emailComprador="info@mail.com";
 $firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
 $firma = md5($firma_cadena);
-$paginaConfirmacion="http://www.crecersoluciones.com/";
+$paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPago.php";
+
+
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
 			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
@@ -243,6 +249,7 @@ echo"
 			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
 			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
+			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 
 			<input  name=\"emailComprador\"	type=\"hidden\" value=". $emailComprador.">
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">";
@@ -284,22 +291,7 @@ echo"
 
 
 <div id="dataPerAddr">
-<?php
 
-
-$precio="PrecioCotizado-".$_POST['codigo'];
-$id="IdPoliza-".$_POST['codigo'];
-
-
-echo "PRECIO    ".$_POST[$precio];
-echo "<br>";
-
-echo "ID    ".$_POST[$id];
-echo "<br>";
-
-
-
-?>
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
 <input type="text" name="NombreFactu" id="" size="14" /></div>

@@ -181,13 +181,8 @@ function agregarParaComparar(cb){
 
 function goToTravelDetails(numeroPoliza)
  {
-
-	// alert(numeroPoliza);
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";
 	 document.formulario.submit(numeroPoliza);
-
-	 
- 
  }
 
 
@@ -319,6 +314,9 @@ function goToTravelDetails(numeroPoliza)
 					$pasajerosCotizacion[]=$_POST['f_oldsNums2']!= null ?$_POST['f_oldsNums2']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums3']!= null ?$_POST['f_oldsNums3']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums4']!= null ?$_POST['f_oldsNums4']:"";
+					
+					// OBTENEMOS LA CANTIDAD DE PASAJEROS
+					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 				}
 				else if ($estado==1 )// SE UTILIZA CUANDO SE ESTA NAVEGANDO EN LOS RESULTADOS.
 				{
@@ -338,6 +336,10 @@ function goToTravelDetails(numeroPoliza)
 					$pasajerosCotizacion[]=$_GET['edad2']!= null ?$_GET['edad2']:"";;
 					$pasajerosCotizacion[]=$_GET['edad3']!= null ?$_GET['edad3']:"";;
 					$pasajerosCotizacion[]=$_GET['edad4']!= null ?$_GET['edad4']:"";;
+					
+					
+					// OBTENEMOS LA CANTIDAD DE PASAJEROS
+					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 
 				}
 				?>
@@ -495,6 +497,10 @@ function goToTravelDetails(numeroPoliza)
 							//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
 							$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
 							if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
+								$precio="";
+								$aumento="";
+								$descuento="";
+								
 								//echo "PRECIO". $guardaCotizacion;
 								echo"
 	
@@ -508,7 +514,6 @@ function goToTravelDetails(numeroPoliza)
 </div>
 <div id=\"magicDesc\">
 <ul>";		
-
 								//RECORREMOS E IMPRIMIMOS LAS COBERTURAS , SI LAS TIENE
 								while (!$rscoberturas->EOF) {
 									echo "<li> ".$rscoberturas->fields[3]." </li>";
@@ -540,7 +545,7 @@ function goToTravelDetails(numeroPoliza)
 </div>
 
 <div class=\"chooseBtn\">
-<input type=\"hidden\" name=\"PasajerosCotizados\"  value=".  $cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4) ." /> 
+<input type=\"hidden\" name=\"PasajerosCotizados\"  value=". $totalPasajeros  ." /> 
 <input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPurchase\"  value=\"Comprar\"   onclick=\"goToTravelDetails(".$contador.")\" />
 <form>
 </div>
