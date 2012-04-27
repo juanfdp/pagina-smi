@@ -77,9 +77,10 @@ $emision="
 
 <codigoUsuario>ACNET</codigoUsuario>
 </emision>";
-//$client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
-					//$resultado = $client->__call('emitir',array($emision,"aevion","dani"));
-					//echo $resultado;
+$client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
+					$resultado = $client->__call('emitir',array($emision,"aevion","dani"));
+					echo $resultado;
+					
 					//$arregloResultados=split(540, $resultado);
 					//echo "Resultados " . count($arregloResultados);
 					//print_r( $arregloResultados[1]);
@@ -89,12 +90,12 @@ $emision="
 //print $vem;
 /////////////////////////////////////////
 
-
+/*
 require_once  'conect.php';
 require_once  'functions.php';
 //INSTANCIA DE LA CLASE ENCARGADA DE LOS PARAMETROS
 //////////ATRIBUTOS
 $func=new functions();
 echo $func->getTrmIata("786A31B8-6733-48FF-A5E9-37ABF22DEE8B");
-
+*/
 ?>

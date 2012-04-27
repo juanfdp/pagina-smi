@@ -43,13 +43,13 @@ class WebServices
 		{
 			
 			
-			var_dump($ArregloPasajeros);
+			//var_dump($ArregloPasajeros);
 			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO.			
 			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES.
 			//echo $IdAseguradora;
 			switch ($IdAseguradora) {
-					
-				case "4E04D2C4-5C91-46E4-99DD-E992638DA6F8": // ASSIST CARD
+					//agregar 4
+				case "E04D2C4-5C91-46E4-99DD-E992638DA6F8": // ASSIST CARD
 				
 					//PARAMETROS + USUARIO Y CONTRASEÑA
 					$user="aevion";//USUARIO
@@ -92,7 +92,7 @@ class WebServices
 							if(count($RegistroWebService)>=2){//VALIDAMOS QUE LA REFERENCIA DE NUESTRA BUSQUEDA SE ENCUENTRE								
 								//echo "1".$RegistroWebService[0]."<br>";
 								$Precio=explode(" ", trim($RegistroWebService[1]));
-								$PrecioFormatoFinal=sprintf(trim($Precio[124]));								
+								$PrecioFormatoFinal=sprintf(trim($Precio[124]));											
 								return $PrecioFormatoFinal;	
 								break;							
 							}
@@ -147,11 +147,11 @@ class WebServices
 
 
 
-			return $recordSett;
+			//return $recordSett;
 		}
 		catch (Exception $e)
 		{
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			//echo 'Caught exception: ',  $e->getMessage(), "\n";
 			return false;
 		}
 	}
