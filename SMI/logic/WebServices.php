@@ -43,7 +43,7 @@ class WebServices
 		{
 			
 			
-			//var_dump($ArregloPasajeros);
+			var_dump($ArregloPasajeros);
 			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO.			
 			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES.
 			//echo $IdAseguradora;

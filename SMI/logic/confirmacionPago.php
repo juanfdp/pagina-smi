@@ -1,6 +1,13 @@
 <?php
+require_once   '/functions.php';
+require_once  'conect.php';
+$fun=new functions();
 
-$llave="1111111111111111";/////llave de usuario de pruebas 2
+
+$llave="131bef7b598";/////llave de usuario 
+
+		$fun->SendMailConfirmacionPago("jon.cas@hotmail.com","Jonathan","Castillo");
+
 $usuario_id=$_REQUEST['usuario_id'];
 $ref_venta=$_REQUEST['ref_venta'];
 $valor=$_REQUEST['valor'];
@@ -14,6 +21,7 @@ if(strtoupper($firma)==strtoupper($firmacreada)){//comparación de las firmas
 	if($_REQUEST['estado_pol'] == 4)
 	{
 	//CONFIRMACION QUE EL PAGO FUE EXITOSO
+	
 
 	}
 	else{

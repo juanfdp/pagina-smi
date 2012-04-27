@@ -1,4 +1,5 @@
 <?php
+//include_once  'conect.php';
 require("phpmailer/class.phpmailer.php");
 
 /**
@@ -35,7 +36,8 @@ class functions {
 		$this->mail->Port       = 25;                    // set the SMTP port for the GMAIL server
 		$this->mail->Username   = "informacion@segurosmedicosinternacionales.net"; // SMTP account username
 		$this->mail->Password   = "Rewq1234";        // SMTP account password
-		$this->mail->AddAddress('areyes@segurosmedicosinternacionales.net', 'ALEXANDRA REYES');//DESTINATARIO
+		$this->mail->AddAddress('jacastillob@gmail.com', 'el programador');//DESTINATARIO
+		//$this->mail->AddAddress('areyes@segurosmedicosinternacionales.net', 'ALEXANDRA REYES');//DESTINATARIO
 		//CONEXION A LA BASE DE DATOS
 		$this->conexion=new Conect();
 
@@ -206,9 +208,157 @@ class functions {
 	 * METODO QUE RETORNA EL DESCUENTO Y AUMENTO DE UNA POLIZA, DEPENDIENDO DE LA CONFIGURACION  DE LA ASEGURADOR Y SU CATEGORIA.
 	 * @param GUID $codigoPoliza
 	 */
-	public function getAumentoDescuento($codigoPoliza)
+	public function getAumentoDescuento($codigoPoliza,$arregloPasajeros)
 	{
-		//$this->conexion
+		try{
+			$porcentajeDescuento=0;
+			$porcentajeAumento=0;
+			//DESCUENTOS------------------------------------------------------------------------------------------
+
+			$descuentospoliza= &$this->conexion->conectarse()->Execute('
+			    SELECT     Productos.Id AS IdProducto, Categorias.Id AS IdCategoria, TipoDescuento.Id AS TipoDescuento, TipoDescuento.Nombre, Categorias.CantidadEdad, 
+                      Categorias.EdadInicial, Categorias.EdadFinal, DescuentoCategoria.Porcentaje, DescuentoCategoria.Nombre AS NombreAumento, DescuentoCategoria.Descripcion, 
+                      Categorias.DescuentoMayorEdad, Categorias.DescuentoCantidadPasajeros, DescuentoCategoria.Id, Categorias.Descripcion AS nombrecategoria, 
+                      DescuentoCategoria.PasajerosDescuento
+FROM         Categorias INNER JOIN
+                      DescuentoCategoria ON Categorias.Id = DescuentoCategoria.IdCategoria INNER JOIN
+                      Productos ON Categorias.Id = Productos.Idcategoria INNER JOIN
+                      TipoDescuento ON DescuentoCategoria.IdTipoDescuento = TipoDescuento.Id
+				WHERE     (Productos.Id = \''.$codigoPoliza.'\') AND (DescuentoCategoria.Estado  = \'TRUE\')') ;
+
+
+			foreach($descuentospoliza as $k => $row) {
+
+				//EMPEZAMOS A EVALUAR SEGUN EL TIPO DE DESCUENTO
+				switch ($row[2]) {
+					case "1":
+						// CUANDO VIAJAN CUATRO PASAJEROS SE APLICA UN DESCUENTO SOBRE LOS TRES
+						//echo $row[14];// PASAJEROS DESCUENTO
+						//echo "<br>";
+						if( count($arregloPasajeros)==$row[14] &&  count($arregloPasajeros)<5 &&  count($arregloPasajeros) >1){
+							$porcentajeDescuento += $row[7] *($row[14]-1)/$row[14];
+						}
+						break;
+					case "2":
+						// CANTIDAD DE PASAJEROS - GENERA UN PORCENTAJE DE DESCUENTO.
+						if( count($arregloPasajeros)==$row[14]){
+							$porcentajeDescuento += $row[7];
+						}
+						break;
+
+					case "3":
+						// MANEJO PROMOCIONES
+						$porcentajeDescuento += $row[7];
+						break;
+							
+				}//FIN SWITCH
+				//echo $row[10];// DESCUENTO  MAYOR DE EDAD.
+				if($row[10]==1 && ( count($arregloPasajeros)>1 &&  count($arregloPasajeros)<5 && count($arregloPasajeros)!=3)){
+					$guarda=0;
+					for($i=0;$i< count($arregloPasajeros);$i++){
+						//RECORREMOS PARA OBTENER LOS MAYORES Y MENORES DE EDAD
+						if($arregloPasajeros[$i]!="") $guarda = $arregloPasajeros[$i] >= 21 ? ++$guarda : --$guarda;
+					}
+					if($guarda==0){//APLICA EL DESCUENTO POR PARIDAD DE MAYORES DE EDAD Y MENORES DE EDAD
+						$porcentajeDescuento += 50;
+					}
+
+				}
+				//echo $row[10];// DESCUENTO  CANTIDAD PASAJEROS.
+				if($row[11]==1 && count($arregloPasajeros)>2){
+
+					$cantidadMayores=0;
+					$cantidadMenores=0;
+					//RECORREMOS LOS PASAJEROS
+					for($i=0;$i< count($arregloPasajeros);$i++){
+						//RECORREMOS PARA OBTENER LOS MAYORES Y MENORES DE EDAD
+						if($arregloPasajeros[$i]!="") {
+							if ($arregloPasajeros[$i] >= 21) $cantidadMayores++;
+							else if ($arregloPasajeros[$i] < 21) $cantidadMenores++;
+						}
+							
+					}
+					if ($cantidadMayores == 2)//SIEMPRE DEBEN HABER DOS MAYORES
+					{
+						if ($cantidadMenores == 1) $porcentajeDescuento +=  100 / 3;
+						else if ($cantidadMenores == 2) $porcentajeDescuento +=  100 / 2;
+
+					}
+				}
+
+
+					
+			}//FIN FOREACH DE DESCUENTOS POR POLIZA
+
+
+
+
+
+
+			//AUMENTOS----------------------------------------------------------------------------------------------
+			$aumentosPoliza = &$this->conexion->conectarse()->Execute('
+			    SELECT     Productos.Id AS IdProducto, Categorias.Id AS IdCategoria, TipoCondicion.Id AS tipocondicion, TipoCondicion.Nombre, AumentoCategoria.CantidadEdad, 
+                      AumentoCategoria.EdadInicial, AumentoCategoria.EdadFinal, AumentoCategoria.Porcentaje, AumentoCategoria.Nombre AS NombreAumento, 
+                      AumentoCategoria.Descripcion, Categorias.DescuentoMayorEdad, Categorias.DescuentoCantidadPasajeros, AumentoCategoria.Id, 
+                      Categorias.Descripcion AS nombrecategoria
+				FROM         Categorias INNER JOIN
+				                      AumentoCategoria ON Categorias.Id = AumentoCategoria.IdCategoria INNER JOIN
+				                      Productos ON Categorias.Id = Productos.Idcategoria INNER JOIN
+				                      TipoCondicion ON AumentoCategoria.IdCondicion = TipoCondicion.Id
+				WHERE     (Productos.Id = \''.$codigoPoliza.'\') AND (AumentoCategoria.Estado = \'TRUE\')') ;
+
+
+			foreach($aumentosPoliza as $k => $row) {
+				//echo $row[2];// TIPO AUMENTO
+				//echo "<br>";
+				//echo $row[7];// PORCENTAJE AUMENTO
+				for($i=0;$i< count($arregloPasajeros);$i++){
+
+					//DEPENDIENDO DEL TIPO DE AUMENTO Y LA CANTIDAD DE PASAJEROS SE OPERA.
+					if($arregloPasajeros[$i]!=""){
+						switch ($row[2]) {
+							case "1":
+								//echo $row[4];// CANTIDAD EDAD
+								//echo "<br>";
+								if($arregloPasajeros[$i]>=$row[4]){
+									//echo "SUPERIOR >=";
+									$porcentajeAumento += $row[7] / count($arregloPasajeros);
+								}
+								break;
+							case "2":
+								//echo "HASTA <=";
+								//echo $row[4];// CANTIDAD EDAD
+								//echo "<br>";
+								if($arregloPasajeros[$i]<=$row[4]){	//echo "SUPERIOR >=";
+									$porcentajeAumento += $row[7] / count($arregloPasajeros);
+								}
+								break;
+							case "3":
+								//echo "ENTRE";
+								//echo $row[5];// EDAD INICIAL
+								//echo "<br>";
+								//echo $row[6];// EDAD FINAL
+								//echo "<br>";
+								if($arregloPasajeros[$i]>=$row[5] && $arregloPasajeros[$i]<=$row[6] ){
+									//echo "SUPERIOR >=";
+									$porcentajeAumento += $row[7] / count($arregloPasajeros);
+								}
+								break;
+						}
+					}
+				}
+
+
+			}
+			return $porcentajeDescuento." AUMENTO ". $porcentajeAumento ;
+
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+
 	}
 
 	/**
@@ -339,18 +489,18 @@ class functions {
 			return false;
 		}
 	}
-
 	/**
-	 * METODO PARA ENVIAR CORREOS CUANDO SE CONFIRMA EL PAGO
+	 * METODO PARA ENVIAR CORREOS CUANDO SE CONFIRMA EL PAGO POR PARTE DE PAGOS ONLINE.
 	 *
 	 *
 	 */
-	public function SendMailConfirmacionPago($emailInteresado,$nombre,$apellido,$empresa,$telefonoFijo,$telefonoMovil,$mensaje,$contacto)
+	public function SendMailConfirmacionPago($emailComprador,$nombre,$apellido)
 	{
 		try
 		{
-				
-			$this->mail->SetFrom($emailInteresado, $nombre." ".$apellido);
+
+			$this->mail->AddAddress($emailComprador,  $nombre.''.$apellido);//DESTINATARIO
+			$this->mail->SetFrom("informacion@segurosmedicosinternacionales.net", "SEGUROS MEDICOS INTERNACIONALES");
 			$this->mail->Subject = 'CONFIRMACIÓN PAGO - EMISIÓN SEGUROS MEDICOS INTERNACIONALES.';
 			$this->mail->Body = '<body style="margin: 10px;">
 			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
