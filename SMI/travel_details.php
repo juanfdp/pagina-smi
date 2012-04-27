@@ -229,7 +229,7 @@ $refVenta = time();
 $iva=0;
 $baseDevolucionIva=0;
 $valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);
-echo $valor;
+//echo $valor;
 $moneda ="COP";
 $prueba = "1";
 $descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;

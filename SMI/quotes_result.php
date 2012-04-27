@@ -497,20 +497,27 @@ function goToTravelDetails(numeroPoliza)
 							//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
 							$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
 							if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
-								$precio="";
-								$aumento="";
-								$descuento="";
+								$precio=$guardaCotizacion;
 								
+								$resultadoayd=$func->getAumentoDescuento($row[0], $pasajerosCotizacion);//OBTENEMOS LOS AUMENTOS Y DESCUENTOS CORRESPONDIENTES TANTO POR ID DE LA POLIZA Y CANTIDAD PASAJEROS.
+								$resultadoayd=explode("-", trim($resultadoayd));
+								
+								$aumento=$resultadoayd[1]/100;
+								$descuentoInterno=$resultadoayd[0]/100;//OBTENEMOS EL DESCUENTO PARA OPERAR
+								$precio= ($precio+ ($aumento*$precio));//APLICAMOS EL AUMENTO 
+								$precio= ($precio- ($descuentoInterno*$precio));//APLICAMOS EL AUMENTO 								
+								$descuento=$resultadoayd[0];
+								//echo "<br>";
+								//echo "AUMENTO".$aumento;					
 								//echo "PRECIO". $guardaCotizacion;
 								echo"
 	
 <form name=\"formulario\" id=\"formulario\" action=\"travel_details.php\" method=\"post\" >
-
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
 <span>".$contador ."</span>
-<h1>".$guardaCotizacion."</h1>
-<h2>\" 0 \" off</h2>
+<h1>".$precio."</h1>
+<h2>".$descuento." off</h2>
 </div>
 <div id=\"magicDesc\">
 <ul>";		
@@ -529,7 +536,7 @@ function goToTravelDetails(numeroPoliza)
 <div><legend></legend>	
 <label for=\"\">Comparar Productos </label>
 <input type=\"checkbox\"  id=\"categorias\" name=\"categorias\" value=". $row[5] ." onclick=\"agregarParaComparar(this)\">
-<input type=\"hidden\" name=\"PrecioCotizado-".$contador."\"  value=". $guardaCotizacion." />
+<input type=\"hidden\" name=\"PrecioCotizado-".$contador."\"  value=". $precio." />
 <input type=\"hidden\" name=\"IdPoliza-".$contador."\"  value=". $row[0] ." />
 </div>
 <label for=\"\">";

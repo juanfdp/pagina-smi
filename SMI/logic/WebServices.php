@@ -43,21 +43,20 @@ class WebServices
 		{
 			
 			
-			var_dump($ArregloPasajeros);
+			//var_dump($ArregloPasajeros);
 			//ESTA PENDIENTE LA VINCULACION DEL DESCUENTO Y EL AUMENTO.			
 			//////// EMISIONES Y COTIZACOINES MEDIANTE WEBSERVICES.
 			//echo $IdAseguradora;
 			switch ($IdAseguradora) {
 					//agregar 4
-				case "E04D2C4-5C91-46E4-99DD-E992638DA6F8": // ASSIST CARD
+				case "4E04D2C4-5C91-46E4-99DD-E992638DA6F8": // ASSIST CARD
 				
 					//PARAMETROS + USUARIO Y CONTRASEÑA
 					$user="aevion";//USUARIO
 					$pass="dani";// CONTRASEÑA DEL USUARIO
 					$codigoPaisEmision=570;
 					$codigoAgencia=4310;
-					$poliza=explode("-", $IdProducto);	
-					
+					$poliza=explode("-", $IdProducto);						
 					$parametros= "
 					<cotizacion>
 					<pais>".$codigoPaisEmision."</pais>
@@ -80,7 +79,6 @@ class WebServices
 					$client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
 					$resultado = $client->__call('cotizar',array($parametros,$user,$pass));					
 					$this->polizasAssistCard= explode($codigoPaisEmision, $resultado);	
-					
 					}				
 					//OBTENEMOS LOS RESULTADOS EN EL ARREGLO Y EMPEZAMOS EL CRUCE CON LOS PRODUCTOS DE CRECER
 					if(count($this->polizasAssistCard)!=0){					
@@ -92,7 +90,7 @@ class WebServices
 							if(count($RegistroWebService)>=2){//VALIDAMOS QUE LA REFERENCIA DE NUESTRA BUSQUEDA SE ENCUENTRE								
 								//echo "1".$RegistroWebService[0]."<br>";
 								$Precio=explode(" ", trim($RegistroWebService[1]));
-								$PrecioFormatoFinal=sprintf(trim($Precio[124]));											
+								$PrecioFormatoFinal=sprintf(trim($Precio[124]));																
 								return $PrecioFormatoFinal;	
 								break;							
 							}
@@ -151,8 +149,7 @@ class WebServices
 		}
 		catch (Exception $e)
 		{
-			//echo 'Caught exception: ',  $e->getMessage(), "\n";
-			return false;
+			return 	-1;			
 		}
 	}
 
