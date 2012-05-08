@@ -215,9 +215,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 						<?php
 						//CARGAMOS LOS DESTINOS UTILIZANDO NUESTRA INSTANCIA
 						$r=$param->FillOrigenes();
-						echo "<select name=\"quicklyCountry_id\" id=\"f_quicklyCountry_id\">
-		<option value=\"0\" SELECTED >Seleccione</option>	
-	";
+						echo "<select name=\"quicklyCountry_id\" id=\"f_quicklyCountry_id\">";
 						while (!$r->EOF) {
 
 							echo "<option value=".$r->fields[0] ." >".$fun->fixEncoding($r->fields[2]) ."</option>";
@@ -333,9 +331,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 								<?php
 								//CARGAMOS LOS DESTINOS UTILIZANDO NUESTRA INSTANCIA
 								$r=$param->FillDestinos();
-								echo "<select name=\"country_idExit\" id=\"f_country_idExit\">
-	<option value=\"0\">Seleccione</option>	
-	";
+								echo "<select name=\"country_idExit\" id=\"f_country_idExit\">";
 								while (!$r->EOF) {
 									echo "<option value=".$r->fields[0] .">".$fun->fixEncoding( $r->fields[1]) ."</option>";
 									$r->MoveNext();
@@ -360,7 +356,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 								//CARGAMOS LOS DESTINOS UTILIZANDO NUESTRA INSTANCIA
 								$r=$param->FillTipoProducto();
 								echo "<select name=\"travelType_id\" id=\"f_travelType_id\">
-	<option value=\"0\">Seleccione</option>	
+	
 	";
 								while (!$r->EOF) {
 									echo "<option value=".$r->fields[0] .">".$fun->fixEncoding( $r->fields[1]) ."</option>";
