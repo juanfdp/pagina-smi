@@ -505,7 +505,8 @@ function goToTravelDetails(numeroPoliza)
 								$aumento=$resultadoayd[1]/100;
 								$descuentoInterno=$resultadoayd[0]/100;//OBTENEMOS EL DESCUENTO PARA OPERAR
 								$precio= ($precio+ ($aumento*$precio));//APLICAMOS EL AUMENTO 
-								$precio= ($precio- ($descuentoInterno*$precio));//APLICAMOS EL AUMENTO 								
+								$precio= ($precio- ($descuentoInterno*$precio));//APLICAMOS EL AUMENTO 	
+								$precio= $precio *$totalPasajeros;					
 								$descuento=$resultadoayd[0];
 								//echo "<br>";
 								//echo "AUMENTO".$aumento;					
@@ -516,8 +517,13 @@ function goToTravelDetails(numeroPoliza)
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
 <span>".$contador ."</span>
-<h1>".$precio."</h1>
-<h2>".$descuento." off</h2>
+<h1>".$precio."</h1>";
+if($descuento!=0)
+echo"<h2>USD %".$descuento."off</h2>";
+else 
+echo"<h2>USD  </h2>";
+
+echo"
 </div>
 <div id=\"magicDesc\">
 <ul>";		

@@ -23,8 +23,14 @@ echo $func->getAumentoDescuento("3DC7DBA6-DEA5-4EA6-8FA9-BAC490617673",$pasajero
 
 //DESCUENTOS TEST
 $func=new functions();
-echo $func->getAumentoDescuento("3DC7DBA6-DEA5-4EA6-8FA9-BAC490617673",$pasajerosCotizacion);
+//echo $func->getAumentoDescuento("3DC7DBA6-DEA5-4EA6-8FA9-BAC490617673",$pasajerosCotizacion);
 
+
+//PROBANDO LA FUNCION PARA GENERAR GUID DESDE PHP
+
+$func=new functions();
+
+echo $func->NewGuid();
 
 
 ?>
