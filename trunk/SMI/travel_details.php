@@ -66,9 +66,7 @@ $pathFtp="tpl/img/Administrador/";
 <script src="tpl/js/gen_validatorv4.js"></script>
 <link href="tpl/css/jquery.selectbox.css" type="text/css"
 	rel="stylesheet" />
-
 </head>
-
 <script language="JavaScript">
 
 	var nav4 = window.Event ? true : false;	
@@ -76,16 +74,55 @@ $pathFtp="tpl/img/Administrador/";
 	// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
 	var key = nav4 ? evt.which : evt.keyCode;
 	return (key <= 13 || (key >= 48 && key <= 57));
-
 }
-
 //-->
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FUNCIONES AJAX PARA LA ACTUALIZACION DINAMICA DE LOS RESULTADOS DEL CARRITO DE COMPRAS.
+function ajaxRequest(){
+	 var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+	 if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+	  for (var i=0; i<activexmodes.length; i++){
+	   try{
+	    return new ActiveXObject(activexmodes[i])
+	   }
+	   catch(e){
+	    //suppress error
+	   }
+	  }
+	 }
+	 else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+	  return new XMLHttpRequest()
+	 else
+	  return false
+	}
+var mygetrequest=new ajaxRequest();
+//FUNCION QUE ENVIA UNA PETICION AJAX UTILIZANDO UN METODO GET A UN FICHERO QUE SE ENCARGA DE RETORNAR LOS RESULTADOS EN FORMA DE ITEMS EN EL CARRITO DE COMPRAS.
+function generrarPedidoWeb(cb){	
+
+	var mygetrequest=new ajaxRequest()
+	mygetrequest.onreadystatechange=function(){
+	if (mygetrequest.readyState==4){
+	if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
+	//document.getElementById("temp").innerHTML=mygetrequest.responseText
+	}
+	else{
+	alert("An error has occured making the request")
+	}
+	}
+	}	
+	var categoria= cb.value;	
+	var estado="";	
+	if(cb.checked)
+	  estado="agregar";	
+	else
+	   estado="eliminar";
+	mygetrequest.open("GET", "logic/compare.php?tipo=1&categoria="+categoria+"&estado="+estado, true)
+	mygetrequest.send(null)
+	}	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 </head>
-
-
 <!--Start of Zopim Live Chat Script-->
-
 <script type="text/javascript">
 window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
@@ -93,8 +130,6 @@ _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
 $.src='//cdn.zopim.com/?g9y23H0LeKputTMayHiR1XCwQTEtPNI3';z.t=+new Date;$.
 type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
-
-
 <!--End of Zopim Live Chat Script-->
 <script type="text/javascript">
 
@@ -106,8 +141,7 @@ $(document).ready(function() {
 		'autoScale'			: false,
 		'transitionIn'		: 'elastic',
 		'transitionOut'		: 'elastic',
-		'type'				: 'iframe'
-		
+		'type'				: 'iframe'		
 	});
 	
 	$("#lightbox3").fancybox({
@@ -197,66 +231,55 @@ $(document).ready(function() {
 <form name="compra" id="compra" method="post" action="https://gateway2.pagosonline.net/apps/gateway/index.html"><!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
-//HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS.
+//HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS Y VALIDAMOS QUE SEAN MAYOR  QUE CERO Y MENOR QUE CUATRO
+
 if($_POST['PasajerosCotizados']!=0)
 {
 	$compra->HabilitarPasajeros($_POST['PasajerosCotizados']);
 	$guarda=true;
-	echo "<input type=\"hidden\" name=\"cantidadPasajeros\" id=\"cantidadPasajeros\" value=".$_POST['PasajerosCotizados']." />";
-	echo "<input type=\"hidden\" name=\"PrecioCotizado\" id=\"PrecioCotizado\" value=".$_POST['PrecioCotizado']." />";
-	//echo" PRECIO COTIZADO ".$_POST['PrecioCotizado'];
-	
-
+		
 }
 else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 {
-	echo "<h4>Es necesario cotizar al menos con un pasajero</h4>";
-	$guarda=false;
-	echo "<input type=\"hidden\" name=\"cantidadPasajeros\" id=\"cantidadPasajeros\"  value=".$_POST['PasajerosCotizados']." />";
+$guarda=false;
 }
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
-$id="IdPoliza-".$_POST['codigo'];
-
-
+$id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
 $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
-//echo $refVenta;
-$iva=0;
+$cantidadPasajeros=$_POST['PasajerosCotizados'];
+$iva=16;
 $baseDevolucionIva=0;
-$valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);
-//echo $valor;
-$moneda ="COP";
-$prueba = "1";
+$valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);//OBTENEMOS EL VALOR DE LA POLIZA
+$moneda ="COP";//ESPECIFICAMOS LA MONEDA PARA LA OPERACION.
+$prueba = "1";// ESPECIFICAMOS SI ES O NO AMBIENTE DE PRUEBAS
 $descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
 $emailComprador="info@mail.com";
+
 $firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
 $firma = md5($firma_cadena);
+//ESTA PAGINA ES IMPORTANTE POR QUE ALLI ES DONDE EL SISTEMA DE PAGOS ONLINE NOS RETORNA LA RESPUESTA DESPUES DE HABER
+//VERIFICADO LA TRANSACCION.
 $paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPago.php";
 
 
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
 			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
-			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 
-			<input	name=\"descripcion\" type=\"hidden\" value=". $descripcion ."> 
+			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 			 
 			<input	name=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
 			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
 			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
 			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
 			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
-			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 
-			<input  name=\"emailComprador\"	type=\"hidden\" value=". $emailComprador.">
+			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">";
-
-
-
-
 ?> <!--ENDS DETAILS BOX-->
 
 
@@ -294,7 +317,7 @@ echo"
 
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
-<input type="text" name="NombreFactu" id="" size="14" /></div>
+<input type="text" name="descripcion" id="" size="14" /></div>
 <div class="list"><label class="detail">Documento / Nit:</label><br />
 <input type="text" name="DocumentoFactu" id="" size="14" /></div>
 <div class="list"><label class="detail">Dirección:</label><br />
@@ -303,7 +326,8 @@ echo"
 <div class="list"><label class="detail">Teléfono fijo:</label><br />
 <input type="text" name="TelefonoFactu" id="" size="14"
 	onkeypress="return acceptNum(event)" /></div>
-    
+<div class="list"><label class="detail">Email:</label><br />
+<input type="text" name="emailComprador" id="" size="20" /></div>
 
 <table width="421" border="0">
   <tr>
@@ -324,11 +348,7 @@ echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" c
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+ 
   <tr>
     <td>He leido y acepto los
       <input type="checkbox" name="Condiciones" id="" /></td>
@@ -361,10 +381,13 @@ echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" c
   frmvalidator.addValidation("EmailEmergencia","req","Debe Ingresar Un E-mail-Contacto Emergencia.");
   frmvalidator.addValidation("EmailEmergencia","email","Debe Ingresar Un E-mail Válido-Contacto Emergencia."); 
   //FACTURACION
-  frmvalidator.addValidation("NombreFactu","req","Debe Ingresar El Nombre/Entidad-Facturación.");
+  frmvalidator.addValidation("descripcion","req","Debe Ingresar El Nombre/Entidad-Facturación.");
   frmvalidator.addValidation("DocumentoFactu","req","Debe Ingresar El Documento/Nit-Facturación."); 
   frmvalidator.addValidation("DireccionFactu","req","Debe Ingresar La Dirección-Facturación.");
   frmvalidator.addValidation("TelefonoFactu","req","Debe Ingresar El Teléfono-Facturación.");
+  frmvalidator.addValidation("emailComprador","maxlen=50");
+  frmvalidator.addValidation("emailComprador","req","Debe Ingresar Un E-mail-Contacto Emergencia.");
+  frmvalidator.addValidation("emailComprador","email","Debe Ingresar Un E-mail Válido-Contacto Emergencia."); 
   //TERMINOS Y CONDICIONES
   //frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");
   

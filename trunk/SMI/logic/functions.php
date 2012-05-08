@@ -572,7 +572,21 @@ public function NewGuid($namespace = '') {
      return $guid;
    }
 
-
+   
+public function str2num($str)
+ { 
+       if (strpos($str, '.') !== FALSE && strpos($str,    ',') !== FALSE && strpos($str, '.') < strpos($str,','))
+           { 
+             $str = str_replace('.','',$str); 
+             $str = strtr($str,',','.');            
+         } 
+         else
+         { 
+             $str = str_replace(',','',$str);            
+         } 
+         
+         return (float)$str; 
+ }
 	/**
 	 * METODO QUE RETORNA EL FOOTER DE LA PAGINA- SE IMPLEMENTO ORIENTADO A OBJETOS PARA UN FACIL AJUSTE
 	 *

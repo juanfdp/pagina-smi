@@ -30,7 +30,7 @@ $func=new functions();
 
 $func=new functions();
 
-echo $func->NewGuid();
-
+//echo $func->NewGuid();
+echo $func->str2num('48.2');
 
 ?>

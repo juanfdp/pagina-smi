@@ -179,10 +179,15 @@ function agregarParaComparar(cb){
 	}	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function goToTravelDetails(numeroPoliza)
+function goToTravelDetails(numeroPoliza,cantidadPasajeros)
  {
+	 //CONTROLAMOS LA CANTIDAD DE PASAJEROS, NO SE PERMITE REALIZAR  LA COMPRA SI NO SE TIENE MAS DE UN PASAJERO COTIZADO
+	 if(cantidadPasajeros>0){
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";
 	 document.formulario.submit(numeroPoliza);
+	 }
+	 else
+		 alert("Para poder comprar, se debe cotizar al menos con un pasajero");
  }
 
 
@@ -314,7 +319,7 @@ function goToTravelDetails(numeroPoliza)
 					$pasajerosCotizacion[]=$_POST['f_oldsNums2']!= null ?$_POST['f_oldsNums2']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums3']!= null ?$_POST['f_oldsNums3']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums4']!= null ?$_POST['f_oldsNums4']:"";
-					
+
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 				}
@@ -336,8 +341,8 @@ function goToTravelDetails(numeroPoliza)
 					$pasajerosCotizacion[]=$_GET['edad2']!= null ?$_GET['edad2']:"";;
 					$pasajerosCotizacion[]=$_GET['edad3']!= null ?$_GET['edad3']:"";;
 					$pasajerosCotizacion[]=$_GET['edad4']!= null ?$_GET['edad4']:"";;
-					
-					
+
+
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 
@@ -474,64 +479,89 @@ function goToTravelDetails(numeroPoliza)
 			<div id="magicResult">
 				<!--- START HERE THE QUOTE RESULT --->
 				<!--START HERE A FOR-WHILE --->
+			<?php
+			//EJECUTAMOS LA CONSULTA DEPENDIENDO DE LOS PARAMETEROS RECIBIDOS POR METODO GET o POST
+			$totalResultados=$cotizador->CountListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4);
+			$total_paginas = ceil($totalResultados / $TAMANO_PAGINA); //CALCULAMOS EL TOTAL DE LAS PAGINAS
+			$rs=$cotizador->FillByListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4,$inicio,$inicio+$TAMANO_PAGINA);
+			//CALCULAMOS DONDE SE DEBE COMENZAR.
+			if($pagina==1) $inicioPagina= $pagina;
+			else $inicioPagina= ($TAMANO_PAGINA)*($pagina-1);
+			//CALCULAMOS EL FIN DE PAGINA.
+			$finPagina=$inicioPagina+$TAMANO_PAGINA;
+			//RECORREMOS LOS RESULTADOS VALIDANDO QUE YA NO SE HAYA IMPRESO EL ITEM
+			$contador=0;
+
+			foreach($rs as $k => $row) {
+				if($contador>=$inicioPagina &&  $contador< $finPagina){
+					//SI SE ENCUENTRA PARAMETRIZADAS LA COBERTURAS  LAS IMPRIMIMOS.
+					$rscoberturas=$cotizador->FillCoberturasByIdPoliza($row[5]);
+					//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
+					$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
 
 
-				
-					<?php
-					//EJECUTAMOS LA CONSULTA DEPENDIENDO DE LOS PARAMETEROS RECIBIDOS POR METODO GET o POST
-					$totalResultados=$cotizador->CountListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4);
-					$total_paginas = ceil($totalResultados / $TAMANO_PAGINA); //CALCULAMOS EL TOTAL DE LAS PAGINAS
-					$rs=$cotizador->FillByListadoConEdad($func->calcularDias($salida, $regreso), $tipoviaje, $destino, (int)$edad1,(int)$edad2,(int)$edad3,(int)$edad4,$inicio,$inicio+$TAMANO_PAGINA);
-					//CALCULAMOS DONDE SE DEBE COMENZAR.
-					if($pagina==1) $inicioPagina= $pagina;
-					else $inicioPagina= ($TAMANO_PAGINA)*($pagina-1);
-					//CALCULAMOS EL FIN DE PAGINA.
-					$finPagina=$inicioPagina+$TAMANO_PAGINA;
-					//RECORREMOS LOS RESULTADOS VALIDANDO QUE YA NO SE HAYA IMPRESO EL ITEM
-					$contador=0;
 
-					foreach($rs as $k => $row) {
-						if($contador>=$inicioPagina &&  $contador< $finPagina){
-							//SI SE ENCUENTRA PARAMETRIZADAS LA COBERTURAS  LAS IMPRIMIMOS.
-							$rscoberturas=$cotizador->FillCoberturasByIdPoliza($row[5]);
-							//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
-							$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
-							if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
-								$precio=$guardaCotizacion;
-								
-								$resultadoayd=$func->getAumentoDescuento($row[0], $pasajerosCotizacion);//OBTENEMOS LOS AUMENTOS Y DESCUENTOS CORRESPONDIENTES TANTO POR ID DE LA POLIZA Y CANTIDAD PASAJEROS.
-								$resultadoayd=explode("-", trim($resultadoayd));
-								
-								$aumento=$resultadoayd[1]/100;
-								$descuentoInterno=$resultadoayd[0]/100;//OBTENEMOS EL DESCUENTO PARA OPERAR
-								$precio= ($precio+ ($aumento*$precio));//APLICAMOS EL AUMENTO 
-								$precio= ($precio- ($descuentoInterno*$precio));//APLICAMOS EL AUMENTO 	
-								$precio= $precio *$totalPasajeros;					
-								$descuento=$resultadoayd[0];
-								//echo "<br>";
-								//echo "AUMENTO".$aumento;					
-								//echo "PRECIO". $guardaCotizacion;
-								echo"
+
+					if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
+
+						//echo "TOTAL  PASAJEROS ".$totalPasajeros."<br>";
+						if($totalPasajeros>0){
+							$precio = $guardaCotizacion*$totalPasajeros;
+						}
+						else{
+							$precio=$guardaCotizacion;
+						}
+						$resultadoayd=$func->getAumentoDescuento($row[0], $pasajerosCotizacion);//OBTENEMOS LOS AUMENTOS Y DESCUENTOS CORRESPONDIENTES TANTO POR ID DE LA POLIZA Y CANTIDAD PASAJEROS.
+						$resultadoayd=explode("-", trim($resultadoayd));//REALIZAMOS SPLIT A LOS AUMENTOS Y DESCUENTOS.
+						$aumento=(float)$resultadoayd[1]/100;
+						$descuento=$resultadoayd[0];//PARA IMPRIMIR
+						$descuentoInterno=(float)$descuento/100;//OBTENEMOS EL DESCUENTO PARA OPERAR
+
+						// echo gettype( (float)$guardaCotizacion), "\n";
+						//$minuevovalor= floatval($var) $guardaCotizacion * $guardaCotizacion;
+
+						//echo "PRECIO ANTES DE DESCUENTOS Y AUMENTOS - ".$minuevovalor ."<br>";
+						//echo "AUMENTO".$aumento."<br>";
+						//echo "DESCUENTO".$descuento."<br>";
+
+						if($aumento!=0){
+
+							$precio= $precio + ($aumento*$precio);//APLICAMOS EL AUMENTO
+
+						}
+
+						if($descuento!=0){
+							$precio= $precio- ($descuentoInterno*$precio);//APLICAMOS EL AUMENTO
+
+						}
+
+						//VALIDAMOS LA CANTIDAD DE PASAJEROS
+
+
+						//echo "<br>";
+						//echo "AUMENTO".$aumento;
+						//echo "PRECIO". $guardaCotizacion;
+						echo"
 	
 <form name=\"formulario\" id=\"formulario\" action=\"travel_details.php\" method=\"post\" >
 <div id=\"magicResultBox\">
 <div id=\"magicCount\">
 <span>".$contador ."</span>
 <h1>".$precio."</h1>";
-if($descuento!=0)
-echo"<h2>USD %".$descuento."off</h2>";
-else 
-echo"<h2>USD  </h2>";
-
-echo"
+						//VALIDAMOS LA IMPRESION DEL DESCUENTO.
+						if($descuento!=0)
+						echo"<h2>USD %".$descuento."off</h2>";
+						else
+						echo"<h2>USD</h2>";
+						echo"
 </div>
 <div id=\"magicDesc\">
 <ul>";		
-								//RECORREMOS E IMPRIMIMOS LAS COBERTURAS , SI LAS TIENE
-								while (!$rscoberturas->EOF) {
-									echo "<li> ".$rscoberturas->fields[3]." </li>";
-									$rscoberturas->MoveNext();}
-									echo "</ul>
+						//RECORREMOS E IMPRIMIMOS LAS COBERTURAS , SI LAS TIENE
+						while (!$rscoberturas->EOF) {
+							echo "<li> ".$rscoberturas->fields[3]." </li>";
+							$rscoberturas->MoveNext();}
+							echo "</ul>
 <span>Ver detalle<br />
 <a href=logic/pdfviewer.php?categoria=".$row[5]."><img src=\"tpl/img/pdfIcon.png\" /></a>
 </span>
@@ -546,45 +576,45 @@ echo"
 <input type=\"hidden\" name=\"IdPoliza-".$contador."\"  value=". $row[0] ." />
 </div>
 <label for=\"\">";
-									echo $cotizador->Getclausulado($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE EL CLAUSULADO  CORRESPONDIENTE
-									echo "
+							echo $cotizador->Getclausulado($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE EL CLAUSULADO  CORRESPONDIENTE
+							echo "
 </label
 ></fieldset>
 </div>
 <div class=\"choosePlan\">
 <div class=\"chooseImg\">";
-									echo $cotizador->Getimg($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE LA IMAGEN CORRESPONDIENTE
-									echo "
+							echo $cotizador->Getimg($row[9]);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE LA IMAGEN CORRESPONDIENTE
+							echo "
 </div>
 
 <div class=\"chooseBtn\">
 <input type=\"hidden\" name=\"PasajerosCotizados\"  value=". $totalPasajeros  ." /> 
-<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPurchase\"  value=\"Comprar\"   onclick=\"goToTravelDetails(".$contador.")\" />
+<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPurchase\"  value=\"Comprar\"   onclick=\"goToTravelDetails(".$contador.",".$totalPasajeros.")\" />
 <form>
 </div>
 </div>
 </div>
 </div>
  ";	
-							}
 					}
-					$contador++;
 				}
+				$contador++;
+			}
 
-				// MUESTRA EL PAGINADOR
-	if ($total_paginas > 1){ 
-     for ($i=1;$i<=$total_paginas;$i++){ 
-        if ($pagina == $i) 
-           //si muestro el �ndice de la p�gina actual, no coloco enlace 
-           echo $pagina . " "; 
-        else 
-           //si el �ndice no corresponde con la p�gina mostrada actualmente, coloco el enlace para ir a esa p�gina 
-           	echo "<a href='quotes_result.php?estado=1&st=" . $i . "&origen=" . $origen . "&destino=" . $destino . "&salida=" . $salida . "&regreso=" . $regreso . "&tipoviaje=" . $tipoviaje."&email=" . $email."&edad1=" . $edad1."&edad2=" . $edad2."&edad3=" . $edad3."&edad4=" . $edad4. "'>" . $i . "</a> "; 
-     } 
- }
+			// MUESTRA EL PAGINADOR
+			if ($total_paginas > 1){
+				for ($i=1;$i<=$total_paginas;$i++){
+					if ($pagina == $i)
+					//si muestro el �ndice de la p�gina actual, no coloco enlace
+					echo $pagina . " ";
+					else
+					//si el �ndice no corresponde con la p�gina mostrada actualmente, coloco el enlace para ir a esa p�gina
+					echo "<a href='quotes_result.php?estado=1&st=" . $i . "&origen=" . $origen . "&destino=" . $destino . "&salida=" . $salida . "&regreso=" . $regreso . "&tipoviaje=" . $tipoviaje."&email=" . $email."&edad1=" . $edad1."&edad2=" . $edad2."&edad3=" . $edad3."&edad4=" . $edad4. "'>" . $i . "</a> ";
+				}
+			}
 
 
-?>
+			?>
 				<!--ENDS FOR-WHILE BUCLE--->
 			</div>
 			<!--- ENDS THE QUOTE RESULT --->
@@ -592,9 +622,9 @@ echo"
 		<!--ENDS THE FULL BODY CONTAINER-->
 		<!---INIT THE FOOTER CONTENT HERE-->
 		<?php
-//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
-echo $func->getFooter(); 
-?>
+		//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+		echo $func->getFooter();
+		?>
 		<!--ENDS ALL FOOTER CONTAINS-->
 
 		<!--ENDS WRAPPER-->
