@@ -39,19 +39,19 @@ class compra
                                                          
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n1\" id=\"\" size=\"14\"  maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n1\" id=\"n1\" size=\"14\"  maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a1\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a1\" id=\"a1\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d1\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em1\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em1\" id=\"em1\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -94,24 +94,24 @@ class compra
                             <div class=\"list\">
                                 <label class=\"detail\">Pasajero #</label>
                                 <div class=\"detailNum\">1</div>
-                            </div>      
+                            </div>                                                               
                                                          
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n1\" id=\"\" size=\"14\"  maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n1\" id=\"n1\" size=\"14\"  maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a1\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a1\" id=\"a1\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d1\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em1\" id=\"\" size=\"18\" maxlength=\"50\" />	 
-                            </div>                            
+                                <input type=\"text\" name=\"em1\" id=\"em1\" size=\"18\" maxlength=\"50\" />	 
+                            </div>                              
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
@@ -155,19 +155,19 @@ class compra
                                                         
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n2\" id=\"n2\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a2\" id=\"a2\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d2\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d2\" id=\"d2\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em2\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em2\" id=\"em2\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -214,19 +214,19 @@ class compra
                                                          
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n1\" id=\"\" size=\"14\"  maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n1\" id=\"n1\" size=\"14\"  maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a1\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a1\" id=\"a1\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d1\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em1\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em1\" id=\"em1\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -271,19 +271,19 @@ class compra
                                                         
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n2\" id=\"n2\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a2\" id=\"a2\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d2\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d2\" id=\"d2\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em2\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em2\" id=\"em2\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -328,19 +328,19 @@ class compra
                                                        
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n3\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n3\" id=\"n3\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a3\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a3\" id=\"a3\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d3\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d3\" id=\"d3\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em3\" id=\"\" size=\"18\" maxlength=\"50\"/>	 
+                                <input type=\"text\" name=\"em3\" id=\"em3\" size=\"18\" maxlength=\"50\"/>	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -387,19 +387,19 @@ class compra
                                                          
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n1\" id=\"\" size=\"14\"  maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n1\" id=\"n1\" size=\"14\"  maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a1\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a1\" id=\"a1\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d1\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em1\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em1\" id=\"em1\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -444,19 +444,19 @@ class compra
                                                         
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n2\" id=\"n2\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a2\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a2\" id=\"a2\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d2\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d2\" id=\"d2\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em2\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em2\" id=\"em2\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -501,19 +501,19 @@ class compra
                                                        
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n3\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n3\" id=\"n3\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a3\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"a3\" id=\"a3\" size=\"14\" maxlength=\"25\" />	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d3\" id=\"\" size=\"8\" maxlength=\"15\" />	 
+                                <input type=\"text\" name=\"d3\" id=\"d3\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em3\" id=\"\" size=\"18\" maxlength=\"50\"/>	 
+                                <input type=\"text\" name=\"em3\" id=\"em3\" size=\"18\" maxlength=\"50\"/>	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
@@ -558,19 +558,19 @@ class compra
                                                       
                             <div class=\"list\">
                                 <label class=\"detail\">Nombre:</label><br />
-                                <input type=\"text\" name=\"n4\" id=\"\" size=\"14\" maxlength=\"25\" />	 
+                                <input type=\"text\" name=\"n4\" id=\"n4\" size=\"14\" maxlength=\"25\" />	 
                             </div>                             
                             <div class=\"list\">
                                 <label class=\"detail\">Apellido:</label><br />
-                                <input type=\"text\" name=\"a4\" id=\"\" size=\"14\" maxlength=\"25\"/>	 
+                                <input type=\"text\" name=\"a4\" id=\"a4\" size=\"14\" maxlength=\"25\"/>	 
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d4\" id=\"\" size=\"8\" maxlength=\"15\"  />	 
+                                <input type=\"text\" name=\"d4\" id=\"d4\" size=\"8\" maxlength=\"15\"  />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
-                                <input type=\"text\" name=\"em4\" id=\"\" size=\"18\" maxlength=\"50\" />	 
+                                <input type=\"text\" name=\"em4\" id=\"em4\" size=\"18\" maxlength=\"50\" />	 
                             </div>                            
                             <div class=\"list\">
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />

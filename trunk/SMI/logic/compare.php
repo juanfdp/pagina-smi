@@ -47,7 +47,6 @@ tr.d1 td {
 
 <body>
 <?php
-
 include 'functions.php';
 include 'ccompare.php';
 $com=new ccompare();
@@ -60,7 +59,6 @@ if($tipo==1){// AGREGAR A LA COMPARACION
 	$categoria=(int)$_GET['categoria'];
 	$estado=$_GET['estado'];//OBTENEMOS EL ESTADO
 
-	//echo "holaaaaa ".$estado;
 	if((!$functions->validarExistenciaItem($_SESSION['categoriasSeleccionandas'], $categoria))&&(count($categoriasSeleccionandas)<4)&&($estado=="agregar"))
 	{
 		$categoriasSeleccionandas[]=$categoria;

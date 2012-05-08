@@ -97,7 +97,8 @@ function ajaxRequest(){
 	}
 var mygetrequest=new ajaxRequest();
 //FUNCION QUE ENVIA UNA PETICION AJAX UTILIZANDO UN METODO GET A UN FICHERO QUE SE ENCARGA DE RETORNAR LOS RESULTADOS EN FORMA DE ITEMS EN EL CARRITO DE COMPRAS.
-function generrarPedidoWeb(cb){	
+function generarPedidoWeb(CantidadPasajeros){	
+	
 
 	var mygetrequest=new ajaxRequest()
 	mygetrequest.onreadystatechange=function(){
@@ -109,14 +110,57 @@ function generrarPedidoWeb(cb){
 	alert("An error has occured making the request")
 	}
 	}
-	}	
-	var categoria= cb.value;	
-	var estado="";	
-	if(cb.checked)
-	  estado="agregar";	
-	else
-	   estado="eliminar";
-	mygetrequest.open("GET", "logic/compare.php?tipo=1&categoria="+categoria+"&estado="+estado, true)
+	}
+	//alert(CantidadPasajeros);	
+
+	
+	
+	var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
+	var ApellidoEmergencia=encodeURIComponent(document.getElementById("ApellidoEmergencia").value)
+	var TelefonoEmergencia=encodeURIComponent(document.getElementById("TelefonoEmergencia").value)	
+	var EmailEmergencia=encodeURIComponent(document.getElementById("EmailEmergencia").value)
+	
+	var TelefonoContacto=encodeURIComponent(document.getElementById("TelefonoContacto").value)
+	var CelularContacto=encodeURIComponent(document.getElementById("CelularContacto").value)	
+	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)	
+	
+	var NombreFactu=encodeURIComponent(document.getElementById("NombreFactu").value)
+	var DocumentoFactu=encodeURIComponent(document.getElementById("DocumentoFactu").value)
+	var DireccionFactu=encodeURIComponent(document.getElementById("DireccionFactu").value)
+	var TelefonoFactu=encodeURIComponent(document.getElementById("TelefonoFactu").value)
+	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
+	
+	
+	
+	
+	if(CantidadPasajeros==1){
+
+		
+
+		
+	}
+	
+	else if (CantidadPasajeros==2){
+
+
+
+		
+	}
+	
+	else if (CantidadPasajeros==3){
+
+
+
+		
+	}
+	
+	else if (CantidadPasajeros==4){
+
+		
+		
+	}				
+	 document.formulario.submit(numeroPoliza);
+	//mygetrequest.open("GET", "logic/generarPedido.php?tipo=1&categoria="+categoria+"&estado="+estado, true)
 	mygetrequest.send(null)
 	}	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -267,7 +311,6 @@ $firma = md5($firma_cadena);
 //VERIFICADO LA TRANSACCION.
 $paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPago.php";
 
-
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
 			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
@@ -287,27 +330,27 @@ echo"
 <div id="dataPerCol">
 <h4>Datos de contacto - viajeros:</h4>
 <div class="list"><label class="detail">Teléfono fijo:</label><br />
-<input type="text" name="TelefonoContacto" value="" size="12"
+<input type="text" name="TelefonoContacto"  id="TelefonoContacto"value="" size="12"
 	onkeypress="return acceptNum(event)" /></div>
 <div class="list"><label class="detail">Teléfono Movil:</label><br />
-<input type="text" name="CelularContacto" id="" size="12"
+<input type="text" name="CelularContacto" id="CelularContacto" size="12"
 	onkeypress="return acceptNum(event)" /></div>
 <div class="list"><label class="detail">Dirección:</label><br />
-<input type="text" name="DireccionContacto" id="" size="18" /></div>
+<input type="text" name="DireccionContacto" id="DireccionContacto" size="18" /></div>
 </div>
 
 <div id="dataPerEmer">
 <h4>Datos de contacto emergencias:</h4>
 <div class="list"><label class="detail">Nombre:</label><br />
-<input type="text" name="NombreEmergencia" id="" size="14" /></div>
+<input type="text" name="NombreEmergencia" id="NombreEmergencia" size="14" /></div>
 <div class="list"><label class="detail">Apellido:</label><br />
-<input type="text" name="ApellidoEmergencia" id="" size="14" /></div>
+<input type="text" name="ApellidoEmergencia" id="ApellidoEmergencia" size="14" /></div>
 <div class="list"><label class="detail">Teléfono:</label><br />
-<input type="text" name="TelefonoEmergencia" id="" size="14"
+<input type="text" name="TelefonoEmergencia" id="TelefonoEmergencia" size="14"
 	onkeypress="return acceptNum(event)" /></div>
 
 <div class="list"><label class="detail">Email:</label> <br />
-<input type="text" name="EmailEmergencia" id="" size="16" /></div>
+<input type="text" name="EmailEmergencia" id="EmailEmergencia"size="16" /></div>
 </div>
 
 </div>
@@ -317,23 +360,24 @@ echo"
 
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
-<input type="text" name="descripcion" id="" size="14" /></div>
+<input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
 <div class="list"><label class="detail">Documento / Nit:</label><br />
-<input type="text" name="DocumentoFactu" id="" size="14" /></div>
+<input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
 <div class="list"><label class="detail">Dirección:</label><br />
-<input type="text" name="DireccionFactu" id="" size="14" /></div>
+<input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
 
 <div class="list"><label class="detail">Teléfono fijo:</label><br />
-<input type="text" name="TelefonoFactu" id="" size="14"
+<input type="text" name="TelefonoFactu" id="TelefonoFactu" size="14"
 	onkeypress="return acceptNum(event)" /></div>
 <div class="list"><label class="detail">Email:</label><br />
-<input type="text" name="emailComprador" id="" size="20" /></div>
+<input type="text" name="emailComprador" id="emailComprador" size="20" /></div>
 
 <table width="421" border="0">
   <tr>
     <th scope="col"><?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
-echo"	<div id=\"paymentIcon\"><input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" /></div>";
+echo"	<div id=\"paymentIcon\">
+<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" onclick=\"generarPedidoWeb(".$cantidadPasajeros.")\"/></div>";
 ?></th>
     <th scope="col">&nbsp;</th>
     <th scope="col">&nbsp;</th>
