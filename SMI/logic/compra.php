@@ -622,18 +622,42 @@ class compra
 
 
 	
-
+	
+	
+/**
+	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
+	 */
+	public function RegistrarPedidoWeb($arregloPasajeros,$arregloPedido)
+	{
+		try
+		{
+			//CREAMOS EL PEDIDO 
+			
+			
+			
+			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO			
+			
+			
+			
+			$recordSett = &$this->conexion->conectarse()->Execute("SELECT  TOP 5  Coberturas.Id, Coberturas.Descripcion, Coberturas.Estado, CategoriaCoberturas.Descripcion AS ValorCobertura
+			FROM  CategoriaCoberturas INNER JOIN  Coberturas ON CategoriaCoberturas.IdCobertura = Coberturas.Id
+			WHERE IdCategoria =". $idCategoria." ORDER BY Coberturas.Codigo");	
+			return $recordSett;
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
 	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR TODA LA INFORMACION EN CRECER, SIEMPRE Y CUANDO LA TRANSACCION SEA SATISFACTORIA
 	 */
-	public function RegistrarTransferencia($arregloPasajeros,$arregloFacturaion,$arregloEmergencia,$arregloProducto)
+	public function GenerarPedidoCrecer($arregloPasajeros,$arregloFacturaion,$arregloEmergencia,$arregloProducto)
 	{
 		try
 		{
 			//CREAMOS EL PEDIDO EN CRECER
-			
-			
-			
 			
 			
 			
@@ -643,16 +667,12 @@ class compra
 			
 			
 			
-			//CREAMOS LA FACTURA
+			//CREAMOS LA FACTURA			
 			
 			
 			
 			
-			
-			//ASOCIAMOS LA FACTURA CON EL PEDIDO 
-			
-			
-			
+			//ASOCIAMOS LA FACTURA CON EL PEDIDO 				
 			
 			
 			
@@ -669,18 +689,5 @@ class compra
 			return false;
 		}
 	}
-	
-
-
-	
-	
-
-
-
-
-
-
-
-
-
 }
+?>
