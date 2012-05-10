@@ -98,9 +98,13 @@ function ajaxRequest(){
 var mygetrequest=new ajaxRequest();
 var cantidadpasajeros=0;
 //FUNCION QUE ENVIA UNA PETICION AJAX UTILIZANDO UN METODO GET A UN FICHERO QUE SE ENCARGA DE RETORNAR LOS RESULTADOS EN FORMA DE ITEMS EN EL CARRITO DE COMPRAS.
-function setCantidadPasajeros(CantidadPasajeros){	
-	cantidadpasajeros=CantidadPasajeros;
+function setPedidoWeb(cp){
+	cantidadpasajeros=cp;	
+	
 }
+
+
+
 
 function generarPedido(){	
 	
@@ -132,7 +136,12 @@ function generarPedido(){
 	var TelefonoFactu=encodeURIComponent(document.getElementById("TelefonoFactu").value)
 	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
 	var Condiciones=encodeURIComponent(document.getElementById("Condiciones").value)
+	var idPoliza=encodeURIComponent(document.getElementById("idPoliza").value)
 	
+	
+	
+	
+	alert("cantidad pasajeros"+cantidadpasajeros)
 	if(cantidadpasajeros==1){
 		
 
@@ -140,9 +149,9 @@ function generarPedido(){
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("fndia1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("fnmes1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("fnanio1").value)
+		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
+		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
 		
  	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
  		 	
@@ -165,7 +174,10 @@ function generarPedido(){
 				+"&em1="+em1	
 				+"&fndia1="+fndia1	
 				+"&fnmes1="+fnmes1	
-				+"&fnanio1="+fnanio1					
+				+"&fnanio1="+fnanio1
+				+"&cantidadpasajeros="+cantidadpasajeros
+				+"&idPoliza="+idPoliza
+									
 				, true)		
 
 	}
@@ -177,17 +189,17 @@ function generarPedido(){
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("fndia1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("fnmes1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("fnanio1").value)
+		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
+		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
 		
 		var n2=encodeURIComponent(document.getElementById("n2").value)
 		var a2=encodeURIComponent(document.getElementById("a2").value)
 		var d2=encodeURIComponent(document.getElementById("d2").value)
 		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("fndia2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("fnmes2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("fnanio2").value)
+		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
+		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
+		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
 		
 		
  	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
@@ -220,7 +232,8 @@ function generarPedido(){
 				+"&fndia2="+fndia2	
 				+"&fnmes2="+fnmes2	
 				+"&fnanio2="+fnanio2	
-								
+				+"&cantidadpasajeros="+cantidadpasajeros
+				+"&idPoliza="+idPoliza			
 				, true)	
 
 				
@@ -232,25 +245,25 @@ function generarPedido(){
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("fndia1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("fnmes1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("fnanio1").value)
+		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
+		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
 		
 		var n2=encodeURIComponent(document.getElementById("n2").value)
 		var a2=encodeURIComponent(document.getElementById("a2").value)
 		var d2=encodeURIComponent(document.getElementById("d2").value)
 		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("fndia2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("fnmes2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("fnanio2").value)
+		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
+		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
+		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
 		
 		var n3=encodeURIComponent(document.getElementById("n3").value)
 		var a3=encodeURIComponent(document.getElementById("a3").value)
 		var d3=encodeURIComponent(document.getElementById("d3").value)
 		var em3=encodeURIComponent(document.getElementById("em3").value)			
-		var fndia3=encodeURIComponent(document.getElementById("fndia3").value)		
-		var fnmes3=encodeURIComponent(document.getElementById("fnmes3").value)		
-		var fnanio3=encodeURIComponent(document.getElementById("fnanio3").value)
+		var fndia3=encodeURIComponent(document.getElementById("f_dateDD3").value)		
+		var fnmes3=encodeURIComponent(document.getElementById("f_dateMM3").value)		
+		var fnanio3=encodeURIComponent(document.getElementById("f_dateYY3").value)
 		
 		
  	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
@@ -290,8 +303,10 @@ function generarPedido(){
 				+"&em3="+em3	
 				+"&fndia3="+fndia3	
 				+"&fnmes3="+fnmes3	
-				+"&fnanio3="+fnanio3		
-								
+				+"&fnanio3="+fnanio3	
+				+"&cantidadpasajeros="+cantidadpasajeros	
+				+"&idPoliza="+idPoliza
+							
 				, true)	
 
 		
@@ -303,33 +318,33 @@ function generarPedido(){
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("fndia1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("fnmes1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("fnanio1").value)
+		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
+		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
 		
 		var n2=encodeURIComponent(document.getElementById("n2").value)
 		var a2=encodeURIComponent(document.getElementById("a2").value)
 		var d2=encodeURIComponent(document.getElementById("d2").value)
 		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("fndia2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("fnmes2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("fnanio2").value)
+		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
+		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
+		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
 		
 		var n3=encodeURIComponent(document.getElementById("n3").value)
 		var a3=encodeURIComponent(document.getElementById("a3").value)
 		var d3=encodeURIComponent(document.getElementById("d3").value)
 		var em3=encodeURIComponent(document.getElementById("em3").value)			
-		var fndia3=encodeURIComponent(document.getElementById("fndia3").value)		
-		var fnmes3=encodeURIComponent(document.getElementById("fnmes3").value)		
-		var fnanio3=encodeURIComponent(document.getElementById("fnanio3").value)
+		var fndia3=encodeURIComponent(document.getElementById("f_dateDD3").value)		
+		var fnmes3=encodeURIComponent(document.getElementById("f_dateMM3").value)		
+		var fnanio3=encodeURIComponent(document.getElementById("f_dateYY3").value)
 		
 		var n4=encodeURIComponent(document.getElementById("n4").value)
 		var a4=encodeURIComponent(document.getElementById("a4").value)
 		var d4=encodeURIComponent(document.getElementById("d4").value)
 		var em4=encodeURIComponent(document.getElementById("em4").value)			
-		var fndia4=encodeURIComponent(document.getElementById("fndia4").value)		
-		var fnmes4=encodeURIComponent(document.getElementById("fnmes4").value)		
-		var fnanio4=encodeURIComponent(document.getElementById("fnanio4").value)
+		var fndia4=encodeURIComponent(document.getElementById("f_dateDD4").value)		
+		var fnmes4=encodeURIComponent(document.getElementById("f_dateMM4").value)		
+		var fnanio4=encodeURIComponent(document.getElementById("f_dateYY4").value)
 		
 		
  	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
@@ -377,25 +392,13 @@ function generarPedido(){
 				+"&em4="+em4	
 				+"&fndia4="+fndia4	
 				+"&fnmes4="+fnmes4	
-				+"&fnanio4="+fnanio4		
-								
+				+"&fnanio4="+fnanio4
+				+"&cantidadpasajeros="+cantidadpasajeros		
+				+"&idPoliza="+idPoliza							
 				, true)
 	}
 	mygetrequest.send(null)
-	
-	alert("Form is Submited");	
-	}	
-
-function function2() {
-
-alert("heyyy te vas?")
-    window.open("http://www.java2s.com/", "", "width=300, height=200, left=200, noresize, top=200")
-}
-
-
-
-
-
+	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 </head>
@@ -504,8 +507,8 @@ $(document).ready(function() {
 <div id="travelDtBox">
 <h4>Datos del viajero:</h4>
 
-
-<form name="compra" id="compra" method="post" action="https://gateway2.pagosonline.net/apps/gateway/index.html"><!--START DETAILS BOX--->
+<form name="compra" id="compra" method="post" action="https://gateway2.pagosonline.net/apps/gateway/index.html">
+<form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
 //HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS Y VALIDAMOS QUE SEAN MAYOR  QUE CERO Y MENOR QUE CUATRO
@@ -514,7 +517,6 @@ if($_POST['PasajerosCotizados']!=0)
 {
 	$compra->HabilitarPasajeros($_POST['PasajerosCotizados']);
 	$guarda=true;
-		
 }
 else// SI NO SE HAN INGRESADO LOS PASAJEROS NO SE PUEDE PROCEDER.
 {
@@ -526,6 +528,7 @@ $guarda=false;
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
+$idPoliza=str_ireplace("-", "", $idPoliza);
 $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
@@ -537,7 +540,6 @@ $moneda ="COP";//ESPECIFICAMOS LA MONEDA PARA LA OPERACION.
 $prueba = "1";// ESPECIFICAMOS SI ES O NO AMBIENTE DE PRUEBAS
 $descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
 $emailComprador="info@mail.com";
-
 $firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
 $firma = md5($firma_cadena);
 //ESTA PAGINA ES IMPORTANTE POR QUE ALLI ES DONDE EL SISTEMA DE PAGOS ONLINE NOS RETORNA LA RESPUESTA DESPUES DE HABER
@@ -546,16 +548,17 @@ $paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPag
 
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
-			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
+			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 			 
 			<input	name=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
 			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
 			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
 			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
-			<input name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
+			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
-			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">";
+			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">
+			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">";	
 ?> <!--ENDS DETAILS BOX-->
 
 
@@ -594,7 +597,9 @@ echo"
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
 <input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
-<div class="list"><label class="detail">Documento / Nit:</label><br />
+<div class="list"><label class
+
+E3SADFSADFASDFASDFSAD="detail">Documento / Nit:</label><br />
 <input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
 <div class="list"><label class="detail">Dirección:</label><br />
 <input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
@@ -612,7 +617,8 @@ echo"
 <?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
 echo"	<div id=\"paymentIcon\">
-<input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" onclick=\"setCantidadPasajeros(".$cantidadPasajeros.")\"/></div>";
+<input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" \"/>
+</div>";
 ?></form>
 <script language="JavaScript" type="text/javascript"
 	xml:space="preserve">//<![CDATA[

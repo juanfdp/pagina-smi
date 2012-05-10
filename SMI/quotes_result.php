@@ -319,6 +319,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 					$pasajerosCotizacion[]=$_POST['f_oldsNums2']!= null ?$_POST['f_oldsNums2']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums3']!= null ?$_POST['f_oldsNums3']:"";
 					$pasajerosCotizacion[]=$_POST['f_oldsNums4']!= null ?$_POST['f_oldsNums4']:"";
+					
 
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
