@@ -57,7 +57,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia1\" id=\"f_dateDD\">
+                                                <select name=\"fndia1\" id=\"f_dateDD1\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -66,7 +66,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes1\" id=\"f_dateMM\">
+                                                <select name=\"fnmes1\" id=\"f_dateMM1\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -76,7 +76,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio1\" id=\"f_dateYY\">
+                                                <select name=\"fnanio1\" id=\"f_dateYY1\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -116,7 +116,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia1\" id=\"f_dateDD\">
+                                                <select name=\"fndia1\" id=\"f_dateDD1\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -125,7 +125,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes1\" id=\"f_dateMM\">
+                                                <select name=\"fnmes1\" id=\"f_dateMM1\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -135,7 +135,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio1\" id=\"f_dateYY\">
+                                                <select name=\"fnanio1\" id=\"f_dateYY1\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -173,7 +173,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia2\" id=\"f_dateDD\">
+                                                <select name=\"fndia2\" id=\"f_dateDD2\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -182,7 +182,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes2\" id=\"f_dateMM\">
+                                                <select name=\"fnmes2\" id=\"f_dateMM2\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -192,7 +192,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio2\" id=\"f_dateYY\">
+                                                <select name=\"fnanio2\" id=\"f_dateYY2\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -232,7 +232,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia1\" id=\"f_dateDD\">
+                                                <select name=\"fndia1\" id=\"f_dateDD1\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -241,7 +241,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes1\" id=\"f_dateMM\">
+                                                <select name=\"fnmes1\" id=\"f_dateMM1\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -251,7 +251,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio1\" id=\"f_dateYY\">
+                                                <select name=\"fnanio1\" id=\"f_dateYY1\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -289,7 +289,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia2\" id=\"f_dateDD\">
+                                                <select name=\"fndia2\" id=\"f_dateDD2\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -298,7 +298,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes2\" id=\"f_dateMM\">
+                                                <select name=\"fnmes2\" id=\"f_dateMM2\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -308,7 +308,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio2\" id=\"f_dateYY\">
+                                                <select name=\"fnanio2\" id=\"f_dateYY2\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -346,7 +346,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia3\" id=\"f_dateDD\">
+                                                <select name=\"fndia3\" id=\"f_dateDD3\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -355,7 +355,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes3\" id=\"f_dateMM\">
+                                                <select name=\"fnmes3\" id=\"f_dateMM3\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -365,7 +365,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio3\" id=\"f_dateYY\">
+                                                <select name=\"fnanio3\" id=\"f_dateYY3\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -405,7 +405,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia1\" id=\"f_dateDD\">
+                                                <select name=\"fndia1\" id=\"f_dateDD1\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -414,7 +414,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes1\" id=\"f_dateMM\">
+                                                <select name=\"fnmes1\" id=\"f_dateMM1\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -424,7 +424,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio1\" id=\"f_dateYY\">
+                                                <select name=\"fnanio1\" id=\"f_dateYY1\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -462,7 +462,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia2\" id=\"f_dateDD\">
+                                                <select name=\"fndia2\" id=\"f_dateDD2\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -471,7 +471,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes2\" id=\"f_dateMM\">
+                                                <select name=\"fnmes2\" id=\"f_dateMM2\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -481,7 +481,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio2\" id=\"f_dateYY\">
+                                                <select name=\"fnanio2\" id=\"f_dateYY2\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -519,7 +519,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia3\" id=\"f_dateDD\">
+                                                <select name=\"fndia3\" id=\"f_dateDD3\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -528,7 +528,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes3\" id=\"f_dateMM\">
+                                                <select name=\"fnmes3\" id=\"f_dateMM3\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -538,7 +538,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio3\" id=\"f_dateYY\">
+                                                <select name=\"fnanio3\" id=\"f_dateYY3\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -576,7 +576,7 @@ class compra
                                          <label class=\"detail\">Fecha de Nacimiento:</label><br />
                                          
                                          <div class=\"date\">
-                                                <select name=\"fndia4\" id=\"f_dateDD\">
+                                                <select name=\"fndia4\" id=\"f_dateDD4\">
                                                     <optgroup label=\"Dia\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";                                                    
@@ -585,7 +585,7 @@ class compra
                                                 </select>
                                          </div>                                           
                                          <div class=\"date\">       
-                                                <select name=\"fnmes4\" id=\"f_dateMM\">
+                                                <select name=\"fnmes4\" id=\"f_dateMM4\">
                                                     <optgroup label=\"Mes\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -595,7 +595,7 @@ class compra
                                                 </select> 
                                          </div>                                          
                                          <div class=\"date\">       
-                                                <select name=\"fnanio4\" id=\"f_dateYY\">
+                                                <select name=\"fnanio4\" id=\"f_dateYY4\">
                                                     <optgroup label=\"Año\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
@@ -627,7 +627,7 @@ class compra
 /**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
-	public function RegistrarPedidoWeb($arregloPasajeros,$arregloPedido)
+	public function RegistrarPedidoWeb($arregloPasajeros,$arregloPedido,$id,$fecha)
 	{
 		try
 		{
@@ -635,13 +635,11 @@ class compra
 			
 			
 			
-			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO			
+			echo "fecha A ingresar ".$fecha;
+			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO	
+			echo " INSERT INTO TEST   (Id, Fecha) VALUES ( '".$id."','".$fecha."')  ";		
 			
-			
-			
-			$recordSett = &$this->conexion->conectarse()->Execute("SELECT  TOP 5  Coberturas.Id, Coberturas.Descripcion, Coberturas.Estado, CategoriaCoberturas.Descripcion AS ValorCobertura
-			FROM  CategoriaCoberturas INNER JOIN  Coberturas ON CategoriaCoberturas.IdCobertura = Coberturas.Id
-			WHERE IdCategoria =". $idCategoria." ORDER BY Coberturas.Codigo");	
+			$recordSett = &$this->conexion->conectarse()->Execute(" INSERT INTO TEST   (Id, Fecha) VALUES ( '".$id."','".$fecha."')  ");	
 			return $recordSett;
 		}
 		catch (Exception $e)
