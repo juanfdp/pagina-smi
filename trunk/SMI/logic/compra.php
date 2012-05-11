@@ -12,12 +12,14 @@ include 'conect.php';
 class compra
 {
 	public $conexion;
+	public $fun;
 	/**
-	 * CONSTRUCTOR DE LA CLASE PARAMETROS         
+	 * CONSTRUCTOR DE LA CLASE PARAMETROS
 	 */
 	function __construct()
 	{
 		$this->conexion=new Conect();
+		$this->fun=new functions();
 	}
 	/**
 	 * METODO QUE HABILITA LOS CAMPOS PARA INGRESAR LOS PASAJEROS SEGUN LA CANTIDAD DE PASAJEROS COTIZADOS
@@ -205,7 +207,7 @@ class compra
                        </div> ";  
 					break;
 				case 3:
-						//PASAJERO 1
+					//PASAJERO 1
 					echo "<div id=\"travelDetails\">
                             <div class=\"list\">
                                 <label class=\"detail\">Pasajero #</label>
@@ -607,9 +609,9 @@ class compra
                             </div>                                                                                                   
                        </div> ";            
 					break;
-						
 
-						
+
+
 
 			}
 		}
@@ -621,26 +623,64 @@ class compra
 	}
 
 
-	
-	
-	
-/**
+
+
+
+	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
-	public function RegistrarPedidoWeb($arregloPasajeros,$arregloPedido,$id,$fecha)
+	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza)
 	{
 		try
 		{
-			//CREAMOS EL PEDIDO 
-			
-			
-			
-			echo "fecha A ingresar ".$fecha;
-			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO	
-			echo " INSERT INTO TEST   (Id, Fecha) VALUES ( '".$id."','".$fecha."')  ";		
-			
-			$recordSett = &$this->conexion->conectarse()->Execute(" INSERT INTO TEST   (Id, Fecha) VALUES ( '".$id."','".$fecha."')  ");	
-			return $recordSett;
+
+			$fechaRegistro=date("m/d/Y");
+			//CREAMOS EL PEDIDO
+			//var_dump($arregloPedido);
+			$recordSett = &$this->conexion->conectarse()->Execute(" INSERT INTO PedidoWeb
+		(Id, CodigoTransaccion,  IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, 
+		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
+		TelefonoContactoEmergencia, EmailContactoEmergencia, Estado)
+		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."',1) ");	
+
+
+			//CREAMOS LOS PASAJEROS DEL PEDIDO.
+
+				
+			//var_dump($arregloPasajeros);
+			for ($i=0;$i<= count($arregloPasajeros);$i++){
+					
+
+
+				$Nombre=$arregloPasajeros[$i++];
+				$Apellido=$arregloPasajeros[$i++];
+				$Documento=$arregloPasajeros[$i++];
+				$Email=$arregloPasajeros[$i++];
+
+				$FechaNacimiento=$arregloPasajeros[$i++];
+
+				if($i%3==0){
+					echo "i".$i;
+					$Idpasajero=$this->fun->NewGuid();
+					$recordSett = &$this->conexion->conectarse()->Execute("INSERT INTO PasajerosPedido
+                         (Id, IdPedido, Nombre, Apellido, Documento, Email, FechaNacimiento)
+VALUES        ('".$Idpasajero."','".$arregloPedido[0]."','".$Nombre."','".$Apellido."','".$Documento."','".$Email."','".$FechaNacimiento."')");	
+
+						
+
+				}
+					
+					
+			}
+
+
+
+
+
+
+
+
+
 		}
 		catch (Exception $e)
 		{
@@ -656,26 +696,26 @@ class compra
 		try
 		{
 			//CREAMOS EL PEDIDO EN CRECER
-			
-			
-			
+
+
+
 			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO
-			
-			
-			
-			
-			
-			//CREAMOS LA FACTURA			
-			
-			
-			
-			
-			//ASOCIAMOS LA FACTURA CON EL PEDIDO 				
-			
-			
-			
-			
-			
+
+
+
+
+
+			//CREAMOS LA FACTURA
+
+
+
+
+			//ASOCIAMOS LA FACTURA CON EL PEDIDO
+
+
+
+
+
 			$recordSett = &$this->conexion->conectarse()->Execute("SELECT  TOP 5  Coberturas.Id, Coberturas.Descripcion, Coberturas.Estado, CategoriaCoberturas.Descripcion AS ValorCobertura
 			FROM  CategoriaCoberturas INNER JOIN  Coberturas ON CategoriaCoberturas.IdCobertura = Coberturas.Id
 			WHERE IdCategoria =". $idCategoria." ORDER BY Coberturas.Codigo");	

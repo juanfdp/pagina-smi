@@ -96,12 +96,6 @@ function ajaxRequest(){
 	  return false
 	}
 var mygetrequest=new ajaxRequest();
-var cantidadpasajeros=0;
-//FUNCION QUE ENVIA UNA PETICION AJAX UTILIZANDO UN METODO GET A UN FICHERO QUE SE ENCARGA DE RETORNAR LOS RESULTADOS EN FORMA DE ITEMS EN EL CARRITO DE COMPRAS.
-function setPedidoWeb(cp){
-	cantidadpasajeros=cp;	
-	
-}
 
 
 
@@ -137,6 +131,11 @@ function generarPedido(){
 	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
 	var Condiciones=encodeURIComponent(document.getElementById("Condiciones").value)
 	var idPoliza=encodeURIComponent(document.getElementById("idPoliza").value)
+	var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)
+	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)
+	
+	
+
 	
 	
 	
@@ -177,6 +176,8 @@ function generarPedido(){
 				+"&fnanio1="+fnanio1
 				+"&cantidadpasajeros="+cantidadpasajeros
 				+"&idPoliza="+idPoliza
+				+"&refVenta="+refVenta
+				
 									
 				, true)		
 
@@ -233,7 +234,8 @@ function generarPedido(){
 				+"&fnmes2="+fnmes2	
 				+"&fnanio2="+fnanio2	
 				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idPoliza="+idPoliza			
+				+"&idPoliza="+idPoliza		
+				+"&refVenta="+refVenta	
 				, true)	
 
 				
@@ -306,6 +308,7 @@ function generarPedido(){
 				+"&fnanio3="+fnanio3	
 				+"&cantidadpasajeros="+cantidadpasajeros	
 				+"&idPoliza="+idPoliza
+				+"&refVenta="+refVenta
 							
 				, true)	
 
@@ -394,7 +397,9 @@ function generarPedido(){
 				+"&fnmes4="+fnmes4	
 				+"&fnanio4="+fnanio4
 				+"&cantidadpasajeros="+cantidadpasajeros		
-				+"&idPoliza="+idPoliza							
+				+"&idPoliza="+idPoliza		
+				+"&refVenta="+refVenta	
+								
 				, true)
 	}
 	mygetrequest.send(null)
@@ -507,7 +512,6 @@ $(document).ready(function() {
 <div id="travelDtBox">
 <h4>Datos del viajero:</h4>
 
-<form name="compra" id="compra" method="post" action="https://gateway2.pagosonline.net/apps/gateway/index.html">
 <form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
@@ -528,7 +532,6 @@ $guarda=false;
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
-$idPoliza=str_ireplace("-", "", $idPoliza);
 $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
@@ -550,7 +553,7 @@ $paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPag
 echo"			
 			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 			 
-			<input	name=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
+			<input	name=\"refVenta\" id=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
 			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
 			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
@@ -558,7 +561,9 @@ echo"
 			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">
-			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">";	
+			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">	
+			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";	
+
 ?> <!--ENDS DETAILS BOX-->
 
 
@@ -597,9 +602,7 @@ echo"
 <h4>Datos de facturación:</h4>
 <div class="list"><label class="detail">Nombre / Entidad::</label><br />
 <input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
-<div class="list"><label class
-
-E3SADFSADFASDFASDFSAD="detail">Documento / Nit:</label><br />
+<div class="list"><label class="detail">Documento / Nit:</label><br />
 <input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
 <div class="list"><label class="detail">Dirección:</label><br />
 <input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
@@ -612,8 +615,6 @@ E3SADFSADFASDFASDFSAD="detail">Documento / Nit:</label><br />
     <input type="checkbox" name="Condiciones" id="Condiciones" />
     <label class="detail"> <a class="contactenos" id="lightbox" href="logic/condiciones.php">TERMINOS Y CONDICIONES</a></label> 
 </div>
-
-
 <?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
 echo"	<div id=\"paymentIcon\">
