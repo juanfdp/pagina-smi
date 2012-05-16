@@ -271,7 +271,7 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 			//ECHO strtolower($idAseguradora);
 			switch (strtolower($idAseguradora) ) {
 				case "169159ad-d55a-467b-9efd-2b7139ecc730": //ANDI ASISTENCIA SA
-					return "<img src=\"tpl/img/Partners/Asistencia.png\"/>";
+					return "<img src=\"tpl/img/Partners/Mafre.png\"/>";
 					break;
 				case "ae7c4aa0-bcba-4804-b2aa-3496c4edc5f7": // CORIS SA
 					return "<img src=\"tpl/img/Partners/Coris.png\"/>";
@@ -279,14 +279,14 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 				case "715697a2-f643-4d5b-ac49-83b11e8546b0": // UNIVERSAL
 					return "<img src=\"tpl/img/Partners/UniversalAssistance.png\"/>";
 					break;
-				case "b2ff47cf-50d3-4803-992d-9ee57d9fe736": // EDUCAMOS VIAJANDO LTDA
-					return "<img src=\"tpl/img/Partners/TravelGuard.png\"/>";
+				case "b2ff47cf-50d3-4803-992d-9ee57d9fe736": // EDUCAMOS VIAJANDO LTDA(SAFEST)
+					return "<img src=\"tpl/img/Partners/Safest.png\"/>";
 					break;
 				case "4e04d2c4-5c91-46e4-99dd-e992638da6f8": // ASSIST CARD
 					return "<img src=\"tpl/img/Partners/AssistCard.png\"/>";
 					break;
-				case "8528cc83-53f7-4330-aaed-ef0a5ad2b08f": // CHARTIS COLOMBIA SEGUROS GENERALES SA
-					return "<img src=\"tpl/img/Partners/Coris.png\"/>";
+				case "8528cc83-53f7-4330-aaed-ef0a5ad2b08f": // CHARTIS COLOMBIA SEGUROS GENERALES SA(TRAVELGUARD)
+					return "<img src=\"tpl/img/Partners/TravelGuard.png\"/>";
 					break;
 				case "db7a54c0-bf90-4508-9528-f7c6af83357b": // QUALITAS ASSISTANCE SAS
 					return "<img src=\"tpl/img/Partners/Qualitas.png\"/>";
@@ -324,7 +324,7 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 					return "<a href=\"clausulados/UNIVERSAL_ASSISTANCE.pdf\" class=\"chooseClausu\" target=\"_blank\">Ver Clausulado</a>";
 
 					break;
-				case "b2ff47cf-50d3-4803-992d-9ee57d9fe736": // EDUCAMOS VIAJANDO LTDA
+				case "b2ff47cf-50d3-4803-992d-9ee57d9fe736": // EDUCAMOS VIAJANDO LTDA()SAFEST
 
 					return "<a href=\"clausulados/SAFEST.pdf\" class=\"chooseClausu\" target=\"_blank\">Ver Clausulado</a>";
 

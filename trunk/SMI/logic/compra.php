@@ -623,9 +623,6 @@ class compra
 	}
 
 
-
-
-
 	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
@@ -670,7 +667,7 @@ class compra
 	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR TODA LA INFORMACION EN CRECER, SIEMPRE Y CUANDO LA TRANSACCION SEA SATISFACTORIA
 	 */
-	public function GenerarPedidoCrecer($arregloPasajeros,$arregloFacturaion,$arregloEmergencia,$arregloProducto)
+	public function GenerarPedidoCrecer($refVenta)
 	{
 		try
 		{
@@ -707,4 +704,5 @@ class compra
 		}
 	}
 }
+
 ?>

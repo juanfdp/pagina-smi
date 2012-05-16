@@ -184,7 +184,8 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 	 //CONTROLAMOS LA CANTIDAD DE PASAJEROS, NO SE PERMITE REALIZAR  LA COMPRA SI NO SE TIENE MAS DE UN PASAJERO COTIZADO
 	 if(cantidadPasajeros>0){
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";
-	 document.formulario.submit(numeroPoliza);
+	
+	document.formulario.submit(numeroPoliza);
 	 }
 	 else
 		 alert("Para poder comprar, se debe cotizar al menos con un pasajero");
@@ -504,11 +505,10 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 
 
 					if($guardaCotizacion!=-1){//VALIDAMOS QUE REALMENTE SE ENCUENTRE UN PRECIO EN EL SISTEMA , PARA MOSTRAR LA POLIZA
-
 						//echo "TOTAL  PASAJEROS ".$totalPasajeros."<br>";
 						if($totalPasajeros>0){
 							$precio = $guardaCotizacion*$totalPasajeros;
-						}
+												}
 						else{
 							$precio=$guardaCotizacion;
 						}
@@ -520,25 +520,17 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 
 						// echo gettype( (float)$guardaCotizacion), "\n";
 						//$minuevovalor= floatval($var) $guardaCotizacion * $guardaCotizacion;
-
 						//echo "PRECIO ANTES DE DESCUENTOS Y AUMENTOS - ".$minuevovalor ."<br>";
 						//echo "AUMENTO".$aumento."<br>";
 						//echo "DESCUENTO".$descuento."<br>";
-
 						if($aumento!=0){
-
 							$precio= $precio + ($aumento*$precio);//APLICAMOS EL AUMENTO
-
 						}
-
 						if($descuento!=0){
 							$precio= $precio- ($descuentoInterno*$precio);//APLICAMOS EL AUMENTO
-
 						}
 
 						//VALIDAMOS LA CANTIDAD DE PASAJEROS
-
-
 						//echo "<br>";
 						//echo "AUMENTO".$aumento;
 						//echo "PRECIO". $guardaCotizacion;
@@ -560,7 +552,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 <ul>";		
 						//RECORREMOS E IMPRIMIMOS LAS COBERTURAS , SI LAS TIENE
 						while (!$rscoberturas->EOF) {
-							echo "<li> ".$rscoberturas->fields[3]." </li>";
+							echo " <li> <dd>". $func->fixEncoding($rscoberturas->fields[1])."</dd></li>";
 							$rscoberturas->MoveNext();}
 							echo "</ul>
 <span>Ver detalle<br />

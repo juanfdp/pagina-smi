@@ -1,5 +1,5 @@
 ﻿<?php
-include('/adodb/adodb.inc.php');
+include('adodb/adodb.inc.php');
 
 
 /**

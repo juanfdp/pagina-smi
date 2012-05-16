@@ -40,16 +40,15 @@ $emision="
 <pais>570</pais>
 <codigoAgencia>4310</codigoAgencia>
 <numeroSucursal>0</numeroSucursal>
-<codigoCounter>ACNET</codigoCounter>
+<codigoCounter>aevion</codigoCounter>
 <codigoProducto>R3</codigoProducto>
 <codigoTarifa>0</codigoTarifa>
-<cantidadDias>5</cantidadDias>
+<cantidadDias>8</cantidadDias>
 <fechaInicioVigencia>12/12/2012</fechaInicioVigencia>
-<fechaFinVigencia>12/12/2013</fechaFinVigencia>
+<fechaFinVigencia>12/20/2012</fechaFinVigencia>
 <planFamiliar>false</planFamiliar>
 <areaDestino>10</areaDestino>
-<idTarjetaCredito>0</idTarjetaCredito>
-<cantidadCuotas>ACNET</cantidadCuotas>
+<pagoEfectivo>true</pagoEfectivo>
 
 <pasajeros>
 <pasajero>
@@ -59,23 +58,25 @@ $emision="
     <fechaNacimiento>08/08/1989</fechaNacimiento>
     <apellido>Castillo</apellido>
     <nombre>Jonathan</nombre>
-    <email>jon.cas@hotmail.com</email>
+    <email>jacastillob@gmail.com</email>
     <telefono>2634408</telefono>
     <domicilio>cra 73 bis </domicilio>
     <codigoPostal>00</codigoPostal>
     <ciudad>Bogota DC</ciudad>
     <estado>CC</estado>
-    <paisDomicilio>540</paisDomicilio>
+    <paisDomicilio>570</paisDomicilio>
     <contacto>julian ninio</contacto>
     <telefonoContacto>2634408</telefonoContacto>
     <telefonoContactoAuxiliar>2634408</telefonoContactoAuxiliar>
     <idCuenta>0</idCuenta>
     <upgrades>
     </upgrades>
-  </pasajero>
+  </pasajero>   
+  
 </pasajeros>
-
-<codigoUsuario>ACNET</codigoUsuario>
+ <codigoUsuario>aevion</codigoUsuario>
+ <tipoUsuario>2</tipoUsuario>
+ <tipoCarga>X</tipoCarga>
 </emision>";
 $client = new SoapClient("http://190.12.99.228/ws/services/AssistCardService?wsdl");
 					$resultado = $client->__call('emitir',array($emision,"aevion","dani"));
