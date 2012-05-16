@@ -181,11 +181,24 @@ function agregarParaComparar(cb){
 
 function goToTravelDetails(numeroPoliza,cantidadPasajeros)
  {
+
+
+
+	 
 	 //CONTROLAMOS LA CANTIDAD DE PASAJEROS, NO SE PERMITE REALIZAR  LA COMPRA SI NO SE TIENE MAS DE UN PASAJERO COTIZADO
 	 if(cantidadPasajeros>0){
-	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";
-	
-	document.formulario.submit(numeroPoliza);
+
+		 var fechaInicial=encodeURIComponent(document.getElementById("f_dateOpen").value);	
+		 var fechaFinal=encodeURIComponent(document.getElementById("f_dateExit").value);
+			 
+			
+			
+				 	
+	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";	
+	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=fechaInicial value='" + fechaInicial +"'>";	
+	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=fechaFinal value='" + fechaFinal +"'>";	
+	 
+	 document.formulario.submit(numeroPoliza);
 	 }
 	 else
 		 alert("Para poder comprar, se debe cotizar al menos con un pasajero");
@@ -194,8 +207,6 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 
 
 </script>
-
-
 <body onload="loadImages()">
 	<div class="wrapper">
 		<!--- START HEADER --->

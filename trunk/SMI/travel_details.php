@@ -529,6 +529,9 @@ $guarda=false;
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
+echo "Fecha inicial ".$_POST['fechaInicial'];
+echo "Fecha final ".$_POST['fechaFinal'];
+
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
