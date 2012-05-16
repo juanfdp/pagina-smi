@@ -100,60 +100,56 @@ var mygetrequest=new ajaxRequest();
 
 
 
+
 function generarPedido(){	
 	
 
 	var mygetrequest=new ajaxRequest()
 	mygetrequest.onreadystatechange=function(){
 	if (mygetrequest.readyState==4){
-	if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
-	//document.getElementById("temp").innerHTML=mygetrequest.responseText
+	//VALIDAMOS SI EFECTIVAMENTE SE HA GENERADO EL PEDIDO EN LOS TEMPORALES DE PEDIDO Y SIENDO ASI , SE APRUEBA EL ENVIO A PAGOS ONLINE.
+	if (mygetrequest.status==200  || window.location.href.indexOf("http")==-1){
+
+	document.compra.submit();	
 	}
 	else{
-	alert("An error has occured making the request")
+	alert("Disculpenos por los inconvenientes, no podemos procesar la compra de su poliza, intente mas tarde.")
 	}
 	}
 	}
-	
-	var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
+    var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
 	var ApellidoEmergencia=encodeURIComponent(document.getElementById("ApellidoEmergencia").value)
 	var TelefonoEmergencia=encodeURIComponent(document.getElementById("TelefonoEmergencia").value)	
 	var EmailEmergencia=encodeURIComponent(document.getElementById("EmailEmergencia").value)
-
 	var TelefonoContacto=encodeURIComponent(document.getElementById("TelefonoContacto").value)
 	var CelularContacto=encodeURIComponent(document.getElementById("CelularContacto").value)	
-	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)
-	
+	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)	
 	var NombreFactu=encodeURIComponent(document.getElementById("NombreFactu").value)
 	var DocumentoFactu=encodeURIComponent(document.getElementById("DocumentoFactu").value)
 	var DireccionFactu=encodeURIComponent(document.getElementById("DireccionFactu").value)
 	var TelefonoFactu=encodeURIComponent(document.getElementById("TelefonoFactu").value)
 	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
 	var Condiciones=encodeURIComponent(document.getElementById("Condiciones").value)
-	var idPoliza=encodeURIComponent(document.getElementById("idPoliza").value)
+	var idPoliza=encodeURIComponent(document.getElementById("idpoliza").value)
 	var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)
-	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)
+	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)	
+	
+    
 	
 	
-
-	
-	
-	
-	
-	alert("cantidad pasajeros"+cantidadpasajeros)
-	if(cantidadpasajeros==1){
+	if(cantidadpasajeros = 1){
 		
-
+		
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
 		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
 		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)		
 		
- 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
- 		 	
+		
+		mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
 				+"&ApellidoEmergencia="+ApellidoEmergencia
 				+"&TelefonoEmergencia="+TelefonoEmergencia
 				+"&EmailEmergencia="+EmailEmergencia
@@ -162,11 +158,9 @@ function generarPedido(){
 				+"&DireccionContacto="+DireccionContacto
 				+"&NombreFactu="+NombreFactu
 				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu
-				+"&DocumentoFactu="+DocumentoFactu
+				+"&DireccionFactu="+DireccionFactu				
 				+"&TelefonoFactu="+TelefonoFactu
 				+"&emailComprador="+emailComprador	
-
 				+"&n1="+n1	
 				+"&a1="+a1					
 				+"&d1="+d1	
@@ -175,14 +169,14 @@ function generarPedido(){
 				+"&fnmes1="+fnmes1	
 				+"&fnanio1="+fnanio1
 				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idPoliza="+idPoliza
+				+"&idpoliza="+idPoliza
 				+"&refVenta="+refVenta
-				
-									
 				, true)		
-
+				mygetrequest.send(null)
+		
 	}
-	else if(cantidadpasajeros==2){
+
+	else if(cantidadpasajeros =2){
 
 
 
@@ -234,14 +228,16 @@ function generarPedido(){
 				+"&fnmes2="+fnmes2	
 				+"&fnanio2="+fnanio2	
 				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idPoliza="+idPoliza		
+				+"&idpoliza="+idPoliza		
 				+"&refVenta="+refVenta	
 				, true)	
+				
+	mygetrequest.send(null)
 
 				
 	}
 
-	else if(cantidadpasajeros==3){
+	else if(cantidadpasajeros =3){
 
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
@@ -307,15 +303,17 @@ function generarPedido(){
 				+"&fnmes3="+fnmes3	
 				+"&fnanio3="+fnanio3	
 				+"&cantidadpasajeros="+cantidadpasajeros	
-				+"&idPoliza="+idPoliza
+				+"&idpoliza="+idPoliza
 				+"&refVenta="+refVenta
 							
 				, true)	
+				
+	mygetrequest.send(null)
 
 		
 	}
 
-	else if(cantidadpasajeros==4){
+	else if(cantidadpasajeros=4){
 
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
@@ -372,7 +370,7 @@ function generarPedido(){
 				+"&fndia1="+fndia1	
 				+"&fnmes1="+fnmes1	
 				+"&fnanio1="+fnanio1	
-
+				
 				+"&n2="+n2	
 				+"&a2="+a2					
 				+"&d2="+d2	
@@ -397,12 +395,12 @@ function generarPedido(){
 				+"&fnmes4="+fnmes4	
 				+"&fnanio4="+fnanio4
 				+"&cantidadpasajeros="+cantidadpasajeros		
-				+"&idPoliza="+idPoliza		
-				+"&refVenta="+refVenta	
-								
-				, true)
-	}
+				+"&idpoliza="+idPoliza		
+				+"&refVenta="+refVenta									
+				, true)				
 	mygetrequest.send(null)
+	}	
+	
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
@@ -450,7 +448,7 @@ $(document).ready(function() {
 });		
 </script>
 
-<body onbeforeunload="generarPedido()" >
+<body >
 <div class="wrapper"><!--- START HEADER ---> <header>
 <div id="headerTop"><!--- START THE TOP HEADER --->
 <div id="headerCont"><a href=""><img class="logoSMI"
@@ -512,7 +510,9 @@ $(document).ready(function() {
 <div id="travelDtBox">
 <h4>Datos del viajero:</h4>
 
-<form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
+<form name="compra" id="compra" method="post"action="https://gateway2.pagosonline.net/apps/gateway/index.html" >
+<!--START DETAILS BOX--->
+
 <?php
 //CAMPOS DE LOS PASAJEROS
 //HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS Y VALIDAMOS QUE SEAN MAYOR  QUE CERO Y MENOR QUE CUATRO
@@ -618,7 +618,7 @@ echo"
 <?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
 echo"	<div id=\"paymentIcon\">
-<input type=\"submit\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\" \"/>
+<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\"  \"  onclick=\"generarPedido()\"/>
 </div>";
 ?></form>
 <script language="JavaScript" type="text/javascript"
