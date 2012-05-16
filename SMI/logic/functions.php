@@ -227,15 +227,15 @@ FROM         Categorias INNER JOIN
 				WHERE     (Productos.Id = \''.$codigoPoliza.'\') AND (DescuentoCategoria.Estado  = \'TRUE\')') ;
 
 
-			
-			
-			
-			
-			
+				
+				
+				
+				
+				
 			foreach($descuentospoliza as $k => $row) {
 
 				$cantidadPasajeros=0;
-					for($i=0;$i< count($arregloPasajeros);$i++) if ($arregloPasajeros[$i]!="")$cantidadPasajeros++;
+				for($i=0;$i< count($arregloPasajeros);$i++) if ($arregloPasajeros[$i]!="")$cantidadPasajeros++;
 				//EMPEZAMOS A EVALUAR SEGUN EL TIPO DE DESCUENTO
 				switch ($row[2]) {
 					case "1":
@@ -260,7 +260,7 @@ FROM         Categorias INNER JOIN
 						// MANEJO PROMOCIONES
 						//echo "PROMOCION";
 						$porcentajeDescuento += $row[7];
-						break;							
+						break;
 				}//FIN SWITCH
 				//echo $row[10];// DESCUENTO  MAYOR DE EDAD.
 				if($row[10]==1 && ( count($arregloPasajeros)>1 &&  count($arregloPasajeros)<5 && count($arregloPasajeros)!=3)){
@@ -294,7 +294,7 @@ FROM         Categorias INNER JOIN
 						else if ($cantidadMenores == 2) $porcentajeDescuento +=  100 / 2;
 
 					}
-				}					
+				}
 			}//FIN FOREACH DE DESCUENTOS POR POLIZA
 			//AUMENTOS----------------------------------------------------------------------------------------------
 			$aumentosPoliza = &$this->conexion->conectarse()->Execute('
@@ -543,50 +543,93 @@ FROM         Categorias INNER JOIN
 		}
 	}
 
+	/** METODO PARA ENVIAR CORREOS CUANDO SE REGISTRA UNA COMPRA EXITOSA.
+	 *
+	 *
+	 */
+	public function SendMailNuevaCompra($emailComprador,$nombre,$apellido)
+	{
+		try
+		{
 
-	
-	
-	
-public function NewGuid($namespace = '') {     
-     static $guid = '';
-     $uid = uniqid("", true);
-     $data = $namespace;
-     $data .= $_SERVER['REQUEST_TIME'];
-     $data .= $_SERVER['HTTP_USER_AGENT'];
-     $data .= $_SERVER['LOCAL_ADDR'];
-     $data .= $_SERVER['LOCAL_PORT'];
-     $data .= $_SERVER['REMOTE_ADDR'];
-     $data .= $_SERVER['REMOTE_PORT'];
-     $hash = strtoupper(hash('ripemd128', $uid . $guid . md5($data)));
-     $guid = '' .   
-             substr($hash,  0,  8) . 
+			$this->mail->AddAddress($emailComprador,  $nombre.''.$apellido);//DESTINATARIO
+			$this->mail->SetFrom("informacion@segurosmedicosinternacionales.net", "SEGUROS MEDICOS INTERNACIONALES");
+			$this->mail->Subject = 'EL SISTEMA DETECTO UNA NUEVA COMPRA ';
+			$this->mail->Body = '<body style="margin: 10px;">
+			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
+			<div align="center"><img src="images/smi.png" style="height: 90px; width: 340px"></div>
+			<p><br>
+			  <strong>Estimado Gerente,</strong></p>
+			<p>El sistema ha detectado la compra de una poliza a nombre de:</p>
+			<p>&nbsp;</p>
+			
+			'.$nombre.' 
+			<p>Sistema de información-Seguros Médicos Internacionales</p>
+			<p><strong>:</strong></p>
+			<p>&nbsp;</p>
+			<p><br />
+			</p>
+			</div>
+			</body>	';  
+			if($this->mail->Send()) {
+				return true;
+			}
+
+
+			return false;
+
+
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+
+
+
+
+	public function NewGuid($namespace = '') {
+		static $guid = '';
+		$uid = uniqid("", true);
+		$data = $namespace;
+		$data .= $_SERVER['REQUEST_TIME'];
+		$data .= $_SERVER['HTTP_USER_AGENT'];
+		$data .= $_SERVER['LOCAL_ADDR'];
+		$data .= $_SERVER['LOCAL_PORT'];
+		$data .= $_SERVER['REMOTE_ADDR'];
+		$data .= $_SERVER['REMOTE_PORT'];
+		$hash = strtoupper(hash('ripemd128', $uid . $guid . md5($data)));
+		$guid = '' .
+		substr($hash,  0,  8) .
              '-' .
-             substr($hash,  8,  4) .
+		substr($hash,  8,  4) .
              '-' .
-             substr($hash, 12,  4) .
+		substr($hash, 12,  4) .
              '-' .
-             substr($hash, 16,  4) .
+		substr($hash, 16,  4) .
              '-' .
-             substr($hash, 20, 12) .
+		substr($hash, 20, 12) .
              '';
-     return $guid;
-   }
+		return $guid;
+	}
 
-   
-public function str2num($str)
- { 
-       if (strpos($str, '.') !== FALSE && strpos($str,    ',') !== FALSE && strpos($str, '.') < strpos($str,','))
-           { 
-             $str = str_replace('.','',$str); 
-             $str = strtr($str,',','.');            
-         } 
-         else
-         { 
-             $str = str_replace(',','',$str);            
-         } 
-         
-         return (float)$str; 
- }
+	 
+	public function str2num($str)
+	{
+		if (strpos($str, '.') !== FALSE && strpos($str,    ',') !== FALSE && strpos($str, '.') < strpos($str,','))
+		{
+			$str = str_replace('.','',$str);
+			$str = strtr($str,',','.');
+		}
+		else
+		{
+			$str = str_replace(',','',$str);
+		}
+		 
+		return (float)$str;
+	}
 	/**
 	 * METODO QUE RETORNA EL FOOTER DE LA PAGINA- SE IMPLEMENTO ORIENTADO A OBJETOS PARA UN FACIL AJUSTE
 	 *
