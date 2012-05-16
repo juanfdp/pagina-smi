@@ -49,7 +49,7 @@ class compra
                             </div>
                             <div class=\"list\">
                                 <label class=\"detail\">Documento:</label><br />
-                                <input type=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
+                                <input ty+pe=\"text\" name=\"d1\" id=\"d1\" size=\"8\" maxlength=\"15\" />	 
                             </div>                               
                             <div class=\"list\">
                                 <label class=\"detail\">Email:</label><br />
@@ -629,58 +629,37 @@ class compra
 	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
-	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza)
+	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza,$cantidadPasajeros)
 	{
 		try
-		{
-
-			$fechaRegistro=date("m/d/Y");
+		{	$fechaRegistro=date("m/d/Y");
 			//CREAMOS EL PEDIDO
 			//var_dump($arregloPedido);
 			$recordSett = &$this->conexion->conectarse()->Execute(" INSERT INTO PedidoWeb
 		(Id, CodigoTransaccion,  IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, 
 		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
 		TelefonoContactoEmergencia, EmailContactoEmergencia, Estado)
-		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."',1) ");	
-
-
+		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."',3) ");	
 			//CREAMOS LOS PASAJEROS DEL PEDIDO.
-
-				
 			//var_dump($arregloPasajeros);
-			for ($i=0;$i<= count($arregloPasajeros);$i++){
-					
-
-
+			//echo "Cantidad Inicial  ".$cantidadPasajeros."<br>";
+			$guardaPasajeros=0;
+			$i=0;
+				while($cantidadPasajeros!= $guardaPasajeros){
+								
 				$Nombre=$arregloPasajeros[$i++];
 				$Apellido=$arregloPasajeros[$i++];
 				$Documento=$arregloPasajeros[$i++];
 				$Email=$arregloPasajeros[$i++];
-
-				$FechaNacimiento=$arregloPasajeros[$i++];
-
-				if($i%3==0){
-					echo "i".$i;
+				$FechaNacimiento=$arregloPasajeros[$i++];				
 					$Idpasajero=$this->fun->NewGuid();
 					$recordSett = &$this->conexion->conectarse()->Execute("INSERT INTO PasajerosPedido
-                         (Id, IdPedido, Nombre, Apellido, Documento, Email, FechaNacimiento)
-VALUES        ('".$Idpasajero."','".$arregloPedido[0]."','".$Nombre."','".$Apellido."','".$Documento."','".$Email."','".$FechaNacimiento."')");	
-
-						
-
+						 (Id, IdPedido, Nombre, Apellido, Documento, Email, FechaNacimiento)
+						 VALUES('".$Idpasajero."','".$arregloPedido[0]."','".$Nombre."','".$Apellido."','".$Documento."','".$Email."','".$FechaNacimiento."')");	
+					
+					$guardaPasajeros++;	
+					//echo $guardaPasajeros ."<br>";
 				}
-					
-					
-			}
-
-
-
-
-
-
-
-
-
 		}
 		catch (Exception $e)
 		{
