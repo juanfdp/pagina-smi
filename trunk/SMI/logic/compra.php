@@ -720,6 +720,15 @@ class compra
 				
 				$IdCliente=$this->fun->NewGuid();
 				$IdContacto=$this->fun->NewGuid();
+				$IdPedido=$this->fun->NewGuid();
+				$IdProductoCotizacion=$this->fun->NewGuid();
+				$IdFactura=$this->fun->NewGuid();
+				$grupo=2;//ASESORES
+				$prioridad=2;
+				$seguimiento="Creado desde el portal web ". $fechaConfirmacion."\n";
+				$moneda=2;//DOLARES
+				$viaContacto=2;//WEB
+				$formaPago=1;
 				//CREAMOS LA EMPRESA
 				$crearCliente = &$this->conexion->conectarse()->Execute( "INSERT INTO Empresas
                       (Id, TipoEmpresa, Identificacion, Dv, RazonSocial, Antiguedad, Telefono, Fax, Direccion, Mail, Url, Ciudad, Departamento, Pais, Aniversario, TieneAniversario, 
@@ -745,10 +754,38 @@ class compra
 				$asociarContacto= &$this->conexion->conectarse()->Execute(" INSERT INTO EmpresaContactos     (IdEmpresa, IdContacto)
 				VALUES        ('".$IdCliente."','".$IdContacto."')");
 
-				 
+			 
 
+				//CREAMOS EL PEDIDO
+				
+				echo"insertando pedido";
+				
+				$crearPedido = &$this->conexion->conectarse()->Execute($this->fun->fixEncoding("INSERT INTO OrdenCompraCliente
+                         (Id, FechaElaboracion, IdCliente, IdPaisOrigen, IdSedeCliente, IdRegionDestino, IdContactoEmergencia, FechaSalida, FechaRegreso, CantidadPasajeros, IdContacto, 
+                         Codigo, IdAutor, IdEmpleado, FechaModificacion, SubtotalSinDto, Subtotal, ValorIva, Total, Trm_dia, UtilidadSobreCosto, Estado, GrupoAsignado, Prioridad, 
+                         Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia, TiempoGarantía, Instalacion, 
+                         IdEmpleadoModif, IdViadeContacto)
+VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
+'00000000-0000-0000-0000-000000000000','".$pedidoWeb->fields[21]."',
+'".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
+'7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
+'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
+'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')"));
+				//CREAMOS EL PRODUCTO COTIZACION.
 				
 				
+				//CREAMOS EL PASAJERO PRODUCTO COTIZACION.
+				
+				
+				
+				//CREAMOS FACTURA.
+				
+				
+				
+				//CREAMOS FACTURA ORDEN COMPRA.
+				
+				
+				//CREAMOS ALERTAS FACTURACION.
 				
 				
 			}
@@ -758,36 +795,39 @@ class compra
 				$IdCliente=$existeCliente->fields[1];				
 			//echo $existeCliente->fields[1];
 			
+				//VALIDAMOS EL CONTACTO
+				
+				
+				
+				//CREAMOS EL PEDIDO
+				
+				
+				//CREAMOS EL PRODUCTO COTIZACION.
+				
+				
+				//CREAMOS EL PASAJERO PRODUCTO COTIZACION.
+				
+				
+				
+				//CREAMOS FACTURA.
+				
+				
+				
+				//CREAMOS FACTURA ORDEN COMPRA.
+				
+				
+				
+				//CREAMOS ALERTAS FACTURACION.
+				
+				
+			
 			}
-			//6
-			
-			
-			
 			
 
 
 
-			//CREAMOS PASAJEROS Y LOS ASOCIAMOS AL PEDIDO
 
-
-
-
-
-			//CREAMOS LA FACTURA
-
-
-
-
-			//ASOCIAMOS LA FACTURA CON EL PEDIDO
-
-
-
-
-
-			$recordSett = &$this->conexion->conectarse()->Execute("SELECT  TOP 5  Coberturas.Id, Coberturas.Descripcion, Coberturas.Estado, CategoriaCoberturas.Descripcion AS ValorCobertura
-			FROM  CategoriaCoberturas INNER JOIN  Coberturas ON CategoriaCoberturas.IdCobertura = Coberturas.Id
-			WHERE IdCategoria =". $idCategoria." ORDER BY Coberturas.Codigo");	
-			return $recordSett;
+			
 		}
 		catch (Exception $e)
 		{
