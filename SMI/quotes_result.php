@@ -190,14 +190,15 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 
 		 var fechaInicial=encodeURIComponent(document.getElementById("f_dateOpen").value);	
 		 var fechaFinal=encodeURIComponent(document.getElementById("f_dateExit").value);
-			 
+		 var region=encodeURIComponent(document.getElementById("f_country_idExit").value);
 			
 			
 				 	
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=codigo value='" + numeroPoliza +"'>";	
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=fechaInicial value='" + fechaInicial +"'>";	
 	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=fechaFinal value='" + fechaFinal +"'>";	
-	 
+	 document.formulario.innerHTML = document.formulario.innerHTML + "<input type=hidden name=region value='" + region +"'>";	
+		
 	 document.formulario.submit(numeroPoliza);
 	 }
 	 else

@@ -629,14 +629,14 @@ class compra
 	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza,$cantidadPasajeros)
 	{
 		try
-		{	$fechaRegistro=date("m/d/Y");
+		{	$fechaRegistro=date("m/d/Y h:m:s" );
 			//CREAMOS EL PEDIDO
 			//var_dump($arregloPedido);
 			$recordSett = &$this->conexion->conectarse()->Execute(" INSERT INTO PedidoWeb
 		(Id, CodigoTransaccion,  IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, 
 		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
-		TelefonoContactoEmergencia, EmailContactoEmergencia, Estado)
-		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."',3) ");	
+		TelefonoContactoEmergencia, EmailContactoEmergencia,FechaInicio,FechaFin,Precio ,Region,TrmIata, Estado)
+		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."','".$arregloPedido[13]."','".$arregloPedido[14]."','".$arregloPedido[15]."','".$arregloPedido[16]."','".$this->fun->getTrmIata($idPoliza)."',3) ");	
 			//CREAMOS LOS PASAJEROS DEL PEDIDO.
 			//var_dump($arregloPasajeros);
 			//echo "Cantidad Inicial  ".$cantidadPasajeros."<br>";
@@ -671,7 +671,99 @@ class compra
 	{
 		try
 		{
+			
+			$fechaConfirmacion=date("m/d/Y h:m:s" );
+			
+			//ACTUALIZAMOS EL ESTADO DE PEDIDO WEB A CONFIRMADO Y AGREGAMOS LA FECHA DE CONFIRMACION
+			$recordSett = &$this->conexion->conectarse()->Execute("	UPDATE       PedidoWeb
+			SET                FechaRespuesta ='".$fechaConfirmacion."', Estado = 1
+			WHERE        (CodigoTransaccion = '".$refVenta."' AND Estado = 3)");	
+			
 			//CREAMOS EL PEDIDO EN CRECER
+			//1.OBTENEMOS LA INFORMACION DEL PEDIDO DESDE LA TABLA TEMPORAL
+			
+			//Id--0
+			//CodigoTransaccion--1
+			//IdPoliza--2
+			//FechaCreacion--3
+			//FechaRespuesta--4
+			//NombreTitularFactura--5
+			//DocumentoTitularFactura--6
+			//DireccionTitularFactura--7
+			//TelefonoTitularFactura--8
+			//EmailTitularFactura--9
+			//TelefonoContacto--10
+			//TelefonoMovilContacto--11
+			//DireccionContacto--12
+			//NombreContactoEmergencia--13
+			//ApellidoContactoEmergencia--14
+			//TelefonoContactoEmergencia--15
+			//EmailContactoEmergencia--16
+			//Estado--17
+			//FechaInicio--18
+			//FechaFin--19
+			//Precio--20
+			//Region--21
+			//TrmIata--22			
+			$pedidoWeb = &$this->conexion->conectarse()->Execute("SELECT Id, CodigoTransaccion, IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, TelefonoTitularFactura, EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, 
+			NombreContactoEmergencia, ApellidoContactoEmergencia, TelefonoContactoEmergencia, EmailContactoEmergencia,
+			 Estado, FechaInicio, FechaFin, Precio, Region, TrmIata 
+			 FROM dbo.PedidoWeb		WHERE CodigoTransaccion= '".$refVenta."'");		
+
+			//2.VALIDAMOS EL CLIENTE SI NO EXISTE CREAMOS EL CLIENTE Y SU CONTACTO.			
+			$existeCliente = &$this->conexion->conectarse()->Execute("SELECT DISTINCT Identificacion,Id FROM dbo.Empresas
+			WHERE Identificacion='".$pedidoWeb->fields[6]."' ");	
+			
+			$IdCliente="";
+			//CREAMOS EL CLIENTE NUEVO 
+			if($existeCliente->fields[0]==""){
+				
+				$IdCliente=$this->fun->NewGuid();
+				$IdContacto=$this->fun->NewGuid();
+				//CREAMOS LA EMPRESA
+				$crearCliente = &$this->conexion->conectarse()->Execute( "INSERT INTO Empresas
+                      (Id, TipoEmpresa, Identificacion, Dv, RazonSocial, Antiguedad, Telefono, Fax, Direccion, Mail, Url, Ciudad, Departamento, Pais, Aniversario, TieneAniversario, 
+                      FechaIngreso, IdActividadEconomica, Movil, Observaciones, SeguimientoHistorico, Estado, IdAsesor, RepresentanteLegal, IdTipoMonedaImportacion, 
+                      TipoNacionalidad, IdEmpleadoModif, Imagen)
+						VALUES     ('".$IdCliente."','N/A','".$pedidoWeb->fields[6]."','N','".$pedidoWeb->fields[5]."','0',
+						'".$pedidoWeb->fields[8]."','0','".$pedidoWeb->fields[7]."','".$pedidoWeb->fields[9]."','-',NULL,NULL,
+						NULL,NULL,NULL,'".$fechaConfirmacion."',
+						NULL,'".$pedidoWeb->fields[11]."','Ninguna',
+						NULL,'0',NULL,'Ninguno',
+						'2','false',NULL,
+						NULL)");
+				
+				//CREAMOS EL CLIENTE
+				$crearCliente = &$this->conexion->conectarse()->Execute( "INSERT INTO Clientes
+               (Id, Ingreso, Inicio, Fin, CodigoSwift, IdTipoCliente, IdActividadEconomica)
+				VALUES        ('".$IdCliente."','".$fechaConfirmacion."','".$fechaConfirmacion."',NULL,'0',NULL,'0')");
+				
+				//CREAMOS EL CONTACTO.				
+				$crearContacto= &$this->conexion->conectarse()->Execute("INSERT INTO Contactos(Id, Descripcion, Cargo, Direccion, Telefono, Extension, Celular, Fax, EmailEmpresa, EmailPersonal, Observacion, Cumpleanno, TieneCumpleanno, Estado)
+				VALUES  ('".$IdContacto."','".$pedidoWeb->fields[13]." ".$pedidoWeb->fields[14]."',NULL,NULL,'".$pedidoWeb->fields[15]."',NULL,NULL,NULL,'".$pedidoWeb->fields[16]."','".$pedidoWeb->fields[16]."',NULL,NULL,NULL,'true')");
+				
+				$asociarContacto= &$this->conexion->conectarse()->Execute(" INSERT INTO EmpresaContactos     (IdEmpresa, IdContacto)
+				VALUES        ('".$IdCliente."','".$IdContacto."')");
+
+				 
+
+				
+				
+				
+				
+			}
+			//EL CLIENTE YA EXISTE - ASOCIAMOS TODO EL PEDIDO
+			else if($existeCliente->fields[0]!="") {
+				
+				$IdCliente=$existeCliente->fields[1];				
+			//echo $existeCliente->fields[1];
+			
+			}
+			//6
+			
+			
+			
+			
 
 
 
