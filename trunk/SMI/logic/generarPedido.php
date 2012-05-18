@@ -29,10 +29,13 @@ $pedido[]=isset($_GET['DireccionFactu'])?$_GET['DireccionFactu']: $esvalidoGener
 $pedido[]=isset($_GET['TelefonoFactu'])?$_GET['TelefonoFactu']: $esvalidoGenerarPedido=false;//10
 $pedido[]=isset($_GET['emailComprador'])?$_GET['emailComprador']: $esvalidoGenerarPedido=false;//11
 $pedido[]=isset($_GET['EmailEmergencia'])?$_GET['EmailEmergencia']: $esvalidoGenerarPedido=false;//12
+$pedido[]=isset($_GET['fechaInicial'])? str_replace("%2F", "/", $_GET['fechaInicial'])  : $esvalidoGenerarPedido=false;//13
+$pedido[]=isset($_GET['fechaFinal'])?str_replace("%2F", "/", $_GET['fechaFinal'])  : $esvalidoGenerarPedido=false;//14
+$pedido[]=isset($_GET['valor'])?$_GET['valor']: $esvalidoGenerarPedido=false;//15
+$pedido[]=isset($_GET['region'])?$_GET['region']: $esvalidoGenerarPedido=false;//16
 
 
 
-echo "<script type=\"text/javascript\">alert(\"Información registrada exitosamente!!\");</script>";	
 
 //var_dump($pedido);
 //echo "CANTIDAD PASAJEROS".$cantidadpasajeros;

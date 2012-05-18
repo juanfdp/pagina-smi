@@ -4,11 +4,12 @@ include_once 'functions.php';
 
 $compra=new compra();
 $func=new functions();
+//TEST CUANDO EL SISTEMA RECIBE EL NUMERO DE REFERENCIA DE PAGO 
+$compra->GenerarPedidoCrecer("1337332591");
 
-$guid=$func->NewGuid();
-echo  $guid;
 
-$compra->RegistrarPedidoWeb("", "",$guid , "12/25/2012");
+
+
 
 
 

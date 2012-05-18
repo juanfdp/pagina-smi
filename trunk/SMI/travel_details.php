@@ -133,7 +133,12 @@ function generarPedido(){
 	var idPoliza=encodeURIComponent(document.getElementById("idpoliza").value)
 	var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)
 	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)	
+	var fechaInicial=encodeURIComponent(document.getElementById("fechaInicial").value)	
+	var fechaFinal=encodeURIComponent(document.getElementById("fechaFinal").value)		
+	var valor=encodeURIComponent(document.getElementById("valor").value)	
+	var region=encodeURIComponent(document.getElementById("region").value)	
 	
+    
     
 	
 	
@@ -171,6 +176,10 @@ function generarPedido(){
 				+"&cantidadpasajeros="+cantidadpasajeros
 				+"&idpoliza="+idPoliza
 				+"&refVenta="+refVenta
+				+"&fechaInicial="+fechaInicial
+				+"&fechaFinal="+fechaFinal
+				+"&valor="+valor		
+				+"&region="+region	
 				, true)		
 				mygetrequest.send(null)
 		
@@ -229,7 +238,11 @@ function generarPedido(){
 				+"&fnanio2="+fnanio2	
 				+"&cantidadpasajeros="+cantidadpasajeros
 				+"&idpoliza="+idPoliza		
-				+"&refVenta="+refVenta	
+				+"&refVenta="+refVenta
+				+"&fechaInicial="+fechaInicial
+				+"&fechaFinal="+fechaFinal	
+				+"&valor="+valor
+				+"&region="+region
 				, true)	
 				
 	mygetrequest.send(null)
@@ -305,6 +318,10 @@ function generarPedido(){
 				+"&cantidadpasajeros="+cantidadpasajeros	
 				+"&idpoliza="+idPoliza
 				+"&refVenta="+refVenta
+				+"&fechaInicial="+fechaInicial
+				+"&fechaFinal="+fechaFinal
+				+"&valor="+valor
+				+"&region="+region
 							
 				, true)	
 				
@@ -396,7 +413,12 @@ function generarPedido(){
 				+"&fnanio4="+fnanio4
 				+"&cantidadpasajeros="+cantidadpasajeros		
 				+"&idpoliza="+idPoliza		
-				+"&refVenta="+refVenta									
+				+"&refVenta="+refVenta	
+				+"&fechaInicial="+fechaInicial
+				+"&fechaFinal="+fechaFinal
+				+"&valor="+valor
+				+"&region="+region
+												
 				, true)				
 	mygetrequest.send(null)
 	}	
@@ -529,9 +551,10 @@ $guarda=false;
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
-echo "Fecha inicial ".$_POST['fechaInicial'];
-echo "Fecha final ".$_POST['fechaFinal'];
 
+$fechaInicial=$_POST['fechaInicial'];
+$fechaFinal=$_POST['fechaFinal'];
+$region=$_POST['region'];
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
@@ -539,7 +562,7 @@ $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
 $cantidadPasajeros=$_POST['PasajerosCotizados'];
-$iva=16;
+$iva=0;
 $baseDevolucionIva=0;
 $valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);//OBTENEMOS EL VALOR DE LA POLIZA
 $moneda ="COP";//ESPECIFICAMOS LA MONEDA PARA LA OPERACION.
@@ -558,14 +581,18 @@ echo"
 			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 			 
 			<input	name=\"refVenta\" id=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
 			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
-			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
+			<input  name=\"valor\" id=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
 			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
 			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">
+			<input	name=\"fechaInicial\"  id=\"fechaInicial\" type=\"hidden\" value=".$fechaInicial.">	
+			<input	name=\"fechaFinal\"  id=\"fechaFinal\" type=\"hidden\" value=".$fechaFinal."> 
+			<input	name=\"region\"  id=\"region\" type=\"hidden\" value=".$region.">
 			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">	
-			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";	
+			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";
+	
 
 ?> <!--ENDS DETAILS BOX-->
 
@@ -621,7 +648,7 @@ echo"
 <?php
 if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
 echo"	<div id=\"paymentIcon\">
-<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\"  \"  onclick=\"generarPedido()\"/>
+<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\"    onclick=\"generarPedido()\"/>
 </div>";
 ?></form>
 <script language="JavaScript" type="text/javascript"
