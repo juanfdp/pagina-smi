@@ -758,9 +758,9 @@ class compra
 
 				//CREAMOS EL PEDIDO
 				
-				echo"insertando pedido";
+				//echo"insertando pedido";
 				
-				$crearPedido = &$this->conexion->conectarse()->Execute($this->fun->fixEncoding("INSERT INTO OrdenCompraCliente
+				$crearPedido = &$this->conexion->conectarse()->Execute("INSERT INTO OrdenCompraCliente
                          (Id, FechaElaboracion, IdCliente, IdPaisOrigen, IdSedeCliente, IdRegionDestino, IdContactoEmergencia, FechaSalida, FechaRegreso, CantidadPasajeros, IdContacto, 
                          Codigo, IdAutor, IdEmpleado, FechaModificacion, SubtotalSinDto, Subtotal, ValorIva, Total, Trm_dia, UtilidadSobreCosto, Estado, GrupoAsignado, Prioridad, 
                          Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia, TiempoGarantía, Instalacion, 
@@ -770,7 +770,7 @@ VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
 '".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
 '7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
 'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
-'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')"));
+'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
 				//CREAMOS EL PRODUCTO COTIZACION.
 				
 				

@@ -4,13 +4,15 @@ include_once 'functions.php';
 
 $compra=new compra();
 $func=new functions();
+
+$conexion=new Conect();
 //TEST CUANDO EL SISTEMA RECIBE EL NUMERO DE REFERENCIA DE PAGO 
-$compra->GenerarPedidoCrecer("1337332591");
+
+$refVenta="1337332591";
+$compra->GenerarPedidoCrecer("1337476897");
 
 
-
-
-
+	
 
 
 ?>
