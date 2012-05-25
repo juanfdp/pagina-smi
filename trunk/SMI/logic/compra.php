@@ -798,22 +798,21 @@ class compra
 							$idPasajeroProducto=$this->fun->NewGuid();							
 							$existePasajero = &$this->conexion->conectarse()->Execute("SELECT     Id
 								FROM         Pasajero
-								WHERE     (Identificacion = '". $row[4]."')");	
+								WHERE     (Identificacion = '". $row[4]."')");								
+					
 							
-							echo"SELECT     Id
-								FROM         Pasajero
-								WHERE     (Identificacion = '". $row[4]."')";
-
-							echo "<br>".$existePasajero->fields[0]."<- EXISTE PASAJERO ";
 							if($existePasajero->fields[0]==""){
 								
-								//CREAMOS PASAJERO
-								
+								//CREAMOS PASAJERO								
 								$idPasajero=$this->fun->NewGuid();												
 								$existePasajero = &$this->conexion->conectarse()->Execute("
 								INSERT INTO Pasajero
                          		(Id, Nombre, Apellido, Identificacion, FechaNacimiento, Telefono, Celular, Email, Estado, Direccion, Observaciones, SeguimientoHistorico)
 								VALUES        ('".$idPasajero."','".$row[2]."','".$row[3]."','".$row[4]."','".$row[6]."','".$pedidoWeb->fields[10]."','".$pedidoWeb->fields[11]."','".$row[5]."','true','".$pedidoWeb->fields[12]."','-','".$seguimiento."')");	
+								//ASOCIAMOS EL CONTACTO DE EMERGENCIA
+								
+								$asociarContacto= &$this->conexion->conectarse()->Execute(" INSERT INTO EmpresaContactos     (IdEmpresa, IdContacto)
+								VALUES        ('".$idPasajero."','".$IdContacto."')");
 								
 								
 								//ASOCIAMOS AL PASAJERO PRODUCTO COTIZACION	
@@ -823,10 +822,15 @@ class compra
 								
 							}
 							else if($existePasajero->fields[0]!=""){
-								echo "Entramos al caso cuando el pasajero ya existe";
-								$idPasajero=$existePasajero->fields[0];						
+							//	echo "Entramos al caso cuando el pasajero ya existe";
+								$idPasajero=$existePasajero->fields[0];		
+									//ASOCIAMOS EL CONTACTO DE EMERGENCIA
 								
-									//ASOCIAMOS AL PASAJERO PRODUCTO COTIZACION								
+								$asociarContacto= &$this->conexion->conectarse()->Execute(" INSERT INTO EmpresaContactos     (IdEmpresa, IdContacto)
+								VALUES        ('".$idPasajero."','".$IdContacto."')");
+																
+									//ASOCIAMOS AL PASAJERO PRODUCTO COTIZACION			
+														
 								$asociamospasajero = &$this->conexion->conectarse()->Execute("
 									INSERT INTO PasajerosProductosCotizacion (Id, IdPasajero, IdProductoCotizacion, Poliza, Estado, Aumento, Descuento, ValorUnitario)
 									VALUES        ('".$idPasajeroProducto."','".$idPasajero."','".$IdProductoCotizacion."','".$numeroPoliza."','true','0','0','0')");
@@ -856,10 +860,9 @@ class compra
 				
 				echo "YA EXISTE LA EMPRESA";
 				$IdCliente=$existeCliente->fields[1];				
-			//echo $existeCliente->fields[1];
+				//echo $existeCliente->fields[1];
 			
-				//VALIDAMOS EL CONTACTO
-				
+				//VALIDAMOS EL CONTACTO				
 				
 				
 				//CREAMOS EL PEDIDO
@@ -868,16 +871,13 @@ class compra
 				//CREAMOS EL PRODUCTO COTIZACION.
 				
 				
-				//CREAMOS EL PASAJERO PRODUCTO COTIZACION.
+				//CREAMOS EL PASAJERO PRODUCTO COTIZACION.				
 				
 				
-				
-				//CREAMOS FACTURA.
-				
+				//CREAMOS FACTURA.			
 				
 				
-				//CREAMOS FACTURA ORDEN COMPRA.
-				
+				//CREAMOS FACTURA ORDEN COMPRA.			
 				
 				
 				//CREAMOS ALERTAS FACTURACION.
