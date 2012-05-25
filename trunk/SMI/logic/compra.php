@@ -675,9 +675,9 @@ class compra
 			$fechaConfirmacion=date("m/d/Y h:m:s" );
 			
 			//ACTUALIZAMOS EL ESTADO DE PEDIDO WEB A CONFIRMADO Y AGREGAMOS LA FECHA DE CONFIRMACION
-			$recordSett = &$this->conexion->conectarse()->Execute("	UPDATE       PedidoWeb
-			SET                FechaRespuesta ='".$fechaConfirmacion."', Estado = 1
-			WHERE        (CodigoTransaccion = '".$refVenta."' AND Estado = 3)");	
+			//$recordSett = &$this->conexion->conectarse()->Execute("	UPDATE       PedidoWeb
+			//SET                FechaRespuesta ='".$fechaConfirmacion."', Estado = 1
+			//WHERE        (CodigoTransaccion = '".$refVenta."' AND Estado = 3)");	
 			
 			//CREAMOS EL PEDIDO EN CRECER
 			//1.OBTENEMOS LA INFORMACION DEL PEDIDO DESDE LA TABLA TEMPORAL
@@ -705,6 +705,7 @@ class compra
 			//Precio--20
 			//Region--21
 			//TrmIata--22			
+			
 			$pedidoWeb = &$this->conexion->conectarse()->Execute("SELECT Id, CodigoTransaccion, IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, TelefonoTitularFactura, EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, 
 			NombreContactoEmergencia, ApellidoContactoEmergencia, TelefonoContactoEmergencia, EmailContactoEmergencia,
 			 Estado, FechaInicio, FechaFin, Precio, Region, TrmIata 
@@ -722,7 +723,7 @@ class compra
 				$IdContacto=$this->fun->NewGuid();
 				$IdPedido=$this->fun->NewGuid();
 				$IdProductoCotizacion=$this->fun->NewGuid();
-				$IdFactura=$this->fun->NewGuid();
+				$IdFactura=$this->fun->NewGuid();				
 				$grupo=2;//ASESORES
 				$prioridad=2;
 				$seguimiento="Creado desde el portal web ". $fechaConfirmacion."\n";
@@ -754,28 +755,88 @@ class compra
 				$asociarContacto= &$this->conexion->conectarse()->Execute(" INSERT INTO EmpresaContactos     (IdEmpresa, IdContacto)
 				VALUES        ('".$IdCliente."','".$IdContacto."')");
 
-			 
-
 				//CREAMOS EL PEDIDO
-				
-				//echo"insertando pedido";
 				
 				$crearPedido = &$this->conexion->conectarse()->Execute("INSERT INTO OrdenCompraCliente
                          (Id, FechaElaboracion, IdCliente, IdPaisOrigen, IdSedeCliente, IdRegionDestino, IdContactoEmergencia, FechaSalida, FechaRegreso, CantidadPasajeros, IdContacto, 
                          Codigo, IdAutor, IdEmpleado, FechaModificacion, SubtotalSinDto, Subtotal, ValorIva, Total, Trm_dia, UtilidadSobreCosto, Estado, GrupoAsignado, Prioridad, 
                          Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia, TiempoGarantía, Instalacion, 
                          IdEmpleadoModif, IdViadeContacto)
-VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
-'00000000-0000-0000-0000-000000000000','".$pedidoWeb->fields[21]."',
-'".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
-'7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
-'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
-'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
-				//CREAMOS EL PRODUCTO COTIZACION.
+							VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
+							'00000000-0000-0000-0000-000000000000','".$pedidoWeb->fields[21]."',
+							'".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
+							'7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
+							'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
+							'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
+				//CREAMOS EL PRODUCTO COTIZACION.			
+							
+				
+						// OBTENEMOS LA CANTIDAD DE PASAJEROS.						
+						$cantidadPasajeros = &$this->conexion->conectarse()->Execute("SELECT     COUNT(*) AS Expr1
+						FROM         PasajerosPedido
+						WHERE     (IdPedido = '".$pedidoWeb->fields[0]."')");
+
+						
+						$productoCotizacion = &$this->conexion->conectarse()->Execute("INSERT INTO ProductosCotizacion
+                         (Id, IdProducto, IdReferencia, Cantidad, ValorVenta, SubtotalSinDescuento, ValorVentaCliente, IVA, AplicarIva, IdFormaEnvio, TipoTrasporte, UtilidadGlobal, Utilidad, 
+                         UtilidadEnPorcentaje, UtilidadDespuesCosto, Arancel, ComicionProveedor, IdEmpleado, FechaModificacion, FechaElaboracion, Moneda, ComentarioAdicional, 
+                         Descuento, Aumento)
+							VALUES        ('".$IdProductoCotizacion."','".$pedidoWeb->fields[2]."','".$IdPedido."','".$cantidadPasajeros->fields[0]."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."',
+							'0','true','0','0','0','0','true','false','0',
+							'0','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$fechaConfirmacion."','4','','0','0')");			
 				
 				
 				//CREAMOS EL PASAJERO PRODUCTO COTIZACION.
-				
+						//CONSULTAMOS LOS PASAJEROS ASOCIADOS AL PEDIDO						
+						$pedidoPasajero = &$this->conexion->conectarse()->Execute("SELECT Id, IdPedido, Nombre, Apellido, Documento, Email, FechaNacimiento
+							FROM         PasajerosPedido 
+							WHERE     (IdPedido = '".$pedidoWeb->fields[0]."')");		
+						foreach($pedidoPasajero as $k => $row) {
+							
+							$idPasajero="";
+							$numeroPoliza="";// ACA DEBO LLAMAR EL WEBSERVICE
+							$idPasajeroProducto=$this->fun->NewGuid();							
+							$existePasajero = &$this->conexion->conectarse()->Execute("SELECT     Id
+								FROM         Pasajero
+								WHERE     (Identificacion = '". $row[4]."')");	
+							
+							echo"SELECT     Id
+								FROM         Pasajero
+								WHERE     (Identificacion = '". $row[4]."')";
+
+							echo "<br>".$existePasajero->fields[0]."<- EXISTE PASAJERO ";
+							if($existePasajero->fields[0]==""){
+								
+								//CREAMOS PASAJERO
+								
+								$idPasajero=$this->fun->NewGuid();												
+								$existePasajero = &$this->conexion->conectarse()->Execute("
+								INSERT INTO Pasajero
+                         		(Id, Nombre, Apellido, Identificacion, FechaNacimiento, Telefono, Celular, Email, Estado, Direccion, Observaciones, SeguimientoHistorico)
+								VALUES        ('".$idPasajero."','".$row[2]."','".$row[3]."','".$row[4]."','".$row[6]."','".$pedidoWeb->fields[10]."','".$pedidoWeb->fields[11]."','".$row[5]."','true','".$pedidoWeb->fields[12]."','-','".$seguimiento."')");	
+								
+								
+								//ASOCIAMOS AL PASAJERO PRODUCTO COTIZACION	
+								$asociamospasajero = &$this->conexion->conectarse()->Execute("
+									INSERT INTO PasajerosProductosCotizacion (Id, IdPasajero, IdProductoCotizacion, Poliza, Estado, Aumento, Descuento, ValorUnitario)
+									VALUES        ('".$idPasajeroProducto."','".$idPasajero."','".$IdProductoCotizacion."','".$numeroPoliza."','true','0','0','0')");
+								
+							}
+							else if($existePasajero->fields[0]!=""){
+								echo "Entramos al caso cuando el pasajero ya existe";
+								$idPasajero=$existePasajero->fields[0];						
+								
+									//ASOCIAMOS AL PASAJERO PRODUCTO COTIZACION								
+								$asociamospasajero = &$this->conexion->conectarse()->Execute("
+									INSERT INTO PasajerosProductosCotizacion (Id, IdPasajero, IdProductoCotizacion, Poliza, Estado, Aumento, Descuento, ValorUnitario)
+									VALUES        ('".$idPasajeroProducto."','".$idPasajero."','".$IdProductoCotizacion."','".$numeroPoliza."','true','0','0','0')");
+						
+								
+							}
+							
+							
+						}
+						
 				
 				
 				//CREAMOS FACTURA.
@@ -785,6 +846,7 @@ VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
 				//CREAMOS FACTURA ORDEN COMPRA.
 				
 				
+				
 				//CREAMOS ALERTAS FACTURACION.
 				
 				
@@ -792,6 +854,7 @@ VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
 			//EL CLIENTE YA EXISTE - ASOCIAMOS TODO EL PEDIDO
 			else if($existeCliente->fields[0]!="") {
 				
+				echo "YA EXISTE LA EMPRESA";
 				$IdCliente=$existeCliente->fields[1];				
 			//echo $existeCliente->fields[1];
 			
