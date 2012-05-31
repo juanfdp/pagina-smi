@@ -1,12 +1,10 @@
 <?php
 require_once   'functions.php';
 require_once  'conect.php';
-$fun=new functions();
+$compra=new compra();
 
 
 $llave="131bef7b598";/////llave de usuario 
-
-
 $usuario_id=$_REQUEST['usuario_id'];
 $ref_venta=$_REQUEST['ref_venta'];
 $valor=$_REQUEST['valor'];
@@ -19,10 +17,8 @@ if(strtoupper($firma)==strtoupper($firmacreada)){//comparación de las firmas
 	//código que funciona en caso de que los datos vengan de Pagosonline
 	if($_REQUEST['estado_pol'] == 4)
 	{
-	//CONFIRMACION QUE EL PAGO FUE EXITOSO
-	
-		$fun->SendMailNuevaCompra("jacastillob@gmail.com",$ref_venta,"Castillo");
-
+		//CONFIRMACION QUE EL PAGO FUE EXITOSO	
+		$compra->GenerarPedidoCrecer($ref_venta);
 	}
 	else{
 
