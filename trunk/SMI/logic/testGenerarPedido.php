@@ -10,7 +10,4 @@ $conexion=new Conect();
 
 $refVenta="5e9608d8-6979-1378-a40a-d65e2d686470";
 $compra->GenerarPedidoCrecer("1337476897");
-
-
-
 ?>
