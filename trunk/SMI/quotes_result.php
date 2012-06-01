@@ -202,7 +202,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 	 document.formulario.submit(numeroPoliza);
 	 }
 	 else
-		 alert("Para poder comprar, se debe cotizar al menos con un pasajero");
+		 alert("Para poder comprar, se debe cotizar al menos con un pasajero !! ");
  }
 
 
@@ -336,6 +336,10 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
+					
+					// ENVIAR INFORMACION DE COTIZACION REALIZADA.
+					$func->SendMail_NuevaCotizacion($param->GetOrigen($origen), $param->GetDestino($destino), $salida, $regreso, $param->GetTipoProducto($tipoviaje), $totalPasajeros, $pasajerosCotizacion[0]." ".$pasajerosCotizacion[1]." ".$pasajerosCotizacion[2]." ".$pasajerosCotizacion[3],$email);
+					
 				}
 				else if ($estado==1 )// SE UTILIZA CUANDO SE ESTA NAVEGANDO EN LOS RESULTADOS.
 				{
@@ -351,14 +355,18 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 					$edad4=$_GET['edad4'];
 					/////////////////////CONSTRUIMOS EL ARREGLO DE PASAJEROS PARA COTIZAR//////////////////////
 					$pasajerosCotizacion=$func->limpiarColeccion($pasajerosCotizacion);
-					$pasajerosCotizacion[]=$_GET['edad1']!= null ?$_GET['edad1']:"";;
-					$pasajerosCotizacion[]=$_GET['edad2']!= null ?$_GET['edad2']:"";;
-					$pasajerosCotizacion[]=$_GET['edad3']!= null ?$_GET['edad3']:"";;
-					$pasajerosCotizacion[]=$_GET['edad4']!= null ?$_GET['edad4']:"";;
-
+					$pasajerosCotizacion[]=$_GET['edad1']!= null ?$_GET['edad1']:"";
+					$pasajerosCotizacion[]=$_GET['edad2']!= null ?$_GET['edad2']:"";
+					$pasajerosCotizacion[]=$_GET['edad3']!= null ?$_GET['edad3']:"";
+					$pasajerosCotizacion[]=$_GET['edad4']!= null ?$_GET['edad4']:"";
 
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
+					
+					// ENVIAR INFORMACION DE COTIZACION REALIZADA.
+					$func->SendMail_NuevaCotizacion($param->GetOrigen($origen), $param->GetDestino($destino), $salida, $regreso, $param->GetTipoProducto($tipoviaje), $totalPasajeros, $pasajerosCotizacion[0]." ".$pasajerosCotizacion[1]." ".$pasajerosCotizacion[2]." ".$pasajerosCotizacion[3],$email);
+				
+					
 
 				}
 				?>
