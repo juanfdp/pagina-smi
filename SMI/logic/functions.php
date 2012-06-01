@@ -227,11 +227,11 @@ FROM         Categorias INNER JOIN
 				WHERE     (Productos.Id = \''.$codigoPoliza.'\') AND (DescuentoCategoria.Estado  = \'TRUE\')') ;
 
 
-				
-				
-				
-				
-				
+
+
+
+
+
 			foreach($descuentospoliza as $k => $row) {
 
 				$cantidadPasajeros=0;
@@ -405,8 +405,6 @@ FROM         Categorias INNER JOIN
 			return false;
 		}
 	}
-
-
 	/**
 	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
 	 *
@@ -435,8 +433,6 @@ FROM         Categorias INNER JOIN
 			if($this->mail->Send()) {
 				return true;
 			}
-
-
 			return false;
 
 
@@ -447,8 +443,6 @@ FROM         Categorias INNER JOIN
 			return false;
 		}
 	}
-
-
 	/**
 	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE LA SECCION DE DESEA VENDER SEGUROS MEDICOS DE VIAJES
 	 *
@@ -478,11 +472,7 @@ FROM         Categorias INNER JOIN
 			if($this->mail->Send()) {
 				return true;
 			}
-
-
 			return false;
-
-
 		}
 		catch (Exception $e)
 		{
@@ -490,6 +480,49 @@ FROM         Categorias INNER JOIN
 			return false;
 		}
 	}
+
+
+	/**
+	 * METODO PARA ENVIAR CORREOS AL ADMINISTRADOR DESDE CUANDO SE REALIZA UNA COTIZACION.
+	 *
+	 *
+	 */
+	public function SendMail_NuevaCotizacion($origen,$destino,$salida,$regreso,$tipoviaje,$cantidadPasajeros,$edadesPasajeros,$emailInteresado)
+	{
+		try
+		{
+
+			$this->mail->SetFrom($emailInteresado, "");
+			$this->mail->Subject = 'COTIZACION  - CREADA DESDE EL PORTAL';
+			$this->mail->Body = '
+			<body style="margin: 10px;">
+			<div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">			
+			<p><br>
+			  Has recibido una cotización, registrada desde el portal web:</p>
+			<p>&nbsp;</p>	
+			<p><strong>EMAIL INTERESADO</strong>: '.$emailInteresado.'</p>	
+			<p><strong>ORIGEN</strong>: '.$origen.'</p>		
+			<p><strong>DESTINO</strong>: '.$destino.'</p>
+			<p><strong>SALIDA </strong>: '.$salida.'</p>			
+			<p><strong>REGRESO</strong>: '.$regreso.'</p>
+			<p><strong>TIPO DE VIAJE </strong>:'.$tipoviaje.'</p>
+			<p><strong>CANTIDAD DE PASAJEROS </strong>:'.$cantidadPasajeros.'</p>
+			<p><strong>EDADES DE LOS PASAJEROS</strong>:'.$edadesPasajeros.'</p>		
+			<p><br/>
+			</p></div></body>';  
+			if($this->mail->Send()) {
+				return true;
+			}
+			return false;
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+
+
 	/**
 	 * METODO PARA ENVIAR CORREOS CUANDO SE CONFIRMA EL PAGO POR PARTE DE PAGOS ONLINE.
 	 *
@@ -615,7 +648,7 @@ FROM         Categorias INNER JOIN
 		return $guid;
 	}
 
-	 
+
 	public function str2num($str)
 	{
 		if (strpos($str, '.') !== FALSE && strpos($str,    ',') !== FALSE && strpos($str, '.') < strpos($str,','))
@@ -627,7 +660,7 @@ FROM         Categorias INNER JOIN
 		{
 			$str = str_replace(',','',$str);
 		}
-		 
+			
 		return (float)$str;
 	}
 	/**
