@@ -28,55 +28,44 @@ else {
 }
 //////////  FIN PAGINADOR
 ?>
-
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html
-	class="no-js" lang="en">
-<!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
-<head id="www-segurosmedicosinternacionales-com"
-	data-template-set="html5-reset">
-<meta charset="utf-8">
-<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Quotes Result | Seguros Medicos Internacionales</title>
-<meta name="title" content="">
-<meta name="description" content="">
-<meta name="author" content="Seguros Medicos Internacionales">
-<meta name="Copyright"
-	content="Copyright � 2011 Seguros Medicos Internacionales All Rights Reserved">
-<![if !IE]>
-<!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!-->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400'
-	rel='stylesheet' type='text/css'>
-<![endif]>
-<!-- Uncomment to use; use thoughtfully!
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com" data-template-set="html5-reset">
+	<meta name="viewport" content="width=1200">
+    <meta charset="utf-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Quotes Result | Seguros Medicos Internacionales </title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="author" content="Seguros Medicos Internacionales">
+	<meta name="Copyright" content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
+   	<![if !IE]><!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!--> 
+     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
+    <![endif]>
+	<!-- Uncomment to use; use thoughtfully!
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	-->
-<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
-<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
-<!-- CSS: screen, mobile & print are all in the same file -->
-<link rel="stylesheet" href="tpl/css/style.css">
-<link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
-	rel="stylesheet" />
-<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-<script src="tpl/js/modernizr-1.7.min.js"></script>
-<link href="tpl/css/jquery.selectbox.css" type="text/css"
-	rel="stylesheet" />
-<script src="tpl/js/gen_validatorv4.js"></script>
+	<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
+	<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
+	<!-- CSS: screen, mobile & print are all in the same file -->
+	<link rel="stylesheet" href="tpl/css/style.css" >
+    <link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
+	<script src="tpl/js/modernizr-1.7.min.js"></script>    
+    <link href="tpl/css/jquery.selectbox.css" type="text/css" rel="stylesheet" />  
+    
+    <script src="tpl/js/gen_validatorv4.js"></script>
 <link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css"
 	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
 <script type="text/javascript"
 	src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    
 </head>
 <!--Start of Zopim Live Chat Script-->
 
@@ -241,8 +230,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about_us.php">Conocenos</a></li>
 							<li><a href="clauses.php">Clausulados</a></li>
-							<li><a href="services.php">Servicios</a>
-							
+							<li><a href="services.php">Servicios</a>							
 							<li><a href="companies.php">Compañias</a></li>
 							<li><a href="plans.php">Planes</a></li>
 							<li><a href="contact_us.php">Contacto</a></li>
@@ -286,11 +274,12 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 				<div id="magicStepEnd">
 					<!--ENDS HERE THE STEPS-->
 					<div id="magicStepCards">
-						<img src="tpl/img/MasterMagicCards.png" alt="" /> <img
-							src="tpl/img/PSECard.jpg" alt="" /> <img
-							src="tpl/img/AmexMagicCards.png" alt="" /> <img
-							src="tpl/img/VisaMagicCards.png" alt="" /> <img
-							src="tpl/img/DinersClubCard.jpg" alt="" />
+						   <img src="tpl/img/PSEMagicCards.png" alt="" />
+                                        <img src="tpl/img/MasterMagicCards.png" alt="" />
+                                        <img src="tpl/img/AmexMagicCards.png" alt="" />
+                                        <img src="tpl/img/VisaMagicCards.png" alt="" />
+                                        <img src="tpl/img/DinnersMagicCards.png" alt="" /> 
+                                        
 
 					</div>
 					<!--ENDS HERE THE STEPS-->
@@ -337,9 +326,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 					// OBTENEMOS LA CANTIDAD DE PASAJEROS
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 					
-					// ENVIAR INFORMACION DE COTIZACION REALIZADA.
-					$func->SendMail_NuevaCotizacion($param->GetOrigen($origen), $param->GetDestino($destino), $salida, $regreso, $param->GetTipoProducto($tipoviaje), $totalPasajeros, $pasajerosCotizacion[0]." ".$pasajerosCotizacion[1]." ".$pasajerosCotizacion[2]." ".$pasajerosCotizacion[3],$email);
-					
+						
 				}
 				else if ($estado==1 )// SE UTILIZA CUANDO SE ESTA NAVEGANDO EN LOS RESULTADOS.
 				{
@@ -364,7 +351,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 					$totalPasajeros=$cotizador->CantidadPasajeros($edad1, $edad2, $edad3, $edad4);
 					
 					// ENVIAR INFORMACION DE COTIZACION REALIZADA.
-					$func->SendMail_NuevaCotizacion($param->GetOrigen($origen), $param->GetDestino($destino), $salida, $regreso, $param->GetTipoProducto($tipoviaje), $totalPasajeros, $pasajerosCotizacion[0]." ".$pasajerosCotizacion[1]." ".$pasajerosCotizacion[2]." ".$pasajerosCotizacion[3],$email);
+					//$func->SendMail_NuevaCotizacion($param->GetOrigen($origen), $param->GetDestino($destino), $salida, $regreso, $param->GetTipoProducto($tipoviaje), $totalPasajeros, $pasajerosCotizacion[0]." ".$pasajerosCotizacion[1]." ".$pasajerosCotizacion[2]." ".$pasajerosCotizacion[3],$email);
 				
 					
 
@@ -401,8 +388,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 								<?php
 								//CARGAMOS LOS DESTINOS UTILIZANDO NUESTRA INSTANCIA
 								$r=$param->FillDestinos();
-								echo "<select name=\"country_idExit\" id=\"f_country_idExit\">
-		
+								echo "<select name=\"country_idExit\" id=\"f_country_idExit\">		
 	";
 								while (!$r->EOF) {
 
@@ -466,8 +452,10 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 								<!--EMAIL FORM HERE INFO-->
 								<label>Email:</label><br /> <input type="text" name="email"
 									id="f_email" size="18" value="<?php echo $email; ?>" /> <br />
-								<br /> <a class="contactenos" id="lightbox"
-									href="logic/compare.php?tipo=2">COMPARAR</a>
+								<br/> 
+									<span class="intsr"
+									href><a href="contact_us.php">• Más de de 4 pasajeros
+										Contactanos</a> </span>
 							</div>
 
 							<!--ENDS FORMS-->
@@ -497,7 +485,12 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 				<!--ENDS MAGIC BOX FORM -->
 			</div>
 			<!--END THE MAGIC QUOTE CONTENT-->
-			<div id="temp"></div>
+			
+				<!--NEW IMPROVEMENT-->
+                        <div id="toolTipDw">
+                        	<span class="botSqu"><a id=" " href="#">Comparar tus productos seleccionados</a></span>
+                        </div>
+			
 			<div id="magicResult">
 				<!--- START HERE THE QUOTE RESULT --->
 				<!--START HERE A FOR-WHILE --->
@@ -517,7 +510,8 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 			foreach($rs as $k => $row) {
 				if($contador>=$inicioPagina &&  $contador< $finPagina){
 					//SI SE ENCUENTRA PARAMETRIZADAS LA COBERTURAS  LAS IMPRIMIMOS.
-					$rscoberturas=$cotizador->FillCoberturasByIdPoliza($row[5]);
+					$valorcoberturas=$rscoberturas=$cotizador->FillCoberturasByIdPoliza($row[5]);
+					
 					//ESTA GUARDA NOS SIRVE PARA CONTROL, QUE NO SE LISTEN PRODUCTOS QUE NO TIENEN UN PRECIO DESDE EL WEBSERVICE.
 					$guardaCotizacion=$ws->ObtenerPrecio($row[1], $row[9], $salida, $regreso,$func->calcularDias($salida, $regreso), $pasajerosCotizacion , $row[8]);
 
@@ -558,27 +552,48 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 	
 <form name=\"formulario\" id=\"formulario\" action=\"travel_details.php\" method=\"post\" >
 <div id=\"magicResultBox\">
+
 <div id=\"magicCount\">
 <span>".$contador ."</span>
-<h1>".$precio."</h1>";
+<h1> USD ".$precio."</h1>";
 						//VALIDAMOS LA IMPRESION DEL DESCUENTO.
 						if($descuento!=0)
-						echo"<h2>USD %".$descuento."off</h2>";
-						else
-						echo"<h2>USD</h2>";
+						echo"<h2>% ".$descuento." off</h2>";						
 						echo"
 </div>
+
+
+
+
+
+
 <div id=\"magicDesc\">
 <ul>";		
-						//RECORREMOS E IMPRIMIMOS LAS COBERTURAS , SI LAS TIENE
-						while (!$rscoberturas->EOF) {
-							echo " <li> <dd>". $func->fixEncoding($rscoberturas->fields[1])."</dd></li>";
-							$rscoberturas->MoveNext();}
+						//RECORREMOS LOS ENCABEZADOS DE LAS COBERTURAS
+						$valoresCobertura=array();
+							foreach($rscoberturas as $k => $row) {
+							echo " <li> ". $func->fixEncoding($row[1])."</li>";
+							
+							$valoresCobertura[]= $func->fixEncoding($row[3]);
+							
+							}
 							echo "</ul>
-<span>Ver detalle<br />
-<a href=logic/pdfviewer.php?categoria=".$row[5]."><img src=\"tpl/img/pdfIcon.png\" /></a>
-</span>
 </div>
+<div id=\"magicValue\">
+                     	<ul>";
+                     	//RECORREMOS E IMPRIMIMOS LOS VALORES DE LA COBERTURA
+						for($i=0;$i< count($valoresCobertura);$i++) {
+							echo " <li> ". $valoresCobertura[$i]."</li>";
+							}						
+							echo "</ul>
+						</div>
+    
+    <div id=\"magicDetail\">
+                    	<span>Ver detalle<br />
+                    	<a href=logic/pdfviewer.php?categoria=".$row[5]."><img src=\"tpl/img/pdfIcon.png\" /></a>                        		
+                        </span>  
+     </div>
+
 <div id=\"magicPurchase\">
 <div class=\"chooseComp\">
 <fieldset>
