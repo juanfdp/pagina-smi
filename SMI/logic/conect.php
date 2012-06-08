@@ -29,7 +29,7 @@ class Conect {
 		try
 		{
 			$db =& ADONewConnection('odbc_mssql');
-			$dsn = "Driver={SQL Server};Server=jk4zt-pc;Database=MVCommonSmi;";
+			$dsn = "Driver={SQL Server};Server=jcastillo;Database=MVCommonSmi;";
 			$db->Connect($dsn,'sa','Rewq1234');
 			return $db;
 		}
