@@ -103,7 +103,9 @@ mark {background-color: #8CC63F; color: #000; font-style: italic; font-weight: b
 h1 { font-size:34px; color:#8CC63F; text-shadow:1px 1px 1px #5E5E5E; margin-bottom:0px; font-weight:bold; font-style:normal; position:relative;}
 h2 { font-size:26px; color:#0060A9; margin-bottom:0px; font-weight:normal; font-style:italic; position:relative; }
 h3 { font-size:22px; color:#999999; font-weight:bold; }
-h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; position:relative; }
+h4 { font-size:20px; color:#00408E; font-weight:bold; font-style:normal; position:relative; letter-spacing:0em; }
+h6 { font-size:18px; color:#8CC63F; font-style:italic; font-weight:200; }
+form{ display:none;  }
 /*******HEADER****/
 	header{ width:100% !important; z-index:0}
 	#headerTop{ height:109px; border-top: solid 3px #00408E; border-bottom: solid 3px #5CAC37; background:#FFF;}
@@ -155,8 +157,8 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 			#featuredArea{ margin: 0 auto !important; position:relative; width:1000px; top:0px;	}
 				#sliderHome{ position:relative; width:761px; height:280px; float:left;}
 			
-			#checkCountry{ position:relative; background:url(../img/checkBg.png) no-repeat center bottom !important; width:223px; height:280px; float:right; right:0px; left:0px}
-				#checkCountry p{ text-align:left; width:180px; font-size:13px; color:#FFF; text-shadow:1px 1px 1px #000; position:relative; top:30px;  line-height:1.2em; left:20px;}
+			#checkCountry{ position:relative; background:url(../img/checkBg.png) no-repeat center bottom !important; width:223px; height:280px; float:right; right:0px; left:0px; color:#FFF;}
+				#checkCountry p, p.blank{ text-align:left; width:180px; font-size:13px; color:#FFF; text-shadow:1px 1px 1px #000; position:relative; top:30px;  line-height:1.2em; left:20px; color:#FFF;}
 				.checkTittle { font-weight:bold; font-style:italic; text-shadow:4px 4px 4px #000; font-size:18px; text-align:left; line-height:1.3em; color:#FFF; position:relative; left:13px; top:13px; letter-spacing:0.01em  }
 			
 			#partners { position:relative; margin:0 auto !important; border-bottom:1px solid #999999; height:68px; margin-bottom:20px; clear:right;	  }
@@ -185,26 +187,37 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 		
 				/********* QUOTES RESULT PAGES **********/	
 					
-					#magicResult { position:relative; height:auto; width:auto; overflow:hidden; top:20px; margin-bottom:55px;  border-top:1px solid #999999;}
+					#magicResult { position:relative; height:auto; width:auto; overflow:hidden; margin-bottom:5px;  border-top:1px solid #999999;}
 					#magicResultBox { position:relative; width:1000px; margin:0 auto 5px !important; background:url(../img/quoteResBg.png) repeat-x center top; height:107px; border-bottom:2px solid #999999}
-						#magicCount { position:relative; height:84px; background:url(../img/magicCountBg.png) left center no-repeat; width:188px; border-right: 1px solid #B3B3B3; top:10px; left:24px; float:left;  }
-							#magicCount span { float:left; margin:32px 0 0 14px !important; font-size:15px; font-weight:bold; color:#FFF; text-shadow:1px 1px 1px #000; }
+						#magicCount { position:relative; height:84px; background:url(../img/magicCountBg.png) left center no-repeat; width:160px; border-right: 1px solid #B3B3B3; top:10px; left:24px; float:left;  }
+							#magicCount span { float:left; margin:32px 0 0 14px !important; font-size:15px; font-weight:bold; color:#FFF; text-shadow:1px 1px 1px rgba(0,0,0,.5); }
 							#magicCount p{ float: left; line-height:1.1em; text-align:center; width:100px; position:absolute; left:60px;}
-							#magicCount h1 { left:20px; top:3px;}
-							#magicCount h2 { left:30px; top:-5px;}
-						 #magicDesc { position:relative; height:84px; width:320px; border-right: 1px solid #B3B3B3; top:10px; left:55px; float:left; }
-						 	 #magicDesc ul{ list-style: decimal; line-height:1.1em; float:left;}
-							 #magicDesc ul li{ color:#808080; font-size:13px; font-weight:600; letter-spacing:-0.1em;}
-							 	#magicDesc span { color:#0071BC; font-size:11px; text-align:center; font-weight:600; letter-spacing:-0.1em; height:80px; width:70px; float:right; margin-right:15px; margin-top:5px;  }
-						 #magicPurchase { position:relative; float:left; left:80px;}
-						 		.chooseComp{ position:relative; width:30px; top:10px; text-align:center; line-height:1.0em; float:left;}
-								.chooseClausu { position: absolute; top:65px; clear:both; font-size:11px; color:#0071BC; left:-18px; font-style:italic; width:90px; text-decoration:none;}
+							#magicCount h1 { left:20px; top:18px; font-size:23px; text-shadow:1px 1px 1px rgba(0,0,0,.2);}
+							#magicCount h2 { left:30px; top:14px; font-size:18px;}
+						 #magicDesc { position:relative; height:84px; width:220px; border-right: 1px solid #B3B3B3; top:10px; left:55px; float:left; }
+						 #magicValue { position:relative; width:90px; border-right: 1px solid #B3B3B3; top:10px; left:80px; float:left; height:80%;   }
+							 #magicDesc ul, #magicValue ul{ list-style: decimal; line-height:1.1em; float:left;}
+							 #magicDesc ul li, #magicValue ul li, #magicValue p{ color:#808080; font-size:12px; font-weight:600; letter-spacing:-0.1em; text-shadow:1px 1px 1px rgba(255,255,255,1); clear:both;} /* #magicValue ul li, #magicValue p { color:#0071BC; }*/
+								#magicDetail { position:relative; float:left;  border-right: 1px solid #B3B3B3; top:10px; left:85px; }
+								#magicDetail span { color:#0071BC; font-size:12px; font-style:italic; text-align:center; font-weight:400; line-height:1.1em; letter-spacing:-0.1em; height:80px; width:40px; float:left; margin-right:10px; margin-top:5px;  }
+								#magicDetail span img { width:30px; margin-left:5px; margin-top:5px;  }
+								
+								#toolTipDw{ width:310px; position:relative; left:493px; height:37px; background: transparent url(../img/bgToolTipDw.png) repeat-x left top; -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; -moz-border-radius-topleft: 8px; -moz-border-radius-topright: 6px; -ms-border-top-left-radius: 6px; -ms-border-top-right-radius: 6px; -o-border-top-left-radius: 6px; -o-border-top-right-radius: 6px;  border-top-left-radius: 6px; border-top-right-radius: 6px; text-align:center; padding-top:2px; display:none;  }
+								#toolTipUp{ width:310px; position:relative; left:493px; height:27px; margin-bottom:15px; background: transparent url(../img/bgToolTipUp.png) repeat-x left bottom; -webkit-border-bottom-right-radius: 6px; -webkit-border-bottom-left-radius: 6px; -moz-border-radius-bottomright: 6px; -moz-border-radius-bottomleft: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; text-align:center; padding-top:2px; display:none;}					
+									#toolTipUp a, #toolTipDw a{ text-decoration:none; color:#FFF; font-weight:600; font-size:15px; }
+									#toolTipUp a:hover, #toolTipDw a:hover{ text-decoration:none; }
+								span.topSqu { background:transparent url(../img/topToolTip.png) 50% 7px no-repeat;  color:#FFFFFF; height:20px; padding-top:15px; text-align:center; width:100%;}
+								span.botSqu { margin-bottom:-40px; background:transparent url(../img/botToolTip.png) 50% -2px no-repeat;  color:#FFFFFF; height:45px; padding-bottom:15px; text-align:center; width:100%;   }
+						 #magicPurchase { position:relative; float:left; left:95px; }
+						 		.chooseComp{ position:relative; width:40px; top:10px; text-align:center; line-height:0.7em; float:left; margin-bottom:10px;}
+								.chooseClausu { position: absolute; top:60px; clear:both; font-size:11px; color:#0071BC; left:-6px; line-height:1.0em; font-style:italic; width:70px; text-decoration:none; text-align:center; margin:
+								 auto;}
 								.chooseClausu:hover { color:#4D4D4D} 
-								.choosePlan{ position:relative; width:310px; height:90px; float:right; left:50px; top:10px;}
-									.chooseImg{ float:left; border:3px solid #4D4D4D; width:176px; height:81px; position:relative; text-align:center;}
+								.choosePlan{ position:relative; width:300px; height:90px; float:right; left:40px; top:10px;}
+									.chooseImg{ float:left; border:3px solid #4D4D4D; width:173px; height:81px; position:relative; text-align:center;}
 										.chooseImg img{position:relative; text-align:center; top:25%;}
-									.chooseBtn{ background:url(../img/buttonSales.png) no-repeat 0 0; width:125px; height:89px; float:left; cursor:pointer}
-										.chooseBtn:hover{ background:url(../img/buttonSales.png) no-repeat 0 -90px; }
+									.chooseBtn{ background:url(../img/buttonSales.png) no-repeat -30px 0px; width:95px; height:89px; float:left; cursor:pointer}
+										.chooseBtn:hover{ background:url(../img/buttonSales.png) no-repeat -30px -90px; }
 						#travelDtBox{ width:960px; position:relative; height:auto; overflow:hidden; margin:0 auto 10px; padding:0 5px 15px; border-bottom:1px solid #999999; 	}	
 							#travelDtBox h4{ margin-bottom:5px; margin-left:15px}	
 						#travelDetails { height:70px; border-top:1px solid #999999; padding-top:10px}
@@ -224,12 +237,28 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 								#dataPerCol .list, #dataPerEmer .list, .contactForm .list{ float:left; margin-right:10px }	
 							#dataPerAddr .list{ float:left; margin-right:15px }
 						#dataPerEmer { width:505px; position:relative; left:50px; height:60px; top:5px; float:left; }
-
-							#dataPerAddr{ width:904px; height:117px; padding-left:40px; background:url(../img/addrDataBg.png) no-repeat left center; margin:20px auto !important;}
+						#dataPerDetail{ position:relative; float:left; height:305px; width:230px; background:url(../img/boxTravelInfo.png) no-repeat center center; margin:25px 0px 20px 2px; padding:15px 15px 10px 15px;  }
+							#dataPerDetail .chooseImg{ margin:0 auto; float:left; margin-bottom:5px; margin-left:22px; margin-top:6px; }
+								p.dataDescp, p.detailLinks { font-size:12px; color:#666666; line-height:1.1em; float:left; clear:both; margin:5px 5px 5px 20px;  }
+								#dataDetail, #dataDetail ul{ float:left; list-style:disc; font-size:12px; list-style-position:inside; padding-left:0px; margin-left:12px; }
+								p.detailLinks a { color:#0071BC; font-style:italic; clear:both; font-size:12px; margin-bottom:4px; text-decoration:none; }
+								p.detailLinks a:hover { color:#4D4D4D; text-decoration:underline;} 
+									#dataDetail ul li { font-weight:400; color:#004494; margin:0px; padding-left:0px;   }
+									#dataDetail ul li span { font-weight:normal;  color:#666666; }
+									#dataDetail ul li strong { font-size:14px; font-weight:bold; color:#C1272D;   }
+									
+							#dataPerAddr{ width:670px; height:117px; padding-left:27px; background:url(../img/addrDataBg.png) no-repeat left center; float:right; padding-top:5px; margin-top:25px; margin-bottom:15px;}
 							#dataPerAddr h4{ margin-bottom:5px; left:-20px; top:8px; font-size:20px; clear:left;}	
-							
-							#paymentIcon{ position:relative; float:left; top:-40px;}
-										
+							#dataPerPayment { float:left; clear:both; position:relative; left:-2px; width:575px;  background:url(../img/labPaymentBar.png) no-repeat left center; padding: 15px 0; height:30px; margin-top:50px; }
+							#dataPerTerms { float:left; clear:both; position:relative; left:30px;  }
+									#dataPerTerms span{ font-size:15px; width:auto; font-style:italic; color:#666666;  }
+									#dataPerTerms div{ clear:none; float:right; margin-top:4px; margin-left:5px;  }
+									#dataPerTerms .checkbox{ position:relative; top:-6px; left:-2px;}
+										#dataPerTerms div a{ float:left; clear:none; color:#0071BC; font-style:italic; font-weight:normal; text-decoration:none;}
+										#dataPerTerms div a:hover { color:#4D4D4D; text-decoration:underline;} 
+									#paymentIcon{ float:right; }
+									
+																
 		/**** FAST NAVIGATION AREA---***/
 					#fastNav { position:relative; margin:0 auto !important; width:1000px; top:15px; height:30px; left:13px; border-top:1px solid #999999; float:left; clear:both }		
 						.buttonFast { padding-bottom:15px; height:30px; background:url(../img/arrowButoon.png) repeat-x 0 0;  float:left; margin-right:30px; text-align:left; padding:0px 0 0 0px; }
@@ -252,6 +281,7 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 		/*** CORPORATIVE TEXTS ****/
 		#Corporative { position:relative; width:100%; overflow:hidden; height:auto; margin-bottom:30px; padding-top:15px; border-top:1px solid #999999; margin-top:20px; padding-left:15px; }
 				#Corporative h4 { }
+
 				#Corporative p{ font-size:12px; color:#808080; text-align:justify; margin:8px 0; line-height:1.2em}
 				#Corporative img{ margin:10px 0 5px}
 			#leftContainer { width:450px; float:left; padding:15px; margin-left:15px}
@@ -294,7 +324,7 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 		/**DOT LOGO**/
 			.theDot { width:95px; height:22px; position:absolute; right:70px; top:110px; padding-left:0px; background: transparent;  z-index:10; overflow:hidden; cursor:pointer; opacity:1; }
 			.theDotDesign{ width:65px; height:20px; position:absolute; top:0px; left:0px;}
-			.theDotByThe{ width:65px; height:20px; position:absolute; top:0px; left:15px; opacity:0;}	
+			.theDotByThe{ width:65px; height:20px; position:absolute; top:0px; left:15px; opacity:0; filter: alpha(opacity = 0);}	
 			
 			
 			
@@ -305,11 +335,15 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 				.submitPlan { background:url(../img/buttonQuiclySearch.png) no-repeat; width:100px; height:61px; padding:9px 0 40px; border:none; position:absolute; height:25px; font-size:15px; text-shadow:1px 1px 1px #000; top:117px; color:#FFFFFF; font-weight:bold; left:-8px;}
 				.submitConForm { background:url(../img/miniSubButton.png) no-repeat; width:100px; height:40px; padding:9px 0 40px; border:none; position:relative; height:25px; font-size:13px; text-shadow:1px 1px 1px #000; top:0px; color:#FFFFFF; font-weight:bold; right:-10px;}
 
-				.submitPurchase { background:url(../img/iconCar.png) no-repeat center top; border:none; padding-top:40px; margin:10px 0 0 12px; width:80px; height:60px; color:#FFF; opacity:.7; text-shadow:1px 1px 1px #000; font-size:17px; font-weight:bold; }
+				.submitPurchase { background:url(../img/iconCar.png) no-repeat center top; border:none; padding-top:40px; margin:15px 0 0 5px; width:70px; height:60px; color:#FFF; opacity:.7; text-shadow:1px 1px 1px #000; font-size:13px; font-weight:bold; }
 				#f_quiclyCountry_idOpen{ width:190px;}
 			#chooseTarget { position:relative; margin-left:15px; top:0px; height:120px; float:left;} 
 			#chooseTarget hr{ margin-top:-15px; border:none;}
-			input { background-color: #F2F2F2; border: solid 1px #D1D1D1; height:18px; padding:5px; font-size:12px; color:#666666}	
+			input[type="text"], input { background-color: #F2F2F2; border: solid 1px #D1D1D1; height:18px; padding:5px; font-size:12px; color:#666666}	 
+			/*input[type="text"]:hover{ border: thin #999999 outset ; filter:alpha(opacity=50);-moz-opacity:.5;opacity:.5; background: #FFFFFF; color: #000000;  }*/
+			input[type="text"]:focus { border: thin #003E67 solid ; background: #FFFFFF; color: #000000;  } 
+			input[type="text"]:focus:hover { border: thin #003E67 solid ; filter:alpha(opacity=100);-moz-opacity:1;opacity:1; background: #FFFFFF; color: #000000; }
+			
 			textarea { background-color: #F2F2F2; border: solid 1px #D1D1D1; padding:5px; font-size:12px; color:#666666}	
 			.dateImg { background:#F2F2F2 url(../img/pickerDate.png) 98% center no-repeat; }
 			.intsr { color:#0071BC; font-size:11px; font-style:italic; font-weight:700; position:absolute; top:90px; line-height:1.0em; letter-spacing:-0.1em; left:-8px; width:230px; left:-40px;}
@@ -322,6 +356,7 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 				.submitQuote { background:url(../img/clear.png) no-repeat; border:none; position:absolute; height:25px; font-size:21px; text-shadow:1px 1px 1px #000; top:-10px; padding:60px; color:#FFFFFF; font-weight:bold; left:0px;}							
 				.submitQuote:hover { color:#F2F2F2;}
 				.submitPayment{ background:url(../img/payBtn.png) no-repeat; border:none; position:absolute; height:45px; width:169px; font-size:21px; text-shadow:1px 1px 1px #000; top:42px; color:#FFFFFF; font-weight:bold; left:50px;}	
+					.makePayment { background:none; border:none; position:absolute; float:right; height:45px; width:169px; font-size:21px; text-shadow:1px 1px 1px #000; color:#FFFFFF; font-weight:bold; left:330px; top:-7px; }	
 	
 				.radio { height: 20px; width: 20px; clear:left; float:left; margin: 5px 0 0px 18px; padding: 0 0 0 26px; background: url(../img/greyElementsRadio.png); background-repeat:no-repeat; cursor: default;}
 				.checkbox { height: 20px; width: 20px; clear:left; float:left; margin: 5px 0 0px 18px; background: url(../img/greyElementsCheck.png); cursor: default; text-align:left;}
@@ -384,8 +419,9 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 				.s3sliderImage span strong, .s3sliderImage span b{ font-weight:600;}
 				.s3sliderImage span h5{ font-size:35px; color:#FFF; text-shadow:1px 1px 1px #000; font-style:italic;}
 				.s3sliderImage span a { float:right; color:#3FA9F5; font-size:10px; text-decoration:none; margin-top:3px;}
-			.clear { clear: both; }
-
+			.clear { clear: both;  }
+			.right { height:auto; overflow:hidden; content:close-quote; clear: left;  }
+			
 		/*************** ------------ TABBED SERVICES, PLANS, COMPANIES ---****/
 		#fullCompani { width:952px; margin: 0 auto 30px; }
 		#fullPlan { width:100%; }
@@ -419,7 +455,7 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 					#planTop span { background: url(../img/topBoxLine.png) center right no-repeat; color:#FFF; text-shadow:1px 1px 1px #000; float:left; font-size:23px; font-weight:bold; padding:1px 18px 5px 20px;  }
 					#planTop h2 { color:#FFF; text-shadow:1px 1px 1px #000; font-size:19px; font-style:italic; float:left; padding:5px 10px;}
 				
-				#planCont { position:relative; width:450px; left:15px; top:-3px;}
+				#planCont { position:relative; width:450px; left:15px; top:-3px; float:left; clear:right; min-height:300px; }
 					#planCont img { border:2px solid #4D4D4D; position:relative; width:447px; padding:0; margin:0;}
 					#planCont p { font-size:12px; color:#808080; line-height:1.1em; padding-bottom:5px;}
 
@@ -431,10 +467,10 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 						.pdfIconMin { position:relative; bottom:20px; -webkit-transition: all 0.12s ease-out /* Safari & Chrome */;  -moz-transition: all 0.12s ease-out /* Firefox */; -o-transition: all 0.12s ease-out /* Opera */; transition: all 0.12s ease-out }
 						.pdfIconMin:hover { -webkit-transform: scale(1.1); -moz-transform: scale(1.1); -o-transform: scale(1.1); transform: scale(1.1); }
 						
-			.faqBox { position:relative; float:left; margin: 15px 0 10px 15px; width:445px; border-bottom:1px solid #999999; padding: 20px 10px; display:none;  }
-				.faqBox span { float:left; margin-right:10px; color:#FFF; text-shadow:1px 1px 1px #000; background:url(../img/faqIcon.png) center center no-repeat; text-align:center; width:28px; padding: 3px 0; }
-				.faqBox h3 { float:left; font-size:18px; font-weight:600; font-style:italic; color:#8CC63F; letter-spacing:0.001em; margin-top:2px }
-				.faqBox p { font-size:12px; color:#808080; line-height:1.1em; padding-bottom:5px; }
+			.faqBox { float:left; margin: 15px 0 10px 15px; width:445px; min-height:140px;  height:auto; border-bottom:1px solid #999999; padding: 20px 10px; display: none; clear:right;  }
+				.faqBox span { float:left; margin-right:10px; margin-top:1px; vertical-align:baseline; color:#FFF; text-shadow:1px 1px 1px #000; background:url(../img/faqIcon.png) center center no-repeat; text-align:center; width:28px; padding: 3px 0; }
+				.faqBox h3 { float:none; font-size:18px; font-weight:600; font-style:italic; color:#8CC63F; letter-spacing:0.001em; margin-top:2px; line-height:1.0em; }
+				.faqBox p { font-size:12px; color:#808080; line-height:1.1em; padding-bottom:5px; margin: 0 2px 0px;  }
 				
 			#travBox{ position:relative; float:right; width:461px; margin:50px 40px 30px 0; }			
 				.travMid { height:327px; background:url(../img/travBoxBgMid.png) center center no-repeat;  }
@@ -446,8 +482,8 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 			ul#partnersTabs { left: 0; z-index: 0 /*2*/; border-bottom:1px solid #999999; height:100px;  margin-left:10px; }
 				ul#partnersTabs li { font-size: 12px; font-family: Arial; margin-left:0px}
 					ul#partnersTabs li img { position:relative; float:left; border:none; margin-left:0px; margin-right:0px; cursor:pointer;  }
-					ul#partnersTabs li a { }
-						ul#partnersTabs li a:hover { }
+					ul#partnersTabs li a { color:#0071BC; font-style:italic;  font-weight:normal; text-decoration:none; }
+						ul#partnersTabs li a:hover { color:#4D4D4D; text-decoration:underline;  }
 						ul#partnersTabs li a.current { opacity:.5;   }
 						ul#partnersTabs li a.current img{ }
 						ul#partnersTabs li a.current:hover { opacity:.5; }
@@ -464,8 +500,27 @@ h4 { font-size:22px; color:#00408E; font-weight:bold; font-style:normal; positio
 					
 					ul#outInfoPart li a{ position: absolute; bottom: 10px; right: 10px; padding: 8px 12px; text-decoration: none; font-size: 11px; color: #FFF; background: #000; -moz-border-radius: 5px; }
 					ul#outInfoPart li a:hover{ background: #D33431; }
-				
-					
+			
+			/*DOCUMENTS*/
+				#docsLeft { float:left; overflow:hidden; height:auto; margin-top:-18px; margin-bottom:30px; margin-left:25px; width:225px; }
+					#docsCons { float:left; clear:both; height:auto; padding:15px 5px 5px 5px;    }
+						#docsCons h5 { font-size:17px; color:#004494; font-style:italic;   }
+						#docsCons p { text-align:left; color:#808080; line-height:1.2em;  }
+								#docsLeft a, #docsRight a{ color:#0071BC; font-style:normal; font-weight:normal; text-decoration:none; }
+								#docsLeft a:hover, #docsRight a:hover {  color:#4D4D4D; text-decoration:underline; }
+							#docsCons p strong { font-weight:600; } 
+				#docsRight { float:right; height:auto; overflow:hidden; width:690px; margin-top:-18px; margin-bottom:30px; margin-right:25px;  }
+					#docsImgBanner{ float:left; position:relative; top:-8px; margin-bottom:5px; }
+					#docsContent { width:93%; padding:0 15px; overflow:hidden; margin-top:0px; line-height:1.0em; text-align:justify;}
+						docsContent p{ float:left; clear:both; width:100%;}
+						ol.docsNums { list-style: decimal; float:left; clear:both; width:93%; font-size:15px; font-weight:600; float:left; margin-left:30px; margin-top:10px; margin-bottom:10px; }
+							ol.docsNums li{ color:#00408E; font-weight:bold; }
+								ol.docsNums li span { color:#808080; font-size:12px; font-weight:normal; margin-left:-3px;  }
+						.docsSp { border-top:1px solid #999999; clear:both; margin-bottom:15px; margin-top:20px;}
+
+					#zoneBg { position:absolute; }
+					#preloadZone { position:absolute; width:100%; height:100%; z-index:999;  /* opacity:.6; filter: alpha(opacity = .6);*/ display:none;}
+						#loadingBox { position: fixed; background: rgba(255, 255, 255, .6) url(../img/ajaxPreloader.gif) center center no-repeat; width:100%; height:100%; opacity:1; margin: auto auto; z-index:9999; display:none; }
 /* Print styles!
 -------------------------------------------------------------------------------*/
 @media print {

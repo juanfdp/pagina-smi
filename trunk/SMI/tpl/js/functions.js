@@ -372,7 +372,8 @@ $(document).ready(function (){
 			$(function () {
 				$("#f_quicklyCountry_id, #f_country_idOpen, #f_country_idExit, #f_travelType_id, #f_dateDD, #f_dateMM, #f_dateYY").selectbox();
 			});
-		
+			$("form").delay(1000).fadeIn();
+			
 			//**RADIOS CHECKBOX*///		
 				$(".radio").dgStyle();
 				$(".checkbox").dgStyle();
@@ -381,8 +382,9 @@ $(document).ready(function (){
 				$(function() {
 						$('#f_dateOpen, #f_dateExit').datepicker({
 							inline: true, 
-							formatDate: 'mm-dd-yy'
+							dateFormat: 'dd-mm-y'
 						});
+					
 					
 					/*$( "#format" ).change(function() {
 						$( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
@@ -441,7 +443,7 @@ $(document).ready(function (){
 
 						 
 		//*IMGS*//
-						jQuery('.logoSMI, .contactHelp img, #partners img, #magicStepCards img, #partnersTabs img').hover(function() {
+						jQuery('.logoSMI, .contactHelp img, #partners img, #magicStepCards img, #partnersTabs img, #toolTipUp a, #toolTipDw a').hover(function() {
 							jQuery(this).animate({"opacity": ".7"}, "fast");
 						}, function() {
 							jQuery(this).animate({"opacity": "1"}, "slow");
@@ -468,7 +470,7 @@ $(document).ready(function (){
 									
 					});
 					
-				
+			$("#toolTipUp, #toolTipDw").fadeIn('slow');	
 });
 
 
