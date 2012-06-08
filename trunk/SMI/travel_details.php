@@ -574,6 +574,7 @@ $firma = md5($firma_cadena);
 //ESTA PAGINA ES IMPORTANTE POR QUE ALLI ES DONDE EL SISTEMA DE PAGOS ONLINE NOS RETORNA LA RESPUESTA DESPUES DE HABER
 //VERIFICADO LA TRANSACCION.
 $paginaConfirmacion="http://www.crecersoft.com/Paginasmi/logic/confirmacionPago.php";
+$paginaRespuesta="http://www.crecersoft.com/Paginasmi/logic/confirmacionPago.php";
 
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
