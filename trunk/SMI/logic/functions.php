@@ -687,7 +687,7 @@ FROM         Categorias INNER JOIN
 	<li><a href=\"faq.php\">Preguntas frecuentes</a></li>	
 </ul>
 <ul>
-	<li><img src=\"tpl/img/creditCards.png\" width=\"180\" height=\"130\" /></li>
+	<li><img src=\"tpl/img/creditCards.png\" width=\"123\" height=\"99\" /></li>
 </ul>
 <ul>
 	<p><strong>Líneas de atención.</strong><br />

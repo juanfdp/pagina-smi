@@ -571,10 +571,10 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 <ul>";		
 						//RECORREMOS LOS ENCABEZADOS DE LAS COBERTURAS
 						$valoresCobertura=array();
-							foreach($rscoberturas as $k => $row) {
-							echo " <li> ". $func->fixEncoding($row[1])."</li>";
+							foreach($rscoberturas as $k => $row2) {
+							echo " <li> ". $func->fixEncoding($row2[1])."</li>";
 							
-							$valoresCobertura[]= $func->fixEncoding($row[3]);
+							$valoresCobertura[]= $func->fixEncoding($row2[3]);
 							
 							}
 							echo "</ul>
