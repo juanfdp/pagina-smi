@@ -51,11 +51,11 @@ class functions {
 	{
 		try
 		{
-			$inicial=date(" Y-m-d H:i:s",strtotime($fechaInicial));
-			$final=date(" Y-m-d H:i:s",strtotime($fechaFinal));
+			$inicial=date(" d-m-y H:i:s",strtotime($fechaInicial));
+			$final=date(" d-m-y H:i:s",strtotime($fechaFinal));		
 			$final = strtotime($final);
 			$inicial = strtotime($inicial);
-			return round(abs($final-$inicial)/60/60/24)+1;
+			return round(abs($final-$inicial)/60/60/24)+1;			
 		}
 		catch (Exception $e)
 		{

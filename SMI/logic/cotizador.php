@@ -88,6 +88,8 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 
 			
 			
+			
+			
 			return $recordSett;
 		}
 		catch (Exception $e)
