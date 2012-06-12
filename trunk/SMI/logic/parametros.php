@@ -1,6 +1,6 @@
 <?php
 //header('Content-Type: text/html; charset=UTF-8');
-include 'logic/conect.php';
+require_once   'logic/conect.php';
 /**
  * CLASE CONECT
  *
@@ -95,8 +95,7 @@ class parametros {
 			return false;
 		}
 
-	}
-	
+	}	
 	/**
 	 * METODO QUE RETORNA EL ORIGEN
 	 */
@@ -134,16 +133,8 @@ class parametros {
 		}
 
 	}
-	
-	
-	
-	
 
-
-
-
-
-}
+	}
 
 
 

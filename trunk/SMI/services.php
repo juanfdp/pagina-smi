@@ -195,7 +195,7 @@ echo "</select> "; ?> <label>Edades:</label><br />
 <div id="chooseTarget" class="fourStep"><!--EMAIL FORM HERE INFO--> <label>Email:</label><br />
 <input type="text" name="email" id="f_email" size="18" /> <br />
 <br />
-<span class="intsr" href><a href="contact_us.php">• Más de de 4 pasajeros Contactanos</a></span></div>
+<span class="intsr" href><a href="contact_us.php">Más de de 4 pasajeros Contactanos</a></span></div>
 
 <!--ENDS FORMS--></div>
 <div class="rightMagicBox"><!--HERE THE SUBMIT TYPE & OTHERS VARS--> <input

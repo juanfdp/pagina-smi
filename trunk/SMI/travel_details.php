@@ -1,10 +1,13 @@
-﻿<?php
+<?php
 include 'logic/compra.php';
-include   'logic/functions.php';
+include 'logic/functions.php';
+include 'logic/adminWeb.php';
+include 'logic/cotizador.php';
 $compra=new compra();
+$cotizador=new cotizador();
 $guarda;//GUARDA PARA VERIFICAR SI SE PUEDO O NO CONTINUAR CON EL PAGO
 $fun=new functions();
-//
+$aw=new adminWeb();
 $pathFtp="tpl/img/Administrador/";
 ?>
 <!doctype html>
@@ -12,61 +15,37 @@ $pathFtp="tpl/img/Administrador/";
 <!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html
-	class="no-js" lang="en">
-<!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com"
-	data-template-set="html5-reset">
-<meta charset="utf-8">
-<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Travel Details | Seguros Medicos Internacionales</title>
-<meta name="title" content="">
-<meta name="description" content="">
-<meta name="author" content="Seguros Medicos Internacionales">
-<meta name="Copyright"	content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
-<![if !IE]>
-<!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!-->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400'
-	rel='stylesheet' type='text/css'>
-<![endif]>
-<!-- Uncomment to use; use thoughtfully!
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!-- the "no-js" class is for Modernizr. --><head id="www-segurosmedicosinternacionales-com" data-template-set="html5-reset">
+	<meta name="viewport" content="width=1200">
+    <meta charset="utf-8">
+	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Quotes Result | Seguros Medicos Internacionales </title>
+	<meta name="title" content="">
+	<meta name="description" content="">
+	<meta name="author" content="Seguros Medicos Internacionales">
+	<meta name="Copyright" content="Copyright © 2011 Seguros Medicos Internacionales All Rights Reserved">
+   	<![if !IE]><!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!--> 
+     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
+    <![endif]>
+	<!-- Uncomment to use; use thoughtfully!
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	-->
-<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
-<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
-<!-- CSS: screen, mobile & print are all in the same file -->
-<link rel="stylesheet" href="tpl/css/style.css">
-<link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
-	rel="stylesheet" />
-<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-
-<script src="tpl/js/modernizr-1.7.min.js"></script>
-<link href="tpl/css/jquery.selectbox.css" type="text/css"
-	rel="stylesheet" />
-<script src="tpl/js/gen_validatorv4.js"></script>
-<link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css"
-	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-
-<script type="text/javascript"
-	src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
+	<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
+	<!-- CSS: screen, mobile & print are all in the same file -->
+	<link rel="stylesheet" href="tpl/css/style.css" >
+    <link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
+	<script src="tpl/js/modernizr-1.7.min.js"></script>    
+    <link href="tpl/css/jquery.selectbox.css" type="text/css" rel="stylesheet" />  
+    <script src="tpl/js/gen_validatorv4.js"></script> 
+    <script src="tpl/js/gen_validatorv4.js"></script>
     
-<link rel="Shortcut Icon" href="tpl/img/favicon.ico">
-<link rel="icon" href="tpl/img/favicon.ico" type="image/x-icon">
-<!-- CSS: screen, mobile & print are all in the same file -->
-<link rel="stylesheet" href="tpl/css/style.css">
-<link type="text/css" href="tpl/css/start/jquery-ui-1.8.16.custom.css"
-	rel="stylesheet" />
-<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-<script src="tpl/js/modernizr-1.7.min.js"></script>
-<script src="tpl/js/gen_validatorv4.js"></script>
-<link href="tpl/css/jquery.selectbox.css" type="text/css"
-	rel="stylesheet" />
-</head>
+    
+    
+	
 <script language="JavaScript">
 
 	var nav4 = window.Event ? true : false;	
@@ -100,61 +79,55 @@ var mygetrequest=new ajaxRequest();
 
 
 
-
 function generarPedido(){	
 	
 
 	var mygetrequest=new ajaxRequest()
 	mygetrequest.onreadystatechange=function(){
 	if (mygetrequest.readyState==4){
-	//VALIDAMOS SI EFECTIVAMENTE SE HA GENERADO EL PEDIDO EN LOS TEMPORALES DE PEDIDO Y SIENDO ASI , SE APRUEBA EL ENVIO A PAGOS ONLINE.
-	if (mygetrequest.status==200  || window.location.href.indexOf("http")==-1){
-
-	document.compra.submit();	
+	if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
+	//document.getElementById("temp").innerHTML=mygetrequest.responseText
 	}
 	else{
-	alert("Disculpenos por los inconvenientes, no podemos procesar la compra de su poliza, intente mas tarde.")
+	alert("An error has occured making the request")
 	}
 	}
 	}
-    var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
+	
+	var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
 	var ApellidoEmergencia=encodeURIComponent(document.getElementById("ApellidoEmergencia").value)
 	var TelefonoEmergencia=encodeURIComponent(document.getElementById("TelefonoEmergencia").value)	
 	var EmailEmergencia=encodeURIComponent(document.getElementById("EmailEmergencia").value)
+
 	var TelefonoContacto=encodeURIComponent(document.getElementById("TelefonoContacto").value)
 	var CelularContacto=encodeURIComponent(document.getElementById("CelularContacto").value)	
-	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)	
+	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)
+	
 	var NombreFactu=encodeURIComponent(document.getElementById("NombreFactu").value)
 	var DocumentoFactu=encodeURIComponent(document.getElementById("DocumentoFactu").value)
 	var DireccionFactu=encodeURIComponent(document.getElementById("DireccionFactu").value)
 	var TelefonoFactu=encodeURIComponent(document.getElementById("TelefonoFactu").value)
 	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
 	var Condiciones=encodeURIComponent(document.getElementById("Condiciones").value)
-	var idPoliza=encodeURIComponent(document.getElementById("idpoliza").value)
+	var idPoliza=encodeURIComponent(document.getElementById("idPoliza").value)
 	var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)
-	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)	
-	var fechaInicial=encodeURIComponent(document.getElementById("fechaInicial").value)	
-	var fechaFinal=encodeURIComponent(document.getElementById("fechaFinal").value)		
-	var valor=encodeURIComponent(document.getElementById("valor").value)	
-	var region=encodeURIComponent(document.getElementById("region").value)	
-	
-    
-    
+	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)
 	
 	
-	if(cantidadpasajeros = 1){
+	alert("cantidad pasajeros"+cantidadpasajeros)
+	if(cantidadpasajeros==1){
 		
-		
+
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
 		var d1=encodeURIComponent(document.getElementById("d1").value)
 		var em1=encodeURIComponent(document.getElementById("em1").value)			
 		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
 		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)		
+		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
 		
-		
-		mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
+ 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
+ 		 	
 				+"&ApellidoEmergencia="+ApellidoEmergencia
 				+"&TelefonoEmergencia="+TelefonoEmergencia
 				+"&EmailEmergencia="+EmailEmergencia
@@ -163,9 +136,11 @@ function generarPedido(){
 				+"&DireccionContacto="+DireccionContacto
 				+"&NombreFactu="+NombreFactu
 				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu				
+				+"&DireccionFactu="+DireccionFactu
+				+"&DocumentoFactu="+DocumentoFactu
 				+"&TelefonoFactu="+TelefonoFactu
 				+"&emailComprador="+emailComprador	
+
 				+"&n1="+n1	
 				+"&a1="+a1					
 				+"&d1="+d1	
@@ -174,18 +149,14 @@ function generarPedido(){
 				+"&fnmes1="+fnmes1	
 				+"&fnanio1="+fnanio1
 				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idpoliza="+idPoliza
+				+"&idPoliza="+idPoliza
 				+"&refVenta="+refVenta
-				+"&fechaInicial="+fechaInicial
-				+"&fechaFinal="+fechaFinal
-				+"&valor="+valor		
-				+"&region="+region	
+				
+									
 				, true)		
-				mygetrequest.send(null)
-		
-	}
 
-	else if(cantidadpasajeros =2){
+	}
+	else if(cantidadpasajeros==2){
 
 
 
@@ -237,20 +208,14 @@ function generarPedido(){
 				+"&fnmes2="+fnmes2	
 				+"&fnanio2="+fnanio2	
 				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idpoliza="+idPoliza		
-				+"&refVenta="+refVenta
-				+"&fechaInicial="+fechaInicial
-				+"&fechaFinal="+fechaFinal	
-				+"&valor="+valor
-				+"&region="+region
+				+"&idPoliza="+idPoliza		
+				+"&refVenta="+refVenta	
 				, true)	
-				
-	mygetrequest.send(null)
 
 				
 	}
 
-	else if(cantidadpasajeros =3){
+	else if(cantidadpasajeros==3){
 
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
@@ -316,21 +281,15 @@ function generarPedido(){
 				+"&fnmes3="+fnmes3	
 				+"&fnanio3="+fnanio3	
 				+"&cantidadpasajeros="+cantidadpasajeros	
-				+"&idpoliza="+idPoliza
+				+"&idPoliza="+idPoliza
 				+"&refVenta="+refVenta
-				+"&fechaInicial="+fechaInicial
-				+"&fechaFinal="+fechaFinal
-				+"&valor="+valor
-				+"&region="+region
 							
 				, true)	
-				
-	mygetrequest.send(null)
 
 		
 	}
 
-	else if(cantidadpasajeros=4){
+	else if(cantidadpasajeros==4){
 
 		var n1=encodeURIComponent(document.getElementById("n1").value)
 		var a1=encodeURIComponent(document.getElementById("a1").value)
@@ -387,7 +346,7 @@ function generarPedido(){
 				+"&fndia1="+fndia1	
 				+"&fnmes1="+fnmes1	
 				+"&fnanio1="+fnanio1	
-				
+
 				+"&n2="+n2	
 				+"&a2="+a2					
 				+"&d2="+d2	
@@ -412,21 +371,19 @@ function generarPedido(){
 				+"&fnmes4="+fnmes4	
 				+"&fnanio4="+fnanio4
 				+"&cantidadpasajeros="+cantidadpasajeros		
-				+"&idpoliza="+idPoliza		
+				+"&idPoliza="+idPoliza		
 				+"&refVenta="+refVenta	
-				+"&fechaInicial="+fechaInicial
-				+"&fechaFinal="+fechaFinal
-				+"&valor="+valor
-				+"&region="+region
-												
-				, true)				
+								
+				, true)
+	}
 	mygetrequest.send(null)
-	}	
-	
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
+	
 </head>
+
+
 <!--Start of Zopim Live Chat Script-->
 <script type="text/javascript">
 window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
@@ -469,72 +426,93 @@ $(document).ready(function() {
 	});
 });		
 </script>
+<body onbeforeunload="generarPedido()"> 
 
-<body >
-<div class="wrapper"><!--- START HEADER ---> <header>
-<div id="headerTop"><!--- START THE TOP HEADER --->
-<div id="headerCont"><a href=""><img class="logoSMI"
-	src="tpl/img/SegurosMedicosInternacionales.png" /></a><!-- LOGO SMI POSITION -->
-<!-- HELP AREA RIGHT SMI -->
-<div class="contactHelp"><img src="tpl/img/skypeIcon.png" /></div>
+<div class="wrapper">
+	<!--- START HEADER --->
+    <header>
+		<div id="headerTop"><!--- START THE TOP HEADER --->
+        	<div id="headerCont">
+            		<a href=""><img class="logoSMI" src="tpl/img/SegurosMedicosInternacionales.png"/></a><!-- LOGO SMI POSITION -->
+                <!-- HELP AREA RIGHT SMI -->
+                <div class="contactHelp">
+                	<img src="tpl/img/skypeIcon.png" />
+                </div>
+                
+                <div class="contactInfo">
+                	<p>L�nea Nacional Gratuita: <span>01-8000-123-009</span></p>
+                </div>
+                <!-- ENDS AREA RIGHT SMI -->
+            </div>
+        </div>
+        <!---ENDS THE TOP HEADER--->
+      	<!--NAVIGATION BAR-->
+      <div id="barNav">  
+      	<div id="navContain">
+            <nav>
+                <ul id="trans-nav">
+                    <li><a href="index.php" >Inicio</a></li>
+					<li><a href="about_us.php">Conocenos</a></li>
+					<li><a href="clauses.php">Clausulados</a></li>
+					<li><a href="services.php">Servicios</a>
+					<li><a href="companies.php">Compañias</a></li>
+					<li><a href="plans.php">Planes</a></li>
+					<li><a href="contact_us.php">Contacto</a></li>
+					<li><a href="faq.php">Preguntas Frecuentes </a></li>
+                </ul>
+            </nav>
+         </div>   
+      </div>  <!---ENDS NAVIGATION BAR--->
+	</header>
+    <!--- ENDS HEADER --->
+     <!--START THE FULL BODY CONTAINER-->  
+       <div id="mainBody" class="highLights">
+           <br />
+           <!--START THE MAGIC QUOTE CONTENT-->
+           <div id="magicArea" style="height:80px">
+           		<!--MAGIC NAV-->
+                    <div id="magicNav">
+                        <div id="magicStep" class="off">
+                            <p><span class="NumOff">1</span>Cotizar</p>
+                        </div>
+                        <div id="magicStep" class="off">
+                            <p><span class="NumOff">2</span>Comparar</p>
+                        </div> 
+                        <div id="magicStep" class="on">
+                            <p><span class="NumOn">3</span>Solicitar</p>
+                        </div> 
+                        <div id="magicStep" class="off">
+                            <p><span class="NumOff">4</span>Comprar</p>
+                        </div>    
+                    </div> 
+                        <div id="magicStepEnd">
+                        	<!--ENDS HERE THE STEPS-->
+                                <div id="magicStepCards">
+                                	
+                                        <img src="tpl/img/PSEMagicCards.png" alt="" />
+                                        <img src="tpl/img/MasterMagicCards.png" alt="" />
+                                        <img src="tpl/img/AmexMagicCards.png" alt="" />
+                                        <img src="tpl/img/VisaMagicCards.png" alt="" />
+                                        <img src="tpl/img/DinnersMagicCards.png" alt="" /> 
+                                        
+                                </div> 
+                            <!--ENDS HERE THE STEPS-->     
+                        </div>
+                       
+                 <!--ENDS MAGIC NAV-->
+            <!--HIDDEN  FORM BY DEFAULT ... PLACE WITHOUT DATA	--->
 
-<div class="contactInfo">
-<p>Línea Nacional Gratuita: <span>01-8000-123-009</span></p>
-</div>
-<!-- ENDS AREA RIGHT SMI --></div>
-</div>
-<!---ENDS THE TOP HEADER---> <!--NAVIGATION BAR-->
-<div id="barNav">
-<div id="navContain"><nav>
-<ul id="trans-nav">
-	<li><a href="index.php" >Inicio</a></li>
-	<li><a href="about_us.php">Conocenos</a></li>
-	<li><a href="clauses.php">Clausulados</a></li>
-	<li><a href="services.php">Servicios</a>
-	<li><a href="companies.php">Compañias</a></li>
-	<li><a href="plans.php">Planes</a></li>
-	<li><a href="contact_us.php">Contacto</a></li>
-	<li><a href="faq.php">Preguntas Frecuentes </a></li>
+           </div>
+           <!--END THE MAGIC QUOTE CONTENT-->
 
-</ul>
-</nav></div>
-</div>
-<!---ENDS NAVIGATION BAR---> </header> <!--- ENDS HEADER ---> <!--START THE FULL BODY CONTAINER-->
-<div id="mainBody" class="highLights"><br />
-<!--START THE MAGIC QUOTE CONTENT-->
-<div id="magicArea" style="height: 80px"><!--MAGIC NAV-->
-<div id="magicNav">
-<div id="magicStep" class="off">
-<p><span class="NumOff">1</span>Cotizar</p>
-</div>
-<div id="magicStep" class="off">
-<p><span class="NumOff">2</span>Comparar</p>
-</div>
-<div id="magicStep" class="on">
-<p><span class="NumOn">3</span>Solicitar</p>
-</div>
-<div id="magicStep" class="off">
-<p><span class="NumOff">4</span>Comprar</p>
-</div>
-</div>
-<div id="magicStepEnd"><!--ENDS HERE THE STEPS-->
-<div id="magicStepCards"><img src="tpl/img/MasterMagicCards.png" alt="" />
-<img src="tpl/img/PaypalMagicCards.png" alt="" /> <img
-	src="tpl/img/AmexMagicCards.png" alt="" /> <img
-	src="tpl/img/VisaMagicCards.png" alt="" /></div>
-<!--ENDS HERE THE STEPS--></div>
 
-<!--ENDS MAGIC NAV--> <!--HIDDEN  FORM BY DEFAULT ... PLACE WITHOUT DATA	--->
-
-</div>
-<!--END THE MAGIC QUOTE CONTENT--> <!--START HERE ALL SUBMIT FORMS---> <!--TRAVEL DETAILS--->
-
-<div id="travelDtBox">
-<h4>Datos del viajero:</h4>
-
-<form name="compra" id="compra" method="post"action="https://gateway2.pagosonline.net/apps/gateway/index.html" >
-<!--START DETAILS BOX--->
-
+<!--START HERE ALL SUBMIT FORMS--->	
+	<!--TRAVEL DETAILS--->		
+	<div id="travelDtBox">
+           	<h4>Datos del viajero: </h4>
+<form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
+			
+				<!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
 //HABILITAMOS LOS CAMPOS DEPENDIENDO DE LA CANTIDAD DE PASAJEROS Y VALIDAMOS QUE SEAN MAYOR  QUE CERO Y MENOR QUE CUATRO
@@ -551,10 +529,6 @@ $guarda=false;
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
 
-
-$fechaInicial=$_POST['fechaInicial'];
-$fechaFinal=$_POST['fechaFinal'];
-$region=$_POST['region'];
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
@@ -562,19 +536,31 @@ $llave_encripcion = "131bef7b598";
 $usuarioId = "73585";
 $refVenta = time();
 $cantidadPasajeros=$_POST['PasajerosCotizados'];
-$iva=0;
+$iva=16;
 $baseDevolucionIva=0;
 $valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);//OBTENEMOS EL VALOR DE LA POLIZA
 $moneda ="COP";//ESPECIFICAMOS LA MONEDA PARA LA OPERACION.
 $prueba = "1";// ESPECIFICAMOS SI ES O NO AMBIENTE DE PRUEBAS
-$descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
+$descripcion = "Pago de p�liza: ".$_POST['NombreFactu'] ;
 $emailComprador="info@mail.com";
 $firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
 $firma = md5($firma_cadena);
+
+$origen=(int)$_POST['origen'];
+$destino=(int)$_POST['destino'];
+$salida=$_POST['salida'];
+$regreso= $_POST['regreso'];
+$tipoviaje=(int)$_POST['tipoviaje'];
+
+$VariableCategoria= "Categoria-".$_POST['codigo']; 
+$VariableIdAseguradora= "IdAseguradora-".$_POST['codigo']; 
+
+$Categoria=$_POST[$VariableCategoria];
+$IdAseguradora=$_POST[$VariableIdAseguradora];
+
 //ESTA PAGINA ES IMPORTANTE POR QUE ALLI ES DONDE EL SISTEMA DE PAGOS ONLINE NOS RETORNA LA RESPUESTA DESPUES DE HABER
 //VERIFICADO LA TRANSACCION.
-$paginaConfirmacion="http://www.crecersoft.com/Paginasmi/logic/confirmacionPago.php";
-$paginaRespuesta="http://www.crecersoft.com/Paginasmi/logic/confirmacionPago.php";
+$paginaConfirmacion="http://201.245.67.191:85/WebSiteHTML5/logic/confirmacionPago.php";
 
 //AGREGAMOS LOS DATOS DEL PAGO AL FORMULARIO ACTUAL
 echo"			
@@ -582,23 +568,23 @@ echo"
 			<input	name=\"usuarioId\" type=\"hidden\" value=". $usuarioId ."> 			 
 			<input	name=\"refVenta\" id=\"refVenta\" type=\"hidden\" value=". $refVenta ."> 
 			<input  name=\"moneda\" type=\"hidden\" value=".$moneda."> 
-			<input  name=\"valor\" id=\"valor\" type=\"hidden\" value=". $valor ."> 
+			<input  name=\"valor\" type=\"hidden\" value=". $valor ."> 
 			<input  name=\"iva\"	type=\"hidden\" value=".  $iva ."> 
 			<input	name=\"baseDevolucionIva\" type=\"hidden\"	value=".$baseDevolucionIva.">
 			<input  name=\"url_confirmacion\" type=\"hidden\" value=".$paginaConfirmacion.">
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">
-			<input	name=\"fechaInicial\"  id=\"fechaInicial\" type=\"hidden\" value=".$fechaInicial.">	
-			<input	name=\"fechaFinal\"  id=\"fechaFinal\" type=\"hidden\" value=".$fechaFinal."> 
-			<input	name=\"region\"  id=\"region\" type=\"hidden\" value=".$region.">
 			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">	
-			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";
-	
+			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";	
 
 ?> <!--ENDS DETAILS BOX-->
+  
+   			
+               <!--ENDS DETAILS BOX-->
+               
+               
+             <div id="dataPerInfo">
 
-
-<div id="dataPerInfo">
 <div id="dataPerCol">
 <h4>Datos de contacto - viajeros:</h4>
 <div class="list"><label class="detail">Teléfono fijo:</label><br />
@@ -626,32 +612,66 @@ echo"
 </div>
 
 </div>
-
-
-<div id="dataPerAddr">
-
-<h4>Datos de facturación:</h4>
-<div class="list"><label class="detail">Nombre / Entidad::</label><br />
-<input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
-<div class="list"><label class="detail">Documento / Nit:</label><br />
-<input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
-<div class="list"><label class="detail">Dirección:</label><br />
-<input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
-<div class="list"> <label class="detail">Teléfono fijo:</label><br />
- <input type="text" name="TelefonoFactu" id="TelefonoFactu" size="14"	onkeypress="return acceptNum(event)" /></div>
-<div class="list"><label class="detail">Email:</label> <br />
-<input type="text" name="emailComprador" id="emailComprador" size="20" /></div>
-<div class="list">
-    <label class="detail"> He leido y acepto los </label>
-    <input type="checkbox" name="Condiciones" id="Condiciones" />
-    <label class="detail"> <a class="contactenos" id="lightbox" href="logic/condiciones.php">TERMINOS Y CONDICIONES</a></label> 
-</div>
-<?php
-if($guarda)//VALIDAMOS LA CANTIDAD DE PASAJEROS COTIZADOS
-echo"	<div id=\"paymentIcon\">
-<input type=\"button\" src=\"tpl/img/clear.png\" class=\"submitPayment\" value=\"Comprar\"    onclick=\"generarPedido()\"/>
-</div>";
-?></form>
+               
+             
+ <div id="dataPerDetail">
+               		   <h4>Detalles de Compra</h4>  
+                        	<div class="chooseImg">							
+							<?php  
+							echo $cotizador->Getimg($IdAseguradora);// SE ENVIA POR PARAMETRO EL ID DE LA ASEGURADORA PARA QUE RETORNE LA IMAGEN CORRESPONDIENTE
+							?>
+								
+                            </div>
+                       <p class="dataDescp">                      
+                       </p>   
+                       <div id="dataDetail">
+                      	 <ul>
+                            <li>Origen: <span><?php echo $cotizador->GetOrigen($origen); ?></span> </li>
+                            <li>Destino: <span><?php echo $cotizador->GetDestino($destino); ?></span></li>
+                            <li>Salida: <span><?php echo $salida; ?></span></li>
+                            <li>Regreso: <span><?php echo $regreso; ?></span></li>
+                            <li>Total a Pagar: <strong> <?php echo $valor; ?></strong></li>
+                       	</ul>
+                        <p class="detailLinks">
+                        
+                        <?php 
+						//echo $cotizador->Getclausulado($IdAseguradora);
+                        //echo $cotizador->Getimg( $idPoliza);                        
+                        ?>
+                        </p>
+                       </div>         
+               </div>
+                           
+               <div id="dataPerAddr">
+                   <h4>Datos de facturación:</h4>
+                    <div class="list"><label class="detail">Nombre / Entidad::</label><br />
+				<input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
+				<div class="list"><label class="detail">Documento / Nit:</label><br />
+				<input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
+				<div class="list"><label class="detail">Dirección:</label><br />
+				<input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
+				<div class="list"> <label class="detail">Teléfono fijo:</label><br />
+				 <input type="text" name="TelefonoFactu" id="TelefonoFactu" size="14"	onkeypress="return acceptNum(event)" /></div>
+				<div class="list"><label class="detail">Email:</label> <br />
+				<input type="text" name="emailComprador" id="emailComprador" size="20" /></div>                  
+                 
+               <!--NEW IMPROVEMENT UPDATE-->                   
+                   <div id="dataPerPayment">
+                        <div id="dataPerTerms">
+                        	<span>He leido y acepto los</span>
+                            	<div><legend></legend>
+                                    <label for=""><a href="#">TERMINOS Y CONDICIONES</a></label>
+                                    <div class="checkbox"><input type="checkbox" id="" class="terms" name="[]" value=""></div>
+                           		</div>
+                        
+                            <div id="paymentIcon">
+                                    <input type="submit" src="tpl/img/clear.png" class="makePayment" value="Pagar" />
+                            </div>
+                        </div>	
+                   </div><!--ENDS THE PAYMENT BOX--> 
+               </div>
+            </form>	
+            
 <script language="JavaScript" type="text/javascript"
 	xml:space="preserve">//<![CDATA[
 //You should create the validator only after the definition of the HTML form
@@ -680,8 +700,9 @@ echo"	<div id=\"paymentIcon\">
   frmvalidator.addValidation("Condiciones","shouldselchk=y","Debe Aceptar los terminos y condiciones.");
   var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadPasajeros").value)//OBTENEMOS LA CANTIDAD DE PASAJEROS PARA ASI APLICAR LAS VALIDACAIONES
   //APLICAMOS LAS VALIDCACIONES DEPENDIENDO DE LA CANTIDAD DE PASAJEROS.
+  
+  
   if(cantidadPasajeros==1){
-
 		//PASAJERO1
 	  frmvalidator.addValidation("n1","req","Debe Ingresar El Nombre-Pasajero 1.");
 	  frmvalidator.addValidation("a1","req","Debe Ingresar El Apellido-Pasajero 1."); 
@@ -794,12 +815,17 @@ echo"	<div id=\"paymentIcon\">
 	  frmvalidator.addValidation("fnanio4","dontselect=0","Debe Ingresar El Año De Nacimiento-Pasajero 4.");
   }
  
-//]]></script><!--ENDS HERE ALL SUBMIT FORMS---> <!--START BANNER BOTTOM AREA---></div>
+//]]></script>
+
+	<!--TRAVEL DETAILS ENDS--->	
+</div>
+
+
+<!--ENDS HERE ALL SUBMIT FORMS--->	            
+            
+			
 <div id="banBotArea">
-  <div id="bannerLeft">
-
-
-	
+  <div id="bannerLeft">	
 	<?php 
 $nombreImagen="";
 //IMAGEN 11 DE LA SECCION 2 -- BANNER IZQUIERDO
@@ -846,24 +872,23 @@ while (!$r->EOF) {
 <!--HERE ENDS THE SLIDE--></div>
 </div>
 
-<!--ENDS BANNER BOTTOM AREA---></div>
-<!--ENDS THE FULL BODY CONTAINER-->
-<!---INIT THE FOOTER CONTENT HERE-->
-
-<?php
-//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
-echo $fun->getFooter(); 
-?>
-       
-<!--ENDS ALL FOOTER CONTAINS-->
-</div>
-<!--ENDS WRAPPER-->
+<!--ENDS BANNER BOTTOM AREA--->
+            
+    
+       </div>
+     <!--ENDS THE FULL BODY CONTAINER-->   
+        <!---INIT THE FOOTER CONTENT HERE-->
+       <?php
+		//EL FOOTER LO TENEMOS ALMACENADO Y SECILLMANTE LO REPLICAMOS EN LAS PAGINAS QUE NECESITMAOS
+		echo $fun->getFooter(); 
+		?>
+        <!--ENDS ALL FOOTER CONTAINS-->
+</div><!--ENDS WRAPPER-->
 <script>window.jQuery || document.write("<script src='tpl/js/jquery-1.6.2.min.js'>\x3C/script>")</script>
 <script type="text/javascript" src="tpl/js/jquery.selectbox-0.1.3.js"></script>
-<script src="tpl/js/jquery.custom_radio_checkbox.js"
-	type="text/javascript"></script>
-<script type="text/javascript"
-	src="tpl/js/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="tpl/js/functions.js"></script>
+<script src="tpl/js/jquery.custom_radio_checkbox.js" type="text/javascript"></script>
+<script type="text/javascript" src="tpl/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="tpl/js/functions.js"></script>  
 </body>
 </html>
+   	

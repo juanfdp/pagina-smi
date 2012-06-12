@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'logic/parametros.php';
 include 'logic/cotizador.php';
 include 'logic/functions.php';
@@ -454,7 +454,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 									id="f_email" size="18" value="<?php echo $email; ?>" /> <br />
 								<br/> 
 									<span class="intsr"
-									href><a href="contact_us.php">• Más de de 4 pasajeros
+									href><a href="contact_us.php">Más de de 4 pasajeros
 										Contactanos</a> </span>
 							</div>
 
@@ -543,14 +543,18 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 						if($descuento!=0){
 							$precio= $precio- ($descuentoInterno*$precio);//APLICAMOS EL AUMENTO
 						}
-
 						//VALIDAMOS LA CANTIDAD DE PASAJEROS
 						//echo "<br>";
 						//echo "AUMENTO".$aumento;
 						//echo "PRECIO". $guardaCotizacion;
-						echo"
-	
+						echo"	
 <form name=\"formulario\" id=\"formulario\" action=\"travel_details.php\" method=\"post\" >
+			<input type=\"hidden\" name=\"origen\"  value=". $origen ." />
+			<input type=\"hidden\" name=\"destino\"  value=". $destino ." />
+			<input type=\"hidden\" name=\"salida\"  value=". $salida ." />
+			<input type=\"hidden\" name=\"regreso\"  value=". $regreso ." />
+			<input type=\"hidden\" name=\"tipoviaje\"  value=". $tipoviaje ." />
+
 <div id=\"magicResultBox\">
 
 <div id=\"magicCount\">
@@ -561,12 +565,6 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 						echo"<h2>% ".$descuento." off</h2>";						
 						echo"
 </div>
-
-
-
-
-
-
 <div id=\"magicDesc\">
 <ul>";		
 						//RECORREMOS LOS ENCABEZADOS DE LAS COBERTURAS
@@ -600,6 +598,8 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 <div><legend></legend>	
 <label for=\"\">Comparar Productos </label>
 <input type=\"checkbox\"  id=\"categorias\" name=\"categorias\" value=". $row[5] ." onclick=\"agregarParaComparar(this)\">
+<input type=\"hidden\" name=\"Categoria-".$contador."\"  value=". $row[5]." />
+<input type=\"hidden\" name=\"IdAseguradora-".$contador."\"  value=". $row[9]." />
 <input type=\"hidden\" name=\"PrecioCotizado-".$contador."\"  value=". $precio." />
 <input type=\"hidden\" name=\"IdPoliza-".$contador."\"  value=". $row[0] ." />
 </div>
