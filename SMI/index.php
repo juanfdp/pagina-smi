@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'logic/parametros.php';
 include 'logic/adminWeb.php';
 include 'logic/functions.php';
@@ -381,9 +381,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 								<!--EMAIL FORM HERE INFO-->
 								<label>Email:</label><br /> <input type="text" name="email"
 									id="f_email" size="18" /> <br /> <br /> 
-									<span class="intsr"
-									href><a href="contact_us.php">• Más de de 4 pasajeros
-										Contactanos</a> </span>
+									<span class="intsr"><a href="contact_us.php">Más de de 4 pasajeros	Contactanos</a> </span>
 							</div>
 
 							<!--ENDS FORMS-->

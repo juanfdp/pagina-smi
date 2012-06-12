@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * CLASE COTIZADOR
  *
@@ -403,6 +400,45 @@ WHERE        			((Productos.IdTipoRango = 2 AND  '. $dias .' BETWEEN Productos.D
 			echo 'Caught exception: ',  $e->getMessage(), "\n";
 			return false;
 		}
+	}
+	
+/**
+	 * METODO QUE RETORNA EL ORIGEN
+	 */
+	public function GetOrigen($idOrigen)
+	{
+
+		try
+		{
+			$recordSett = &$this->conexion->conectarse()->Execute('SELECT Descripcion FROM Paises Where Id ='.$idOrigen);
+			
+			return $recordSett->fields[0];
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+	}
+	
+	/**
+	 * METODO QUE RETORNA EL DESTINO
+	 */
+	public function GetDestino($idDestino)
+	{
+
+		try
+		{
+			$recordSett = &$this->conexion->conectarse()->Execute('SELECT Descripcion FROM Region Where Id ='.$idDestino);
+			
+			return $recordSett->fields[0];
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+
 	}
 
 
