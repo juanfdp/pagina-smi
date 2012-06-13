@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'logic/parametros.php';
 include 'logic/adminWeb.php';
 include 'logic/functions.php';
