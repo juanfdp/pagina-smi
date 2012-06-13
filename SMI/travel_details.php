@@ -25,7 +25,7 @@ $pathFtp="tpl/img/Administrador/";
 	<meta name="title" content="">
 	<meta name="description" content="">
 	<meta name="author" content="Seguros Medicos Internacionales">
-	<meta name="Copyright" content="Copyright Â© 2011 Seguros Medicos Internacionales All Rights Reserved">
+	<meta name="Copyright" content="Copyright Ã‚Â© 2011 Seguros Medicos Internacionales All Rights Reserved">
    	<![if !IE]><!--- IE FIXURE FONT REPLACE GOOGLE API - OTHER BROWSER OK!--> 
      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
     <![endif]>
@@ -405,39 +405,7 @@ $.src='//cdn.zopim.com/?g9y23H0LeKputTMayHiR1XCwQTEtPNI3';z.t=+new Date;$.
 type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
 <!--End of Zopim Live Chat Script-->
-<script type="text/javascript">
 
-$(document).ready(function() {
-    /* This is basic - uses default settings */
-	$("#lightbox").fancybox({
-		'width'				: '80%',
-		'height'			: '95%',
-		'autoScale'			: false,
-		'transitionIn'		: 'elastic',
-		'transitionOut'		: 'elastic',
-		'type'				: 'iframe'		
-	});
-	
-	$("#lightbox3").fancybox({
-		'width'				: '75%',
-		'height'			: '33%',
-		'autoScale'			: false,
-		'transitionIn'		: 'elastic',
-		'transitionOut'		: 'elastic',
-		'type'				: 'iframe'
-		
-	});
-	$("#lightbox2").fancybox({
-		'width'				: '75%',
-		'height'			: '60%',
-		'autoScale'			: false,
-		'transitionIn'		: 'elastic',
-		'transitionOut'		: 'elastic',
-		'type'				: 'iframe'
-		
-	});
-});		
-</script>
 <body onbeforeunload="generarPedido()"> 
 
 <div class="wrapper">
@@ -450,7 +418,6 @@ $(document).ready(function() {
                 <div class="contactHelp">
                 	<img src="tpl/img/skypeIcon.png" />
                 </div>
-                
                 <div class="contactInfo">
                 	<p>Línea Nacional Gratuita: <span>01-8000-123-009</span></p>
                 </div>
@@ -467,7 +434,7 @@ $(document).ready(function() {
 					<li><a href="about_us.php">Conocenos</a></li>
 					<li><a href="clauses.php">Clausulados</a></li>
 					<li><a href="services.php">Servicios</a>
-					<li><a href="companies.php">Compa�ias</a></li>
+					<li><a href="companies.php">Compañias</a></li>
 					<li><a href="plans.php">Planes</a></li>
 					<li><a href="contact_us.php">Contacto</a></li>
 					<li><a href="faq.php">Preguntas Frecuentes </a></li>
@@ -499,31 +466,27 @@ $(document).ready(function() {
                     </div> 
                         <div id="magicStepEnd">
                         	<!--ENDS HERE THE STEPS-->
-                                <div id="magicStepCards">
-                                	
+                                <div id="magicStepCards">                                	
                                         <img src="tpl/img/PSEMagicCards.png" alt="" />
                                         <img src="tpl/img/MasterMagicCards.png" alt="" />
                                         <img src="tpl/img/AmexMagicCards.png" alt="" />
                                         <img src="tpl/img/VisaMagicCards.png" alt="" />
-                                        <img src="tpl/img/DinnersMagicCards.png" alt="" /> 
-                                        
+                                        <img src="tpl/img/DinnersMagicCards.png" alt="" />                                         
                                 </div> 
                             <!--ENDS HERE THE STEPS-->     
                         </div>
                        
                  <!--ENDS MAGIC NAV-->
             <!--HIDDEN  FORM BY DEFAULT ... PLACE WITHOUT DATA	--->
-
            </div>
            <!--END THE MAGIC QUOTE CONTENT-->
-
-
 <!--START HERE ALL SUBMIT FORMS--->	
 	<!--TRAVEL DETAILS--->		
 	<div id="travelDtBox">
            	<h4>Datos del viajero: </h4>
+           	
 <form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
-			
+
 				<!--START DETAILS BOX--->
 <?php
 //CAMPOS DE LOS PASAJEROS
@@ -531,6 +494,8 @@ $(document).ready(function() {
 
 if($_POST['PasajerosCotizados']!=0)
 {
+	
+
 	$compra->HabilitarPasajeros($_POST['PasajerosCotizados']);
 	$guarda=true;
 }
@@ -540,7 +505,6 @@ $guarda=false;
 }
 
 ///DATOS PARA EL ENVIO DE LA INFORMACION A PAGOS ONLINE
-
 $precio="PrecioCotizado-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER REALMENTE EL VALOR
 $id="IdPoliza-".$_POST['codigo'];//CONSTRUMOS LAS VARIABLES POST PARA OBTENER EL ID DE LA POLIZA
 $idPoliza=$_POST[$id];
@@ -553,7 +517,7 @@ $baseDevolucionIva=0;
 $valor=($_POST[$precio]!=""?$_POST[$precio]:0)* $fun->getTrmIata($_POST[$id]);//OBTENEMOS EL VALOR DE LA POLIZA
 $moneda ="COP";//ESPECIFICAMOS LA MONEDA PARA LA OPERACION.
 $prueba = "1";// ESPECIFICAMOS SI ES O NO AMBIENTE DE PRUEBAS
-$descripcion = "Pago de póliza: ".$_POST['NombreFactu'] ;
+$descripcion = "Pago de pÃ³liza: ".$_POST['NombreFactu'] ;
 $emailComprador="info@mail.com";
 $firma_cadena = $llave_encripcion."~".$usuarioId."~".$refVenta."~".$valor."~".$moneda;
 $firma = md5($firma_cadena);
@@ -594,13 +558,13 @@ echo"
              <div id="dataPerInfo">
 <div id="dataPerCol">
 <h4>Datos de contacto - viajeros:</h4>
-<div class="list"><label class="detail">Tel�fono fijo:</label><br />
+<div class="list"><label class="detail">Teléfono fijo:</label><br />
 <input type="text" name="TelefonoContacto"  id="TelefonoContacto"value="" size="12"
 	onkeypress="return acceptNum(event)" /></div>
-<div class="list"><label class="detail">Tel�fono Movil:</label><br />
+<div class="list"><label class="detail">Teléfono Movil:</label><br />
 <input type="text" name="CelularContacto" id="CelularContacto" size="12"
 	onkeypress="return acceptNum(event)" /></div>
-<div class="list"><label class="detail">Direcci�n:</label><br />
+<div class="list"><label class="detail">Dirección:</label><br />
 <input type="text" name="DireccionContacto" id="DireccionContacto" size="18" /></div>
 </div>
 <div id="dataPerEmer">
@@ -609,7 +573,7 @@ echo"
 <input type="text" name="NombreEmergencia" id="NombreEmergencia" size="14" /></div>
 <div class="list"><label class="detail">Apellido:</label><br />
 <input type="text" name="ApellidoEmergencia" id="ApellidoEmergencia" size="14" /></div>
-<div class="list"><label class="detail">Tel�fono:</label><br />
+<div class="list"><label class="detail">Teléfono:</label><br />
 <input type="text" name="TelefonoEmergencia" id="TelefonoEmergencia" size="14"
 	onkeypress="return acceptNum(event)" /></div>
 <div class="list"><label class="detail">Email:</label> <br />
@@ -641,14 +605,14 @@ echo"
                </div>
                            
                <div id="dataPerAddr">
-                   <h4>Datos de facturaci�n:</h4>
+                   <h4>Datos de facturación:</h4>
                     <div class="list"><label class="detail">Nombre / Entidad::</label><br />
 				<input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
 				<div class="list"><label class="detail">Documento / Nit:</label><br />
 				<input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
-				<div class="list"><label class="detail">Direcci�n:</label><br />
+				<div class="list"><label class="detail">Dirección:</label><br />
 				<input type="text" name="DireccionFactu" id="DireccionFactu" size="14" /></div>
-				<div class="list"> <label class="detail">Tel�fono fijo:</label><br />
+				<div class="list"> <label class="detail">Teléfono fijo:</label><br />
 				 <input type="text" name="TelefonoFactu" id="TelefonoFactu" size="14"	onkeypress="return acceptNum(event)" /></div>
 				<div class="list"><label class="detail">Email:</label> <br />
 				<input type="text" name="emailComprador" id="emailComprador" size="20" /></div>                  
@@ -669,48 +633,23 @@ echo"
                    </div><!--ENDS THE PAYMENT BOX--> 
                </div>
             </form>	
-            
-<script language="JavaScript" type="text/javascript"
-	xml:space="preserve">//<![CDATA[
+<script language="JavaScript" type="text/javascript" xml:space="preserve">//<![CDATA[
 //You should create the validator only after the definition of the HTML form
   var frmvalidator  = new Validator("compra");  
-  //CONTACTO VIAJEROS
-  frmvalidator.addValidation("TelefonoContacto","req","Debe Ingresar Un TelÃ©fono-Contacto.");
-  frmvalidator.addValidation("CelularContacto","req","Debe Ingresar Un TelÃ©fono Movil-Contacto."); 
-  frmvalidator.addValidation("DireccionContacto","req","Debe Ingresar Una DirecciÃ³n-Contacto.");
-  //CONTACTO EMERGENCIA
-  frmvalidator.addValidation("NombreEmergencia","req","Debe Ingresar El Nombre-Contacto Emergencia.");
-  frmvalidator.addValidation("ApellidoEmergencia","req","Debe Ingresar El Apellido-Contacto Emergencia."); 
-  frmvalidator.addValidation("TelefonoEmergencia","req","Debe Ingresar El TÃ©lefono-Contacto Emergencia.");
-  frmvalidator.addValidation("EmailEmergencia","maxlen=50");
-  frmvalidator.addValidation("EmailEmergencia","req","Debe Ingresar Un E-mail-Contacto Emergencia.");
-  frmvalidator.addValidation("EmailEmergencia","email","Debe Ingresar Un E-mail VÃ¡lido-Contacto Emergencia."); 
-  //FACTURACION
-  frmvalidator.addValidation("descripcion","req","Debe Ingresar El Nombre/Entidad-FacturaciÃ³n.");
-  frmvalidator.addValidation("DocumentoFactu","req","Debe Ingresar El Documento/Nit-FacturaciÃ³n."); 
-  frmvalidator.addValidation("DireccionFactu","req","Debe Ingresar La DirecciÃ³n-FacturaciÃ³n.");
-  frmvalidator.addValidation("TelefonoFactu","req","Debe Ingresar El TelÃ©fono-FacturaciÃ³n.");
-  frmvalidator.addValidation("emailComprador","maxlen=50");
-  frmvalidator.addValidation("emailComprador","req","Debe Ingresar Un E-mail-FacturaciÃ³n.");
-  frmvalidator.addValidation("emailComprador","email","Debe Ingresar Un E-mail VÃ¡lido-FacturaciÃ³n."); 
-  //TERMINOS Y CONDICIONES
-  //frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");  
-  frmvalidator.addValidation("Condiciones","shouldselchk=y","Debe Aceptar los terminos y condiciones.");
-  var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadPasajeros").value)//OBTENEMOS LA CANTIDAD DE PASAJEROS PARA ASI APLICAR LAS VALIDACAIONES
+  var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)//OBTENEMOS LA CANTIDAD DE PASAJEROS PARA ASI APLICAR LAS VALIDACAIONES
   //APLICAMOS LAS VALIDCACIONES DEPENDIENDO DE LA CANTIDAD DE PASAJEROS.
-  
-  
   if(cantidadPasajeros==1){
+
 		//PASAJERO1
 	  frmvalidator.addValidation("n1","req","Debe Ingresar El Nombre-Pasajero 1.");
 	  frmvalidator.addValidation("a1","req","Debe Ingresar El Apellido-Pasajero 1."); 
 	  frmvalidator.addValidation("d1","req","Debe Ingresar El Documento-Pasajero 1.");
 	  frmvalidator.addValidation("em1","maxlen=50");
 	  frmvalidator.addValidation("em1","req","Debe Ingresar Un E-mail-Pasajero 1.");
-	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 1."); 
-	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail V�lido-Pasajero 1."); 
+	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 1.");
 	  frmvalidator.addValidation("fnmes1","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 1.");
-	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 1.");
 	    }
   else if(cantidadPasajeros==2){
 	  
@@ -720,20 +659,20 @@ echo"
 	  frmvalidator.addValidation("d1","req","Debe Ingresar El Documento-Pasajero 1.");
 	  frmvalidator.addValidation("em1","maxlen=50");
 	  frmvalidator.addValidation("em1","req","Debe Ingresar Un E-mail-Pasajero 1.");
-	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 1."); 
-	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail V�lido-Pasajero 1."); 
+	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 1.");
 	  frmvalidator.addValidation("fnmes1","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 1.");
-	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 1.");
 	//PASAJERO2
 	  frmvalidator.addValidation("n2","req","Debe Ingresar El Nombre-Pasajero 2.");
 	  frmvalidator.addValidation("a2","req","Debe Ingresar El Apellido-Pasajero 2."); 
 	  frmvalidator.addValidation("d2","req","Debe Ingresar El Documento-Pasajero 2.");
 	  frmvalidator.addValidation("em2","maxlen=50");
 	  frmvalidator.addValidation("em2","req","Debe Ingresar Un E-mail-Pasajero 2.");
-	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 2."); 
-	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail V�lido-Pasajero 2."); 
+	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 2.");
 	  frmvalidator.addValidation("fnmes2","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 2.");
-	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 2.");
   }
   else if(cantidadPasajeros==3){
 
@@ -744,30 +683,30 @@ echo"
 	  frmvalidator.addValidation("d1","req","Debe Ingresar El Documento-Pasajero 1.");
 	  frmvalidator.addValidation("em1","maxlen=50");
 	  frmvalidator.addValidation("em1","req","Debe Ingresar Un E-mail-Pasajero 1.");
-	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 1."); 
-	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail V�lido-Pasajero 1."); 
+	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 1.");
 	  frmvalidator.addValidation("fnmes1","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 1.");
-	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 1.");
 		//PASAJERO2
 	  frmvalidator.addValidation("n2","req","Debe Ingresar El Nombre-Pasajero 2.");
 	  frmvalidator.addValidation("a2","req","Debe Ingresar El Apellido-Pasajero 2."); 
 	  frmvalidator.addValidation("d2","req","Debe Ingresar El Documento-Pasajero 2.");
 	  frmvalidator.addValidation("em2","maxlen=50");
 	  frmvalidator.addValidation("em2","req","Debe Ingresar Un E-mail-Pasajero 2.");
-	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 2."); 
-	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail V�lido-Pasajero 2."); 
+	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 2.");
 	  frmvalidator.addValidation("fnmes2","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 2.");
-	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 2.");
 	//PASAJERO3
 	  frmvalidator.addValidation("n3","req","Debe Ingresar El Nombre-Pasajero 3.");
 	  frmvalidator.addValidation("a3","req","Debe Ingresar El Apellido-Pasajero 3."); 
 	  frmvalidator.addValidation("d3","req","Debe Ingresar El Documento-Pasajero 3.");
 	  frmvalidator.addValidation("em3","maxlen=50");
 	  frmvalidator.addValidation("em3","req","Debe Ingresar Un E-mail-Pasajero 3.");
-	  frmvalidator.addValidation("em3","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 3."); 
-	  frmvalidator.addValidation("fndia3","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 3.");
+	  frmvalidator.addValidation("em3","email","Debe Ingresar Un E-mail V�lido-Pasajero 3."); 
+	  frmvalidator.addValidation("fndia3","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 3.");
 	  frmvalidator.addValidation("fnmes3","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 3.");
-	  frmvalidator.addValidation("fnanio3","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 3.");
+	  frmvalidator.addValidation("fnanio3","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 3.");
 
 	  }
   else if(cantidadPasajeros==4){
@@ -777,46 +716,66 @@ echo"
 	  frmvalidator.addValidation("d1","req","Debe Ingresar El Documento-Pasajero 1.");
 	  frmvalidator.addValidation("em1","maxlen=50");
 	  frmvalidator.addValidation("em1","req","Debe Ingresar Un E-mail-Pasajero 1.");
-	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 1."); 
-	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("em1","email","Debe Ingresar Un E-mail V�lido-Pasajero 1."); 
+	  frmvalidator.addValidation("fndia1","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 1.");
 	  frmvalidator.addValidation("fnmes1","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 1.");
-	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 1.");
+	  frmvalidator.addValidation("fnanio1","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 1.");
 		//PASAJERO2
 	  frmvalidator.addValidation("n2","req","Debe Ingresar El Nombre-Pasajero 2.");
 	  frmvalidator.addValidation("a2","req","Debe Ingresar El Apellido-Pasajero 2."); 
 	  frmvalidator.addValidation("d2","req","Debe Ingresar El Documento-Pasajero 2.");
 	  frmvalidator.addValidation("em2","maxlen=50");
 	  frmvalidator.addValidation("em2","req","Debe Ingresar Un E-mail-Pasajero 2.");
-	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 2."); 
-	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("em2","email","Debe Ingresar Un E-mail V�lido-Pasajero 2."); 
+	  frmvalidator.addValidation("fndia2","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 2.");
 	  frmvalidator.addValidation("fnmes2","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 2.");
-	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 2.");
+	  frmvalidator.addValidation("fnanio2","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 2.");
 	//PASAJERO3
 	  frmvalidator.addValidation("n3","req","Debe Ingresar El Nombre-Pasajero 3.");
 	  frmvalidator.addValidation("a3","req","Debe Ingresar El Apellido-Pasajero 3."); 
 	  frmvalidator.addValidation("d3","req","Debe Ingresar El Documento-Pasajero 3.");
 	  frmvalidator.addValidation("em3","maxlen=50");
 	  frmvalidator.addValidation("em3","req","Debe Ingresar Un E-mail-Pasajero 3.");
-	  frmvalidator.addValidation("em3","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 3."); 
-	  frmvalidator.addValidation("fndia3","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 3.");
+	  frmvalidator.addValidation("em3","email","Debe Ingresar Un E-mail V�lido-Pasajero 3."); 
+	  frmvalidator.addValidation("fndia3","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 3.");
 	  frmvalidator.addValidation("fnmes3","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 3.");
-	  frmvalidator.addValidation("fnanio3","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 3.");
+	  frmvalidator.addValidation("fnanio3","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 3.");
 	//PASAJERO4
 	  frmvalidator.addValidation("n4","req","Debe Ingresar El Nombre-Pasajero 4.");
 	  frmvalidator.addValidation("a4","req","Debe Ingresar El Apellido-Pasajero 4."); 
 	  frmvalidator.addValidation("d4","req","Debe Ingresar El Documento-Pasajero 4.");
 	  frmvalidator.addValidation("em4","maxlen=50");
 	  frmvalidator.addValidation("em4","req","Debe Ingresar Un E-mail-Pasajero 4.");
-	  frmvalidator.addValidation("em4","email","Debe Ingresar Un E-mail VÃ¡lido-Pasajero 4."); 
-	  frmvalidator.addValidation("fndia4","dontselect=0","Debe Ingresar El DÃ­a De Nacimiento-Pasajero 4.");
+	  frmvalidator.addValidation("em4","email","Debe Ingresar Un E-mail V�lido-Pasajero 4."); 
+	  frmvalidator.addValidation("fndia4","dontselect=0","Debe Ingresar El D�a De Nacimiento-Pasajero 4.");
 	  frmvalidator.addValidation("fnmes4","dontselect=0","Debe Ingresar El Mes De Nacimiento-Pasajero 4.");
-	  frmvalidator.addValidation("fnanio4","dontselect=0","Debe Ingresar El AÃ±o De Nacimiento-Pasajero 4.");
+	  frmvalidator.addValidation("fnanio4","dontselect=0","Debe Ingresar El A�o De Nacimiento-Pasajero 4.");
   }
- 
-//]]></script>
+  //CONTACTO VIAJEROS
+  frmvalidator.addValidation("TelefonoContacto","req","Debe Ingresar Un Tel�fono-Contacto.");
+  frmvalidator.addValidation("CelularContacto","req","Debe Ingresar Un Tel�fono Movil-Contacto."); 
+  frmvalidator.addValidation("DireccionContacto","req","Debe Ingresar Una Direcci�n-Contacto.");
+  //CONTACTO EMERGENCIA
+  frmvalidator.addValidation("NombreEmergencia","req","Debe Ingresar El Nombre-Contacto Emergencia.");
+  frmvalidator.addValidation("ApellidoEmergencia","req","Debe Ingresar El Apellido-Contacto Emergencia."); 
+  frmvalidator.addValidation("TelefonoEmergencia","req","Debe Ingresar El T�lefono-Contacto Emergencia.");
+  frmvalidator.addValidation("EmailEmergencia","maxlen=50");
+  frmvalidator.addValidation("EmailEmergencia","req","Debe Ingresar Un E-mail-Contacto Emergencia.");
+  frmvalidator.addValidation("EmailEmergencia","email","Debe Ingresar Un E-mail V�lido-Contacto Emergencia."); 
+  //FACTURACION
+  frmvalidator.addValidation("descripcion","req","Debe Ingresar El Nombre/Entidad-Facturaci�n.");
+  frmvalidator.addValidation("DocumentoFactu","req","Debe Ingresar El Documento/Nit-Facturaci�n."); 
+  frmvalidator.addValidation("DireccionFactu","req","Debe Ingresar La Direcci�n-Facturaci�n.");
+  frmvalidator.addValidation("TelefonoFactu","req","Debe Ingresar El Tel�fono-Facturaci�n.");
+  frmvalidator.addValidation("emailComprador","maxlen=50");
+  frmvalidator.addValidation("emailComprador","req","Debe Ingresar Un E-mail-Facturaci�n.");
+  frmvalidator.addValidation("emailComprador","email","Debe Ingresar Un E-mail V�lido-Facturaci�n."); 
+  //TERMINOS Y CONDICIONES
+  //frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");  
+  frmvalidator.addValidation("Condiciones","shouldselchk=y","Debe Aceptar los terminos y condiciones.");
 
-	<!--TRAVEL DETAILS ENDS--->	
-</div>
+  
+//]]></script><!--START BANNER BOTTOM AREA---></div>
 
 
 <!--ENDS HERE ALL SUBMIT FORMS--->	            
