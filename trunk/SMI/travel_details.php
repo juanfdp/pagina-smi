@@ -3,6 +3,7 @@ include 'logic/compra.php';
 include 'logic/functions.php';
 include 'logic/adminWeb.php';
 include 'logic/cotizador.php';
+
 $compra=new compra();
 $cotizador=new cotizador();
 $guarda;//GUARDA PARA VERIFICAR SI SE PUEDO O NO CONTINUAR CON EL PAGO
@@ -592,11 +593,14 @@ echo"
                        </p>   
                        <div id="dataDetail">
                       	 <ul>
+  							<li>Plan: <span><?php echo $fun->fixEncoding( $fun->GetCategoria($idPoliza) ); ?></span> </li>                 	  
                             <li>Origen: <span><?php echo $cotizador->GetOrigen($origen); ?></span> </li>
                             <li>Destino: <span><?php echo $cotizador->GetDestino($destino); ?></span></li>
                             <li>Salida: <span><?php echo $salida; ?></span></li>
                             <li>Regreso: <span><?php echo $regreso; ?></span></li>
-                            <li>Total a Pagar: <strong> <?php echo $valor; ?></strong></li>
+                            <li>Pasajeros: <span><?php echo $cantidadPasajeros; ?></span></li>
+                            <li>Total a Pagar USD: <strong> <?php echo number_format($valor/ $fun->getTrmIata($idPoliza), 2, ',', ','); ?></strong></li>
+                            <li>Total a Pagar $: <strong> <?php echo number_format($valor, 2, ',', ',') ; ?></strong></li>
                        	</ul>
                         <p class="detailLinks">
                         
