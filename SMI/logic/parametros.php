@@ -133,6 +133,28 @@ class parametros {
 		}
 
 	}
+/**
+	 * METODO QUE RETORNA LA CATEGORIA DE  LA POLIZA
+	 */
+	public function GetCategoria($idPoliza)
+	{
+
+		try
+		{
+			$recordSett = &$this->conexion->conectarse()->Execute("SELECT Categorias.Descripcion	FROM Categorias INNER JOIN Productos ON Categorias.Id = Productos.Idcategoria
+																WHERE Productos.Id='".$idPoliza."' ");
+			
+			
+
+			return $recordSett->fields[0];
+		}
+		catch (Exception $e)
+		{
+			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			return false;
+		}
+
+	}
 
 	}
 

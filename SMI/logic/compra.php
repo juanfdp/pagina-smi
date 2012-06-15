@@ -624,7 +624,7 @@ class compra
 	}
 
 
-	/**
+/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
 	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza,$cantidadPasajeros)
@@ -638,6 +638,13 @@ class compra
 		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
 		TelefonoContactoEmergencia, EmailContactoEmergencia,FechaInicio,FechaFin,Precio ,Region,TrmIata, Estado)
 		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."','".$arregloPedido[13]."','".$arregloPedido[14]."','".$arregloPedido[15]."','".$arregloPedido[16]."','".$this->fun->getTrmIata($idPoliza)."',3) ");	
+			
+			echo " INSERT INTO PedidoWeb
+		(Id, CodigoTransaccion,  IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, 
+		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
+		TelefonoContactoEmergencia, EmailContactoEmergencia,FechaInicio,FechaFin,Precio ,Region,TrmIata, Estado)
+		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."','".$arregloPedido[13]."','".$arregloPedido[14]."','".$arregloPedido[15]."','".$arregloPedido[16]."','".$this->fun->getTrmIata($idPoliza)."',3) ";
+			
 			//CREAMOS LOS PASAJEROS DEL PEDIDO.
 			//var_dump($arregloPasajeros);
 			//echo "Cantidad Inicial  ".$cantidadPasajeros."<br>";
@@ -665,7 +672,8 @@ class compra
 			return false;
 		}
 	}
-	/**
+	
+/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR TODA LA INFORMACION EN CRECER, SIEMPRE Y CUANDO LA TRANSACCION SEA SATISFACTORIA
 	 */
 	public function GenerarPedidoCrecer($refVenta)
@@ -1010,6 +1018,7 @@ class compra
 			return false;
 		}
 	}
+	
 }
 
 ?>

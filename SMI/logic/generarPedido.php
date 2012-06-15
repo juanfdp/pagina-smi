@@ -12,6 +12,7 @@ $pedido = array();
 $pasajeros= array();
 
  
+
 $cantidadpasajeros= isset($_GET['cantidadpasajeros'])?$_GET['cantidadpasajeros']: $esvalidoGenerarPedido=false;
 $idpoliza= isset($_GET['idpoliza'])?$_GET['idpoliza']: $esvalidoGenerarPedido=false;
 $refVenta= isset($_GET['refVenta'])?$_GET['refVenta']: $esvalidoGenerarPedido=false;
@@ -36,9 +37,7 @@ $pedido[]=isset($_GET['region'])?$_GET['region']: $esvalidoGenerarPedido=false;/
 
 
 
-
 //var_dump($pedido);
-
 //echo "CANTIDAD PASAJEROS".$cantidadpasajeros;
 
 if($cantidadpasajeros==1){	
@@ -125,9 +124,7 @@ $pasajeros[] = $_GET['fnmes4']."/". $_GET['fndia4']."/".$_GET['fnanio3'];
 	
 	
 }
-
 if($cantidadpasajeros>0  ){	
-	$compra->GenerarPedidoWeb($pedido, $pasajeros, $refVenta, $idpoliza);	
+	$compra->GenerarPedidoWeb($pedido, $pasajeros, $refVenta, $idpoliza,$cantidadpasajeros);	
 }
-
-?>
+//var_dump($pasajeros);

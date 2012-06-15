@@ -597,7 +597,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
     
     <div id=\"magicDetail\">
                     	<span>Ver detalle<br />
-                    	<a    href=\"javascript:cargarClausulado('logic/pdfviewer.php?categoria=.$row[5].',800,500)\"   ><img src=\"tpl/img/pdfIcon.png\" /></a>                        		
+                    	<a  href=\"javascript:cargarClausulado('logic/pdfviewer.php?categoria= ".$row[5]."',800,500)\"><img src=\"tpl/img/pdfIcon.png\" /></a>                        		
                         </span>  
      </div>
 
@@ -605,7 +605,7 @@ function goToTravelDetails(numeroPoliza,cantidadPasajeros)
 <div class=\"chooseComp\">
 <fieldset>
 <div><legend></legend>	
-<label for=\"\">Comparar Productos </label>
+<label for=\"\" onclick=\"compararPolizas('logic/compare.php?tipo=2',800,500)\">Comparar Productos </label>
 <input type=\"checkbox\"  id=\"categorias\" name=\"categorias\" value=". $row[5] ." onclick=\"agregarParaComparar(this)\">
 <input type=\"hidden\" name=\"Categoria-".$contador."\"  value=". $row[5]." />
 <input type=\"hidden\" name=\"IdAseguradora-".$contador."\"  value=". $row[9]." />
