@@ -92,305 +92,7 @@ var mygetrequest=new ajaxRequest();
 
 
 
-function generarPedido(){	
-	
 
-	var mygetrequest=new ajaxRequest()
-	mygetrequest.onreadystatechange=function(){
-	if (mygetrequest.readyState==4){
-	if (mygetrequest.status==200 || window.location.href.indexOf("http")==-1){
-	//document.getElementById("temp").innerHTML=mygetrequest.responseText
-	}
-	else{
-	alert("An error has occured making the request")
-	}
-	}
-	}
-	
-	var NombreEmergencia=encodeURIComponent(document.getElementById("NombreEmergencia").value)
-	var ApellidoEmergencia=encodeURIComponent(document.getElementById("ApellidoEmergencia").value)
-	var TelefonoEmergencia=encodeURIComponent(document.getElementById("TelefonoEmergencia").value)	
-	var EmailEmergencia=encodeURIComponent(document.getElementById("EmailEmergencia").value)
-
-	var TelefonoContacto=encodeURIComponent(document.getElementById("TelefonoContacto").value)
-	var CelularContacto=encodeURIComponent(document.getElementById("CelularContacto").value)	
-	var DireccionContacto=encodeURIComponent(document.getElementById("DireccionContacto").value)
-	
-	var NombreFactu=encodeURIComponent(document.getElementById("NombreFactu").value)
-	var DocumentoFactu=encodeURIComponent(document.getElementById("DocumentoFactu").value)
-	var DireccionFactu=encodeURIComponent(document.getElementById("DireccionFactu").value)
-	var TelefonoFactu=encodeURIComponent(document.getElementById("TelefonoFactu").value)
-	var emailComprador=encodeURIComponent(document.getElementById("emailComprador").value)
-	var Condiciones=encodeURIComponent(document.getElementById("Condiciones").value)
-	var idPoliza=encodeURIComponent(document.getElementById("idPoliza").value)
-	var cantidadPasajeros=encodeURIComponent(document.getElementById("cantidadpasajeros").value)
-	var refVenta=encodeURIComponent(document.getElementById("refVenta").value)
-	
-	
-	alert("cantidad pasajeros"+cantidadpasajeros)
-	if(cantidadpasajeros==1){
-		
-
-		var n1=encodeURIComponent(document.getElementById("n1").value)
-		var a1=encodeURIComponent(document.getElementById("a1").value)
-		var d1=encodeURIComponent(document.getElementById("d1").value)
-		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
-		
- 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
- 		 	
-				+"&ApellidoEmergencia="+ApellidoEmergencia
-				+"&TelefonoEmergencia="+TelefonoEmergencia
-				+"&EmailEmergencia="+EmailEmergencia
-				+"&TelefonoContacto="+TelefonoContacto
-				+"&CelularContacto="+CelularContacto
-				+"&DireccionContacto="+DireccionContacto
-				+"&NombreFactu="+NombreFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&TelefonoFactu="+TelefonoFactu
-				+"&emailComprador="+emailComprador	
-
-				+"&n1="+n1	
-				+"&a1="+a1					
-				+"&d1="+d1	
-				+"&em1="+em1	
-				+"&fndia1="+fndia1	
-				+"&fnmes1="+fnmes1	
-				+"&fnanio1="+fnanio1
-				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idPoliza="+idPoliza
-				+"&refVenta="+refVenta
-				
-									
-				, true)		
-
-	}
-	else if(cantidadpasajeros==2){
-
-
-
-		var n1=encodeURIComponent(document.getElementById("n1").value)
-		var a1=encodeURIComponent(document.getElementById("a1").value)
-		var d1=encodeURIComponent(document.getElementById("d1").value)
-		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
-		
-		var n2=encodeURIComponent(document.getElementById("n2").value)
-		var a2=encodeURIComponent(document.getElementById("a2").value)
-		var d2=encodeURIComponent(document.getElementById("d2").value)
-		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
-		
-		
- 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
- 		 	
-				+"&ApellidoEmergencia="+ApellidoEmergencia
-				+"&TelefonoEmergencia="+TelefonoEmergencia
-				+"&EmailEmergencia="+EmailEmergencia
-				+"&TelefonoContacto="+TelefonoContacto
-				+"&CelularContacto="+CelularContacto
-				+"&DireccionContacto="+DireccionContacto
-				+"&NombreFactu="+NombreFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&TelefonoFactu="+TelefonoFactu
-				+"&emailComprador="+emailComprador	
-
-				+"&n1="+n1	
-				+"&a1="+a1					
-				+"&d1="+d1	
-				+"&em1="+em1	
-				+"&fndia1="+fndia1	
-				+"&fnmes1="+fnmes1	
-				+"&fnanio1="+fnanio1	
-
-				+"&n2="+n2	
-				+"&a2="+a2					
-				+"&d2="+d2	
-				+"&em2="+em2	
-				+"&fndia2="+fndia2	
-				+"&fnmes2="+fnmes2	
-				+"&fnanio2="+fnanio2	
-				+"&cantidadpasajeros="+cantidadpasajeros
-				+"&idPoliza="+idPoliza		
-				+"&refVenta="+refVenta	
-				, true)	
-
-				
-	}
-
-	else if(cantidadpasajeros==3){
-
-		var n1=encodeURIComponent(document.getElementById("n1").value)
-		var a1=encodeURIComponent(document.getElementById("a1").value)
-		var d1=encodeURIComponent(document.getElementById("d1").value)
-		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
-		
-		var n2=encodeURIComponent(document.getElementById("n2").value)
-		var a2=encodeURIComponent(document.getElementById("a2").value)
-		var d2=encodeURIComponent(document.getElementById("d2").value)
-		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
-		
-		var n3=encodeURIComponent(document.getElementById("n3").value)
-		var a3=encodeURIComponent(document.getElementById("a3").value)
-		var d3=encodeURIComponent(document.getElementById("d3").value)
-		var em3=encodeURIComponent(document.getElementById("em3").value)			
-		var fndia3=encodeURIComponent(document.getElementById("f_dateDD3").value)		
-		var fnmes3=encodeURIComponent(document.getElementById("f_dateMM3").value)		
-		var fnanio3=encodeURIComponent(document.getElementById("f_dateYY3").value)
-		
-		
- 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
- 		 	
-				+"&ApellidoEmergencia="+ApellidoEmergencia
-				+"&TelefonoEmergencia="+TelefonoEmergencia
-				+"&EmailEmergencia="+EmailEmergencia
-				+"&TelefonoContacto="+TelefonoContacto
-				+"&CelularContacto="+CelularContacto
-				+"&DireccionContacto="+DireccionContacto
-				+"&NombreFactu="+NombreFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&TelefonoFactu="+TelefonoFactu
-				+"&emailComprador="+emailComprador	
-
-				+"&n1="+n1	
-				+"&a1="+a1					
-				+"&d1="+d1	
-				+"&em1="+em1	
-				+"&fndia1="+fndia1	
-				+"&fnmes1="+fnmes1	
-				+"&fnanio1="+fnanio1	
-
-				+"&n2="+n2	
-				+"&a2="+a2					
-				+"&d2="+d2	
-				+"&em2="+em2	
-				+"&fndia2="+fndia2	
-				+"&fnmes2="+fnmes2	
-				+"&fnanio2="+fnanio2
-
-				+"&n3="+n3	
-				+"&a3="+a3					
-				+"&d3="+d3	
-				+"&em3="+em3	
-				+"&fndia3="+fndia3	
-				+"&fnmes3="+fnmes3	
-				+"&fnanio3="+fnanio3	
-				+"&cantidadpasajeros="+cantidadpasajeros	
-				+"&idPoliza="+idPoliza
-				+"&refVenta="+refVenta
-							
-				, true)	
-
-		
-	}
-
-	else if(cantidadpasajeros==4){
-
-		var n1=encodeURIComponent(document.getElementById("n1").value)
-		var a1=encodeURIComponent(document.getElementById("a1").value)
-		var d1=encodeURIComponent(document.getElementById("d1").value)
-		var em1=encodeURIComponent(document.getElementById("em1").value)			
-		var fndia1=encodeURIComponent(document.getElementById("f_dateDD1").value)		
-		var fnmes1=encodeURIComponent(document.getElementById("f_dateMM1").value)		
-		var fnanio1=encodeURIComponent(document.getElementById("f_dateYY1").value)
-		
-		var n2=encodeURIComponent(document.getElementById("n2").value)
-		var a2=encodeURIComponent(document.getElementById("a2").value)
-		var d2=encodeURIComponent(document.getElementById("d2").value)
-		var em2=encodeURIComponent(document.getElementById("em2").value)			
-		var fndia2=encodeURIComponent(document.getElementById("f_dateDD2").value)		
-		var fnmes2=encodeURIComponent(document.getElementById("f_dateMM2").value)		
-		var fnanio2=encodeURIComponent(document.getElementById("f_dateYY2").value)
-		
-		var n3=encodeURIComponent(document.getElementById("n3").value)
-		var a3=encodeURIComponent(document.getElementById("a3").value)
-		var d3=encodeURIComponent(document.getElementById("d3").value)
-		var em3=encodeURIComponent(document.getElementById("em3").value)			
-		var fndia3=encodeURIComponent(document.getElementById("f_dateDD3").value)		
-		var fnmes3=encodeURIComponent(document.getElementById("f_dateMM3").value)		
-		var fnanio3=encodeURIComponent(document.getElementById("f_dateYY3").value)
-		
-		var n4=encodeURIComponent(document.getElementById("n4").value)
-		var a4=encodeURIComponent(document.getElementById("a4").value)
-		var d4=encodeURIComponent(document.getElementById("d4").value)
-		var em4=encodeURIComponent(document.getElementById("em4").value)			
-		var fndia4=encodeURIComponent(document.getElementById("f_dateDD4").value)		
-		var fnmes4=encodeURIComponent(document.getElementById("f_dateMM4").value)		
-		var fnanio4=encodeURIComponent(document.getElementById("f_dateYY4").value)
-		
-		
- 	mygetrequest.open("GET", "logic/generarPedido.php?NombreEmergencia="+NombreEmergencia
- 		 	
-				+"&ApellidoEmergencia="+ApellidoEmergencia
-				+"&TelefonoEmergencia="+TelefonoEmergencia
-				+"&EmailEmergencia="+EmailEmergencia
-				+"&TelefonoContacto="+TelefonoContacto
-				+"&CelularContacto="+CelularContacto
-				+"&DireccionContacto="+DireccionContacto
-				+"&NombreFactu="+NombreFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&DireccionFactu="+DireccionFactu
-				+"&DocumentoFactu="+DocumentoFactu
-				+"&TelefonoFactu="+TelefonoFactu
-				+"&emailComprador="+emailComprador	
-
-				+"&n1="+n1	
-				+"&a1="+a1					
-				+"&d1="+d1	
-				+"&em1="+em1	
-				+"&fndia1="+fndia1	
-				+"&fnmes1="+fnmes1	
-				+"&fnanio1="+fnanio1	
-
-				+"&n2="+n2	
-				+"&a2="+a2					
-				+"&d2="+d2	
-				+"&em2="+em2	
-				+"&fndia2="+fndia2	
-				+"&fnmes2="+fnmes2	
-				+"&fnanio2="+fnanio2
-
-				+"&n3="+n3	
-				+"&a3="+a3					
-				+"&d3="+d3	
-				+"&em3="+em3	
-				+"&fndia3="+fndia3	
-				+"&fnmes3="+fnmes3	
-				+"&fnanio3="+fnanio3	
-
-				+"&n4="+n4	
-				+"&a4="+a4					
-				+"&d4="+d4	
-				+"&em4="+em4	
-				+"&fndia4="+fndia4	
-				+"&fnmes4="+fnmes4	
-				+"&fnanio4="+fnanio4
-				+"&cantidadpasajeros="+cantidadpasajeros		
-				+"&idPoliza="+idPoliza		
-				+"&refVenta="+refVenta	
-								
-				, true)
-	}
-	mygetrequest.send(null)
-	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 	
@@ -407,7 +109,7 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
 <!--End of Zopim Live Chat Script-->
 
-<body onbeforeunload="generarPedido()"> 
+<body > 
 
 <div class="wrapper">
 	<!--- START HEADER --->
@@ -485,8 +187,8 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 	<!--TRAVEL DETAILS--->		
 	<div id="travelDtBox">
            	<h4>Datos del viajero: </h4>
-           	
-<form name="compra" id="compra" method="get" action="logic/generarPedido.php"><!--START DETAILS BOX--->
+         	
+<form name="compra" id="compra" method="post" action="logic/generarPedido.php"><!--START DETAILS BOX--->
 
 				<!--START DETAILS BOX--->
 <?php
@@ -552,6 +254,10 @@ echo"
 			<input  name=\"firma\"	type=\"hidden\" value=".$firma."> 		
 			<input	name=\"prueba\" type=\"hidden\" value=".$prueba.">
 			<input	name=\"idpoliza\"  id=\"idpoliza\" type=\"hidden\" value=".$idPoliza.">	
+			<input	name=\"fechaInicial\"  id=\"fechaInicial\" type=\"hidden\" value=".$salida.">	
+			<input	name=\"fechaFinal\"  id=\"fechaFinal\" type=\"hidden\" value=".$regreso.">	
+			<input	name=\"region\"  id=\"region\" type=\"hidden\" value=".$destino.">	
+			
 			<input	name=\"cantidadpasajeros\"  id=\"cantidadpasajeros\" type=\"hidden\" value=".$cantidadPasajeros.">";	
 
 ?> <!--ENDS DETAILS BOX-->
@@ -610,8 +316,8 @@ echo"
                            
                <div id="dataPerAddr">
                    <h4>Datos de facturaciÃ³n:</h4>
-                    <div class="list"><label class="detail">Nombre / Entidad::</label><br />
-				<input type="text" name="descripcion" id="NombreFactu" size="14" /></div>
+                    <div class="list"><label class="detail">Nombre / Entidad:</label><br />
+				<input type="text" name="NombreFactu" id="NombreFactu" size="14" /></div>
 				<div class="list"><label class="detail">Documento / Nit:</label><br />
 				<input type="text" name="DocumentoFactu" id="DocumentoFactu" size="14" /></div>
 				<div class="list"><label class="detail">DirecciÃ³n:</label><br />
@@ -767,7 +473,7 @@ echo"
   frmvalidator.addValidation("EmailEmergencia","req","Debe Ingresar Un E-mail-Contacto Emergencia.");
   frmvalidator.addValidation("EmailEmergencia","email","Debe Ingresar Un E-mail Válido-Contacto Emergencia."); 
   //FACTURACION
-  frmvalidator.addValidation("descripcion","req","Debe Ingresar El Nombre/Entidad-Facturación.");
+  frmvalidator.addValidation("NombreFactu","req","Debe Ingresar El Nombre/Entidad-Facturación.");
   frmvalidator.addValidation("DocumentoFactu","req","Debe Ingresar El Documento/Nit-Facturación."); 
   frmvalidator.addValidation("DireccionFactu","req","Debe Ingresar La Dirección-Facturación.");
   frmvalidator.addValidation("TelefonoFactu","req","Debe Ingresar El Teléfono-Facturación.");
@@ -775,7 +481,7 @@ echo"
   frmvalidator.addValidation("emailComprador","req","Debe Ingresar Un E-mail-Facturación.");
   frmvalidator.addValidation("emailComprador","email","Debe Ingresar Un E-mail Válido-Facturación."); 
   //TERMINOS Y CONDICIONES
-  //frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");  
+  frmvalidator.addValidation("Condiciones","req","Debe Aceptar los terminos y condiciones.");  
   frmvalidator.addValidation("Condiciones","shouldselchk=y","Debe Aceptar los terminos y condiciones.");
 
   
