@@ -18,7 +18,7 @@ if(strtoupper($firma)==strtoupper($firmacreada)){//comparación de las firmas
 	if($_REQUEST['estado_pol'] == 4)
 	{
 		//CONFIRMACION QUE EL PAGO FUE EXITOSO	
-		$compra->GenerarPedidoCrecer($ref_venta);
+		$compra->GenerarPedidoCrecer(trim( $ref_venta));
 	}
 	else{
 

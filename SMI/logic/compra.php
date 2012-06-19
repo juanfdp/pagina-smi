@@ -80,7 +80,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio1\" id=\"f_dateYY1\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -139,7 +139,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio1\" id=\"f_dateYY1\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -196,7 +196,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio2\" id=\"f_dateYY2\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -255,7 +255,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio1\" id=\"f_dateYY1\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -312,7 +312,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio2\" id=\"f_dateYY2\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -369,7 +369,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio3\" id=\"f_dateYY3\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -428,7 +428,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio1\" id=\"f_dateYY1\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -485,7 +485,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio2\" id=\"f_dateYY2\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -542,7 +542,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio3\" id=\"f_dateYY3\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -599,7 +599,7 @@ class compra
                                          </div>                                          
                                          <div class=\"date\">       
                                                 <select name=\"fnanio4\" id=\"f_dateYY4\">
-                                                    <optgroup label=\"Año\">
+                                                    <optgroup label=\"Aï¿½o\">
                                                     <option value=\"0\"SELECTED>...</option>
                                                     ";
 					for($i=1900;$i<= date ("Y"); $i++)echo "<option value=".$i.">".$i."</option>";
@@ -624,7 +624,7 @@ class compra
 	}
 
 
-/**
+	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR LA INFORMACION DE UN POSIBLE PEDIDO EN CRECER, PERO ES UNA TABLA PARA TRANSACCIONES DE PEDIDOS QUE FALTAN POR CONFIRMAR POR PAGOS ONLINE.
 	 */
 	public function GenerarPedidoWeb($arregloPedido,$arregloPasajeros,$codigoTransaccion,$idPoliza,$cantidadPasajeros)
@@ -638,13 +638,6 @@ class compra
 		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
 		TelefonoContactoEmergencia, EmailContactoEmergencia,FechaInicio,FechaFin,Precio ,Region,TrmIata, Estado)
 		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."','".$arregloPedido[13]."','".$arregloPedido[14]."','".$arregloPedido[15]."','".$arregloPedido[16]."','".$this->fun->getTrmIata($idPoliza)."',3) ");	
-			
-			echo " INSERT INTO PedidoWeb
-		(Id, CodigoTransaccion,  IdPoliza, FechaCreacion, FechaRespuesta, NombreTitularFactura, DocumentoTitularFactura, DireccionTitularFactura, 
-		TelefonoTitularFactura,EmailTitularFactura, TelefonoContacto, TelefonoMovilContacto, DireccionContacto, NombreContactoEmergencia, ApellidoContactoEmergencia, 
-		TelefonoContactoEmergencia, EmailContactoEmergencia,FechaInicio,FechaFin,Precio ,Region,TrmIata, Estado)
-		VALUES ( '".$arregloPedido[0]."','".$codigoTransaccion."','".$idPoliza."','".$fechaRegistro."','".$fechaRegistro."','".$arregloPedido[7]."','".$arregloPedido[8]."','".$arregloPedido[9]."','".$arregloPedido[10]."','".$arregloPedido[11]."','".$arregloPedido[5]."','".$arregloPedido[4]."','".$arregloPedido[6]."','".$arregloPedido[1]."','".$arregloPedido[2]."','".$arregloPedido[3]."','".$arregloPedido[12]."','".$arregloPedido[13]."','".$arregloPedido[14]."','".$arregloPedido[15]."','".$arregloPedido[16]."','".$this->fun->getTrmIata($idPoliza)."',3) ";
-			
 			//CREAMOS LOS PASAJEROS DEL PEDIDO.
 			//var_dump($arregloPasajeros);
 			//echo "Cantidad Inicial  ".$cantidadPasajeros."<br>";
@@ -672,8 +665,7 @@ class compra
 			return false;
 		}
 	}
-	
-/**
+	/**
 	 * METODO QUE SE ENCARGA DE REGISTRAR TODA LA INFORMACION EN CRECER, SIEMPRE Y CUANDO LA TRANSACCION SEA SATISFACTORIA
 	 */
 	public function GenerarPedidoCrecer($refVenta)
@@ -728,6 +720,8 @@ class compra
 			//CREAMOS EL CLIENTE NUEVO 
 			if($existeCliente->fields[0]==""){
 				
+				echo "Entramos a creacion";
+				
 				$IdCliente=$this->fun->NewGuid();
 				$IdContacto=$this->fun->NewGuid();
 				$IdPedido=$this->fun->NewGuid();
@@ -758,7 +752,7 @@ class compra
 				VALUES        ('".$IdCliente."','".$fechaConfirmacion."','".$fechaConfirmacion."',NULL,'0',NULL,'0')");
 				
 				//NOTIFICAMOS DE LA COMPRA AL TITLULAR DE LA FACTURA
-				$this->fun->SendMailConfirmacionPago($pedidoWeb->fields[9], $pedidoWeb->fields[5], $pedidoWeb->fields[6]);
+				/////////$this->fun->SendMailConfirmacionPago($pedidoWeb->fields[9], $pedidoWeb->fields[5], $pedidoWeb->fields[6]);
 				
 				
 				//CREAMOS EL CONTACTO.				
@@ -770,18 +764,18 @@ class compra
 
 				//CREAMOS EL PEDIDO
 				
-				$crearPedido = &$this->conexion->conectarse()->Execute("INSERT INTO OrdenCompraCliente
+					$crearPedido = &$this->conexion->conectarse()->Execute("INSERT INTO OrdenCompraCliente
                          (Id, FechaElaboracion, IdCliente, IdPaisOrigen, IdSedeCliente, IdRegionDestino, IdContactoEmergencia, FechaSalida, FechaRegreso, CantidadPasajeros, IdContacto, 
                          Codigo, IdAutor, IdEmpleado, FechaModificacion, SubtotalSinDto, Subtotal, ValorIva, Total, Trm_dia, UtilidadSobreCosto, Estado, GrupoAsignado, Prioridad, 
-                         Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia, TiempoGarantía, Instalacion, 
+                         Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia,  Instalacion, 
                          IdEmpleadoModif, IdViadeContacto)
 							VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
 							'00000000-0000-0000-0000-000000000000','".$pedidoWeb->fields[21]."',
 							'".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
 							'7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
 							'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
-							'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
-						//CREAMOS EL PRODUCTO COTIZACION.			
+							'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
+					//CREAMOS EL PRODUCTO COTIZACION.			
 							
 				
 						// OBTENEMOS LA CANTIDAD DE PASAJEROS.						
@@ -816,7 +810,7 @@ class compra
 							
 							//NOTIFICAMOS A LOS PASAJEROS DE LA COMPRA							
 								
-							$this->fun->SendMailConfirmacionPago($row[5], $row[2], $row[3]);
+							///////////$this->fun->SendMailConfirmacionPago($row[5], $row[2], $row[3]);
 			
 							
 							if($existePasajero->fields[0]==""){
@@ -874,6 +868,8 @@ class compra
 			else if($existeCliente->fields[0]!="") {
 				
 				
+				
+				
 				$IdCliente=$existeCliente->fields[1];						
 				$IdContacto=$this->fun->NewGuid();
 				$IdPedido=$this->fun->NewGuid();
@@ -885,26 +881,6 @@ class compra
 				$moneda=2;//DOLARES
 				$viaContacto=2;//WEB
 				$formaPago=1;
-				//CREAMOS LA EMPRESA
-				$crearCliente = &$this->conexion->conectarse()->Execute( "INSERT INTO Empresas
-                      (Id, TipoEmpresa, Identificacion, Dv, RazonSocial, Antiguedad, Telefono, Fax, Direccion, Mail, Url, Ciudad, Departamento, Pais, Aniversario, TieneAniversario, 
-                      FechaIngreso, IdActividadEconomica, Movil, Observaciones, SeguimientoHistorico, Estado, IdAsesor, RepresentanteLegal, IdTipoMonedaImportacion, 
-                      TipoNacionalidad, IdEmpleadoModif, Imagen)
-						VALUES     ('".$IdCliente."','N/A','".$pedidoWeb->fields[6]."','N','".$pedidoWeb->fields[5]."','0',
-						'".$pedidoWeb->fields[8]."','0','".$pedidoWeb->fields[7]."','".$pedidoWeb->fields[9]."','-',NULL,NULL,
-						NULL,NULL,NULL,'".$fechaConfirmacion."',
-						NULL,'".$pedidoWeb->fields[11]."','Ninguna',
-						NULL,'0',NULL,'Ninguno',
-						'2','false',NULL,
-						NULL)");				
-				//CREAMOS EL CLIENTE
-				$crearCliente = &$this->conexion->conectarse()->Execute( "INSERT INTO Clientes
-               (Id, Ingreso, Inicio, Fin, CodigoSwift, IdTipoCliente, IdActividadEconomica)
-				VALUES        ('".$IdCliente."','".$fechaConfirmacion."','".$fechaConfirmacion."',NULL,'0',NULL,'0')");
-				
-				//NOTIFICAMOS DE LA COMPRA AL TITLULAR DE LA FACTURA
-				$this->fun->SendMailConfirmacionPago($pedidoWeb->fields[9], $pedidoWeb->fields[5], $pedidoWeb->fields[6]);
-				
 				
 				//CREAMOS EL CONTACTO.				
 				$crearContacto= &$this->conexion->conectarse()->Execute("INSERT INTO Contactos(Id, Descripcion, Cargo, Direccion, Telefono, Extension, Celular, Fax, EmailEmpresa, EmailPersonal, Observacion, Cumpleanno, TieneCumpleanno, Estado)
@@ -918,15 +894,15 @@ class compra
 				$crearPedido = &$this->conexion->conectarse()->Execute("INSERT INTO OrdenCompraCliente
                          (Id, FechaElaboracion, IdCliente, IdPaisOrigen, IdSedeCliente, IdRegionDestino, IdContactoEmergencia, FechaSalida, FechaRegreso, CantidadPasajeros, IdContacto, 
                          Codigo, IdAutor, IdEmpleado, FechaModificacion, SubtotalSinDto, Subtotal, ValorIva, Total, Trm_dia, UtilidadSobreCosto, Estado, GrupoAsignado, Prioridad, 
-                         Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia, TiempoGarantía, Instalacion, 
+                         Probabilidad, Observaciones, SeguimientoHistorico, FechaRecepcion, Moneda, FormaPago, TiempoEntrega, TiempoVigencia,  Instalacion, 
                          IdEmpleadoModif, IdViadeContacto)
 							VALUES ('".$IdPedido."','".$fechaConfirmacion."','".$IdCliente."','1',
 							'00000000-0000-0000-0000-000000000000','".$pedidoWeb->fields[21]."',
 							'".$IdContacto."','".$pedidoWeb->fields[18]."','".$pedidoWeb->fields[19]."','0','".$IdContacto."','',
 							'7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','7e33a6e3-f03d-4211-9ef3-767aa2fa56fc','".$fechaConfirmacion."','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[20]."','0','".$pedidoWeb->fields[20]."','".$pedidoWeb->fields[22]."',
 							'true','1','".$grupo."','".$prioridad."','100',NULL,'".$seguimiento."',
-							'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
-				//CREAMOS EL PRODUCTO COTIZACION.			
+							'".$fechaConfirmacion."','".$moneda."','".$formaPago."',NULL,NULL,'false','00000000-0000-0000-0000-000000000000','".$viaContacto."')");
+				         //CREAMOS EL PRODUCTO COTIZACION.			
 							
 				
 						// OBTENEMOS LA CANTIDAD DE PASAJEROS.						
@@ -960,7 +936,7 @@ class compra
 					
 							//NOTIFICAMOS A LOS PASAJEROS DE LA COMPRA							
 								
-							$this->fun->SendMailConfirmacionPago($row[5], $row[2], $row[3]);
+						///////////	$this->fun->SendMailConfirmacionPago($row[5], $row[2], $row[3]);
 			
 							if($existePasajero->fields[0]==""){
 								
@@ -1018,7 +994,6 @@ class compra
 			return false;
 		}
 	}
-	
 }
 
 ?>
